@@ -1,0 +1,24 @@
+{
+  "author": "Florian Keller <github@floriankeller.de>",
+  "dependencies": {
+    "@types/node": "8.0.18",
+    "dms-conversion": "^3.0.0"
+  },
+  "devDependencies": {
+    "jasmine": "2.7.0",
+    "rimraf": "2.6.1",
+    "typescript": "2.4.2",
+    "webpack": "3.4.1"
+  },
+  "license": "MIT",
+  "main": "dist/commonjs/index.js",
+  "name": "exact-time",
+  "scripts": {
+    "clear": "rimraf dist",
+    "dist": "yarn clear && tsc",
+    "version": "yarn dist",
+    "test": "yarn dist && jasmine"
+  },
+  "types": "./dist/commonjs/index.d.ts",
+  "version": "1.0.0"
+}
