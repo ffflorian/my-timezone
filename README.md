@@ -1,14 +1,14 @@
-# ExactTime [![Build Status](https://travis-ci.org/ffflorian/exact-time.svg?branch=master)](https://travis-ci.org/ffflorian/exact-time)
+# MyTimezone [![Build Status](https://travis-ci.org/ffflorian/my-timezone.svg?branch=master)](https://travis-ci.org/ffflorian/my-timezone)
 
 Calculate the exact time based on your location. Calculates the time difference in minutes from UTC (good explanation on [CS4FN](http://www.cs4fn.org/mobile/owntimezone.php)).
 
 ## Getting Started
-Install the module with: `npm install exact-time`
+Install the module with: `npm install my-timezone`
 
 ```ts
-import ExactTime from 'exact-time';
+import MyTimezone from 'my-timezone';
 
-new ExactTime()
+new MyTimezone()
   .getTimeByAddress('Berlin, Germany')
   .then(data => {
     console.log('Berlin, Germany', data.toString()); // Sun Sep 03 2017 14:29:49 GMT+0200

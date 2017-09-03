@@ -4,7 +4,7 @@
     "@types/node": "8.0.26",
     "dms-conversion": "3.0.0",
     "moment": "2.18.1",
-    "ntpclient": "0.5.4"
+    "ntpclient": "0.5.5"
   },
   "devDependencies": {
     "jasmine": "2.8.0",
@@ -14,7 +14,7 @@
   },
   "license": "MIT",
   "main": "dist/commonjs/index.js",
-  "name": "exact-time",
+  "name": "my-timezone",
   "scripts": {
     "clear": "rimraf dist",
     "dist": "yarn clear && tsc",
@@ -22,5 +22,5 @@
     "test": "yarn dist && jasmine"
   },
   "types": "./dist/commonjs/index.d.ts",
-  "version": "1.0.0"
+  "version": "0.0.2"
 }

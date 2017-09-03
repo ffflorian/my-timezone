@@ -8,7 +8,7 @@ const defaultConfig = {
   offline: false
 };
 
-export default class ExactTime {
+export default class MyTimezone {
   private config = defaultConfig;
   private time: NTPClient;
 

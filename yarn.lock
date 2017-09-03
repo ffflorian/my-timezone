@@ -1293,9 +1293,9 @@ npmlog@^4.0.2:
     gauge "~2.7.3"
     set-blocking "~2.0.0"
 
-ntpclient@^0.5.4:
-  version "0.5.4"
-  resolved "https://registry.yarnpkg.com/ntpclient/-/ntpclient-0.5.4.tgz#1aec92cd7b3393cf7e618fd0304b1280b38422ba"
+ntpclient@^0.5.5:
+  version "0.5.5"
+  resolved "https://registry.yarnpkg.com/ntpclient/-/ntpclient-0.5.5.tgz#86671e191f747bd7b518c7167b4547a11b172bb7"
   dependencies:
     "@types/node" "8.0.26"
 

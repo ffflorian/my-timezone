@@ -1,13 +1,13 @@
-const { default: ExactTime } = require('../dist/commonjs');
+const { default: MyTimezone } = require('../dist/commonjs');
 
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 10 * 1000; // 10 seconds
 
-describe('ExactTime', () => {
-  const exact = new ExactTime();
+describe('MyTimezone', () => {
+  const tz = new MyTimezone();
 
   it('returns an address from Google', done => {
     const location = 'Berlin, Germany';
-    exact
+    tz
       .getLocationByName(location)
       .then(data => {
         const { formatted_address } = data;
@@ -18,7 +18,7 @@ describe('ExactTime', () => {
   });
 
   it('returns the time for a location', done => {
-    exact
+    tz
       .getTimeByLocation(52.5303654, 13.3497483)
       .then(data => {
         console.log('52.5303654, 13.3497483', data.toString());
@@ -26,7 +26,7 @@ describe('ExactTime', () => {
         done();
       })
       .catch(err => done.fail(err));
-    exact
+    tz
       .getTimeByLocation(52.5303654, 8.3497483)
       .then(data => {
         console.log('50.5303654, 13.3497483', data.toString());
@@ -37,7 +37,7 @@ describe('ExactTime', () => {
   });
 
   it('returns the time for an address', done => {
-    exact
+    tz
       .getTimeByAddress('Berlin, Germany')
       .then(data => {
         console.log('Berlin, Germany', data.toString());
@@ -45,7 +45,7 @@ describe('ExactTime', () => {
       })
       .catch(err => done.fail(err));
 
-    exact
+    tz
       .getTimeByAddress('Minsk, Belarus')
       .then(data => {
         console.log('Minsk, Belarus', data.toString());
@@ -55,8 +55,8 @@ describe('ExactTime', () => {
   });
 
   it('calculates the distance between two locations', () => {
-    const result = exact.calculateDistance(13.3497483, 52.5303654);
-    const result2 = exact.calculateDistance(52.5303654, 13.3497483);
+    const result = tz.calculateDistance(13.3497483, 52.5303654);
+    const result2 = tz.calculateDistance(52.5303654, 13.3497483);
     expect(result).toEqual(39.1806171);
     expect(result2).toEqual(39.1806171);
   });
