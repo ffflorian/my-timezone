@@ -5,7 +5,7 @@ jasmine.DEFAULT_TIMEOUT_INTERVAL = 10 * 1000; // 10 seconds
 describe('ExactTime', () => {
   const exact = new ExactTime();
 
-  xit('returns an address from Google', done => {
+  it('returns an address from Google', done => {
     const location = 'Berlin, Germany';
     exact
       .getLocationByName(location)
@@ -17,7 +17,7 @@ describe('ExactTime', () => {
       .catch(err => done.fail(err));
   });
 
-  xit('returns the time for a location', done => {
+  it('returns the time for a location', done => {
     exact
       .getTimeByLocation(52.5303654, 13.3497483)
       .then(data => {

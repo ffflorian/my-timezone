@@ -79,12 +79,12 @@ export default class ExactTime {
     longitude: number
   ): Promise<moment.MomentInput> {
     return this.getNetworkTime().then(date => {
-      console.log(`date for ${latitude}, ${longitude}:`, date);
+      //console.log(`date for ${latitude}, ${longitude}:`, date);
       let momentDate = moment(date);
       let distance = this.calculateDistance(0, longitude);
-      console.log('distance in degrees', distance);
+      //console.log('distance in degrees', distance);
       let distanceMinutes = distance * 4;
-      console.log('distance in minutes', distanceMinutes);
+      //console.log('distance in minutes', distanceMinutes);
       return longitude < 0
         ? momentDate.subtract(distance, 'm')
         : momentDate.add(distance, 'm');
