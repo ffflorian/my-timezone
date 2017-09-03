@@ -1,4 +1,4 @@
-import NTPClient from 'ntp.js';
+import NTPClient from 'ntpclient';
 import * as https from 'https';
 import DmsCoordinates from 'dms-conversion';
 import * as moment from 'moment';

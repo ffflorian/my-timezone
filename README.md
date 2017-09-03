@@ -1,4 +1,4 @@
-# ExactTime [![Build Status](https://travis-ci.org/ffflorian/exact-time.svg?branch=master)](http://travis-ci.org/moonpyk/node-ntp-client)
+# ExactTime [![Build Status](https://travis-ci.org/ffflorian/exact-time.svg?branch=master)](https://travis-ci.org/ffflorian/exact-time)
 
 Calculate the exact time based on your location. Calculates the time difference in minutes from UTC (good explanation on [CS4FN](http://www.cs4fn.org/mobile/owntimezone.php)).
 
