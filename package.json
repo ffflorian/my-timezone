@@ -1,14 +1,15 @@
 {
   "author": "Florian Keller <github@floriankeller.de>",
   "dependencies": {
-    "@types/node": "8.0.18",
-    "dms-conversion": "^3.0.0"
+    "@types/node": "8.0.26",
+    "dms-conversion": "3.0.0",
+    "moment": "2.18.1"
   },
   "devDependencies": {
-    "jasmine": "2.7.0",
+    "jasmine": "2.8.0",
     "rimraf": "2.6.1",
-    "typescript": "2.4.2",
-    "webpack": "3.4.1"
+    "typescript": "2.5.2",
+    "webpack": "3.5.5"
   },
   "license": "MIT",
   "main": "dist/commonjs/index.js",

@@ -1,28 +1,30 @@
-import * as NTP from 'ntp.js';
+import NTPClient from 'ntp.js';
 import * as https from 'https';
-import DmsCoordinates from "dms-conversion";
+import DmsCoordinates from 'dms-conversion';
+import * as moment from 'moment';
 
 const defaultConfig = {
-  ntpServer: 'pool.ntp.org'
+  ntpServer: 'pool.ntp.org',
+  offline: false
 };
 
-export = class ExactTime {
+export default class ExactTime {
   private config = defaultConfig;
-  private time: any;
+  private time: NTPClient;
 
   constructor(config?) {
     if (config) {
       Object.assign(this.config, config);
     }
-    this.time = new NTP(this.config.ntpServer);
+    this.time = new NTPClient(this.config.ntpServer);
   }
 
   public getLocationByName(
     address: string,
     radius: string = ''
   ): Promise<{
-    latitude: string;
-    longitude: string;
+    latitude: number;
+    longitude: number;
     formatted_address: string;
   }> {
     return new Promise((resolve, reject) => {
@@ -60,11 +62,38 @@ export = class ExactTime {
     });
   }
 
-  private calculateDistance(fromLatitude: number, toLatitude: number): number {
-    return Math.abs(fromLatitude - toLatitude);
+  private calculateDistance(from: number, to: number): number {
+    return Math.abs(from - to);
   }
 
-  public getTimeByLocation(latitude: number, longitude: number): Promise<Date> {
-    return this.time.getNetworkTime();
+  private getNetworkTime(): Promise<Date> {
+    if (this.config.offline) {
+      return Promise.resolve(new Date());
+    } else {
+      return this.time.getNetworkTime();
+    }
   }
-};
+
+  public getTimeByLocation(
+    latitude: number,
+    longitude: number
+  ): Promise<moment.MomentInput> {
+    return this.getNetworkTime().then(date => {
+      console.log(`date for ${latitude}, ${longitude}:`, date);
+      let momentDate = moment(date);
+      let distance = this.calculateDistance(0, longitude);
+      console.log('distance in degrees', distance);
+      let distanceMinutes = distance * 4;
+      console.log('distance in minutes', distanceMinutes);
+      return longitude < 0
+        ? momentDate.subtract(distance, 'm')
+        : momentDate.add(distance, 'm');
+    });
+  }
+
+  public getTimeByAddress(address: string): Promise<moment.MomentInput> {
+    return this.getLocationByName(address).then(({ latitude, longitude }) =>
+      this.getTimeByLocation(latitude, longitude)
+    );
+  }
+}
