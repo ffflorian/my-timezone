@@ -4,22 +4,28 @@
     "@types/node": "8.0.28",
     "dms-conversion": "3.0.0",
     "moment": "2.18.1",
-    "ntpclient": "0.5.5"
+    "ntpclient": "0.5.6"
   },
   "devDependencies": {
     "jasmine": "2.8.0",
+    "prettier": "1.7.0",
     "rimraf": "2.6.2",
     "typescript": "2.5.2",
     "webpack": "3.6.0"
   },
+  "description": "Get the exact time based on your location.",
+  "files": [
+    "src/"
+  ],
   "license": "MIT",
   "main": "dist/commonjs/index.js",
   "name": "my-timezone",
   "scripts": {
     "clear": "rimraf dist",
     "dist": "yarn clear && tsc",
-    "version": "yarn dist",
-    "test": "yarn dist && jasmine"
+    "prettier": "prettier --single-quote --write \"src/**/*.ts\" \"spec/**/*.js\"",
+    "test": "yarn dist && jasmine",
+    "version": "yarn dist"
   },
   "types": "./dist/commonjs/index.d.ts",
   "version": "0.0.3"
