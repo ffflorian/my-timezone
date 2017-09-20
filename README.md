@@ -1,11 +1,9 @@
-# MyTimezone [![Build Status](https://travis-ci.org/ffflorian/my-timezone.svg?branch=master)](https://travis-ci.org/ffflorian/my-timezone)
+# MyTimezone [![Build Status](https://travis-ci.org/ffflorian/my-timezone.svg?branch=master)](https://travis-ci.org/ffflorian/my-timezone) [![Greenkeeper badge](https://badges.greenkeeper.io/ffflorian/my-timezone.svg)](https://greenkeeper.io/) [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/ffflorian/my-timezone.svg)](https://greenkeeper.io/)
-
-Calculate the exact time based on your location. Calculates the time difference in minutes from UTC (good explanation on [CS4FN](http://www.cs4fn.org/mobile/owntimezone.php)).
+Get the exact time based on your location by calculating the time difference in minutes from UTC (good explanation on [CS4FN](http://www.cs4fn.org/mobile/owntimezone.php)).
 
 ## Getting Started
-Install the module with: `npm install my-timezone`
+Add the module to your project with `yarn add my-timezone`.
 
 ```ts
 import MyTimezone from 'my-timezone';
