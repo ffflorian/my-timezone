@@ -21,7 +21,7 @@ describe('MyTimezone', () => {
     tz
       .getTimeByLocation(52.5303654, 13.3497483)
       .then(data => {
-        console.log('52.5303654, 13.3497483', data.toString());
+        console.log('Timezeone at 52.5303654, 13.3497483:', data.toString());
         //expect(data.isBefore(new Date())).toBe(true);
         done();
       })
@@ -29,7 +29,7 @@ describe('MyTimezone', () => {
     tz
       .getTimeByLocation(52.5303654, 8.3497483)
       .then(data => {
-        console.log('50.5303654, 13.3497483', data.toString());
+        console.log('Timezeone at 50.5303654, 13.3497483:', data.toString());
         //expect(data.isBefore(new Date())).toBe(true);
         done();
       })
@@ -40,7 +40,7 @@ describe('MyTimezone', () => {
     tz
       .getTimeByAddress('Berlin, Germany')
       .then(data => {
-        console.log('Berlin, Germany', data.toString());
+        console.log('Timezone Berlin:', data.toString());
         done();
       })
       .catch(err => done.fail(err));
@@ -48,7 +48,7 @@ describe('MyTimezone', () => {
     tz
       .getTimeByAddress('Minsk, Belarus')
       .then(data => {
-        console.log('Minsk, Belarus', data.toString());
+        console.log('Timezone Minsk:', data.toString());
         done();
       })
       .catch(err => done.fail(err));

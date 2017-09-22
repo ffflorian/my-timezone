@@ -42,18 +42,22 @@ export default class MyTimezone {
 
         response.on('end', () => {
           const data = JSON.parse(body);
-          const { results = [] } = data;
-          if (results.length > 0) {
-            const location = results[0].geometry.location;
-            const formatted_address = results[0].formatted_address;
+          if (data.status === 'OK') {
+            const { results = [] } = data;
+            if (results.length > 0) {
+              const location = results[0].geometry.location;
+              const formatted_address = results[0].formatted_address;
 
-            resolve({
-              latitude: location.lat,
-              longitude: location.lng,
-              formatted_address
-            });
+              resolve({
+                latitude: location.lat,
+                longitude: location.lng,
+                formatted_address
+              });
+            } else {
+              reject('No place found');
+            }
           } else {
-            reject('No place found');
+            reject(`Google Maps API Error: ${data.error_message}`);
           }
         });
 
@@ -79,12 +83,9 @@ export default class MyTimezone {
     longitude: number
   ): Promise<moment.MomentInput> {
     return this.getNetworkTime().then(date => {
-      //console.log(`date for ${latitude}, ${longitude}:`, date);
       let momentDate = moment(date);
       let distance = this.calculateDistance(0, longitude);
-      //console.log('distance in degrees', distance);
       let distanceMinutes = distance * 4;
-      //console.log('distance in minutes', distanceMinutes);
       return longitude < 0
         ? momentDate.subtract(distance, 'm')
         : momentDate.add(distance, 'm');
