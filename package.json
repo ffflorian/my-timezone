@@ -4,7 +4,7 @@
     "@types/node": "8.0.29",
     "dms-conversion": "3.0.0",
     "moment": "2.18.1",
-    "ntpclient": "0.5.6"
+    "ntpclient": "0.5.7"
   },
   "devDependencies": {
     "jasmine": "2.8.0",
