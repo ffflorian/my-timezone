@@ -15,10 +15,10 @@
   },
   "description": "Get the exact time based on your location.",
   "files": [
-    "src/"
+    "dist/"
   ],
   "license": "MIT",
-  "main": "dist/commonjs/index.js",
+  "main": "dist/index.js",
   "name": "my-timezone",
   "scripts": {
     "clear": "rimraf dist",
@@ -27,6 +27,6 @@
     "test": "yarn dist && jasmine",
     "version": "yarn dist"
   },
-  "types": "./dist/commonjs/index.d.ts",
+  "types": "./dist/index.d.ts",
   "version": "0.2.0"
 }

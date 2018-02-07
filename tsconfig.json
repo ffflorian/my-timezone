@@ -10,7 +10,7 @@
     "noEmitOnError": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
-    "outDir": "dist/commonjs",
+    "outDir": "dist",
     "removeComments": true,
     "rootDir": "src",
     "sourceMap": false,
