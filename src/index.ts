@@ -3,16 +3,29 @@ import * as https from 'https';
 import DmsCoordinates from 'dms-conversion';
 import * as moment from 'moment';
 
+interface GoogleMapsResult {
+  error_message: string;
+  results: Array<{
+    geometry: {
+      location: {
+        lat: number;
+        lng: number;
+      };
+    };
+    formatted_address: string;
+  }>;
+  status: string;
+}
+
 const defaultConfig = {
   ntpServer: 'pool.ntp.org',
   offline: false
 };
 
 export default class MyTimezone {
-  private config = defaultConfig;
   private time: NTPClient;
 
-  constructor(config?) {
+  constructor(private config = defaultConfig) {
     if (config) {
       Object.assign(this.config, config);
     }
@@ -41,7 +54,7 @@ export default class MyTimezone {
         response.on('data', chunk => (body += chunk));
 
         response.on('end', () => {
-          const data = JSON.parse(body);
+          const data: GoogleMapsResult = JSON.parse(body);
           if (data.status === 'OK') {
             const { results = [] } = data;
             if (results.length > 0) {

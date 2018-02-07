@@ -8,13 +8,14 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "noEmitOnError": true,
-    "noImplicitAny": false,
+    "noImplicitAny": true,
     "noImplicitReturns": true,
     "outDir": "dist/commonjs",
     "removeComments": true,
     "rootDir": "src",
     "sourceMap": false,
-    "target": "ES5"
+    "strict": true,
+    "target": "ES6"
   },
   "exclude": [
     "dist/commonjs",
