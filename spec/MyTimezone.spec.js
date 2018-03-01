@@ -1,4 +1,4 @@
-const { default: MyTimezone } = require('../dist/commonjs');
+const { default: MyTimezone } = require('../');
 
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 10 * 1000; // 10 seconds
 
