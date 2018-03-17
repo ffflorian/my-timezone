@@ -2,7 +2,7 @@
   "author": "Florian Keller <github@floriankeller.de>",
   "dependencies": {
     "@types/node": "9.4.6",
-    "dms-conversion": "3.0.0",
+    "dms-conversion": "3.1.0-alpha.1",
     "moment": "2.20.1",
     "ntpclient": "0.6.1"
   },
