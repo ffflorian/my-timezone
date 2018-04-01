@@ -3,8 +3,6 @@
   "dependencies": {
     "@types/node": "9.4.6",
     "dms-conversion": "3.1.0",
-    "moment": "2.20.1",
-    "dms-conversion": "3.1.0",
     "moment": "2.22.0",
     "ntpclient": "0.6.1"
   },
