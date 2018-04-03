@@ -5,7 +5,7 @@ jasmine.DEFAULT_TIMEOUT_INTERVAL = 10 * 1000; // 10 seconds
 describe('MyTimezone', () => {
   const tz = new MyTimezone();
 
-  it('returns an address from Google', done => {
+  xit('returns an address from Google', done => {
     const location = 'Berlin, Germany';
     tz
       .getLocationByName(location)
@@ -17,7 +17,7 @@ describe('MyTimezone', () => {
       .catch(err => done.fail(err));
   });
 
-  it('returns the time for a location', done => {
+  xit('returns the time for a location', done => {
     tz
       .getTimeByLocation(52.5303654, 13.3497483)
       .then(data => {
@@ -36,7 +36,7 @@ describe('MyTimezone', () => {
       .catch(err => done.fail(err));
   });
 
-  it('returns the time for an address', done => {
+  xit('returns the time for an address', done => {
     tz
       .getTimeByAddress('Berlin, Germany')
       .then(data => {
