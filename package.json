@@ -3,7 +3,7 @@
   "dependencies": {
     "@types/node": "9.6.2",
     "dms-conversion": "3.1.0",
-    "moment": "2.22.0",
+    "moment": "2.22.1",
     "ntpclient": "0.6.1"
   },
   "devDependencies": {
