@@ -22,7 +22,7 @@
   "scripts": {
     "clear": "rimraf dist",
     "dist": "yarn clear && tsc",
-    "prettier": "prettier --single-quote --write \"src/**/*.ts\" \"spec/**/*.js\"",
+    "prettier": "prettier --write \"src/**/*.ts\" \"spec/**/*.js\"",
     "test": "yarn dist && jasmine",
     "version": "yarn dist"
   },

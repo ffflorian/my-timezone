@@ -7,8 +7,7 @@ describe('MyTimezone', () => {
 
   xit('returns an address from Google', done => {
     const location = 'Berlin, Germany';
-    tz
-      .getLocationByName(location)
+    tz.getLocationByName(location)
       .then(data => {
         const { formatted_address } = data;
         expect(formatted_address).toEqual(location);
@@ -18,16 +17,14 @@ describe('MyTimezone', () => {
   });
 
   xit('returns the time for a location', done => {
-    tz
-      .getTimeByLocation(52.5303654, 13.3497483)
+    tz.getTimeByLocation(52.5303654, 13.3497483)
       .then(data => {
         console.log('Timezeone at 52.5303654, 13.3497483:', data.toString());
         //expect(data.isBefore(new Date())).toBe(true);
         done();
       })
       .catch(err => done.fail(err));
-    tz
-      .getTimeByLocation(52.5303654, 8.3497483)
+    tz.getTimeByLocation(52.5303654, 8.3497483)
       .then(data => {
         console.log('Timezeone at 50.5303654, 13.3497483:', data.toString());
         //expect(data.isBefore(new Date())).toBe(true);
@@ -37,16 +34,14 @@ describe('MyTimezone', () => {
   });
 
   xit('returns the time for an address', done => {
-    tz
-      .getTimeByAddress('Berlin, Germany')
+    tz.getTimeByAddress('Berlin, Germany')
       .then(data => {
         console.log('Timezone Berlin:', data.toString());
         done();
       })
       .catch(err => done.fail(err));
 
-    tz
-      .getTimeByAddress('Minsk, Belarus')
+    tz.getTimeByAddress('Minsk, Belarus')
       .then(data => {
         console.log('Timezone Minsk:', data.toString());
         done();
