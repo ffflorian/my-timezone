@@ -29,9 +29,9 @@ concat-map@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
 
-dms-conversion@3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/dms-conversion/-/dms-conversion-3.1.0.tgz#52d264fda962aa199dbf4ac9f8e9ecf86d898df0"
+dms-conversion@3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/dms-conversion/-/dms-conversion-3.1.1.tgz#1418181dbe200346ae75cdf0e63aa0e79dc0d9ee"
 
 fs.realpath@^1.0.0:
   version "1.0.0"
