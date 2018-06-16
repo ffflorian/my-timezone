@@ -3,7 +3,7 @@ import * as https from 'https';
 import DmsCoordinates from 'dms-conversion';
 import * as moment from 'moment';
 
-interface GoogleMapsResult {
+type GoogleMapsResult = {
   error_message: string;
   results: Array<{
     geometry: {
@@ -15,36 +15,43 @@ interface GoogleMapsResult {
     formatted_address: string;
   }>;
   status: string;
-}
+};
 
-const defaultConfig = {
+type MyTimezoneConfig = {
+  ntpServer?: string;
+  offline?: boolean;
+};
+
+type Coordinates = {
+  latitude: number;
+  longitude: number;
+};
+
+const defaultConfig: MyTimezoneConfig = {
   ntpServer: 'pool.ntp.org',
   offline: false
 };
 
 export default class MyTimezone {
-  private time: NTPClient;
+  private ntpClient: NTPClient;
 
-  constructor(private config = defaultConfig) {
+  constructor(private config: MyTimezoneConfig = defaultConfig) {
     if (config) {
       Object.assign(this.config, config);
     }
-    this.time = new NTPClient(this.config.ntpServer);
+    this.ntpClient = new NTPClient(this.config.ntpServer);
   }
 
   public getLocationByName(
     address: string,
     radius: string = ''
-  ): Promise<{
-    latitude: number;
-    longitude: number;
-    formatted_address: string;
-  }> {
+  ): Promise<
+    Coordinates & {
+      formatted_address: string;
+    }
+  > {
     return new Promise((resolve, reject) => {
       const baseURL = 'https://maps.googleapis.com/maps/api/geocode/json';
-      let latitude = '';
-      let longitude = '';
-      let formatted_address = '';
 
       address = encodeURIComponent(address);
 
@@ -58,8 +65,10 @@ export default class MyTimezone {
           if (data.status === 'OK') {
             const { results = [] } = data;
             if (results.length > 0) {
-              const location = results[0].geometry.location;
-              const formatted_address = results[0].formatted_address;
+              const {
+                geometry: { location },
+                formatted_address
+              } = results[0];
 
               resolve({
                 latitude: location.lat,
@@ -79,35 +88,55 @@ export default class MyTimezone {
     });
   }
 
+  public parseCoordinates(coordinates: string): Coordinates {
+    const re = new RegExp(
+      `(-?[0-9]{1,2}(?:.|,)[0-9]{1,})(.)(-?[0-9]{1,2}(?:.|,)[0-9]{1,})`
+    );
+    const data = re.exec(coordinates);
+    if (data && data.length > 0) {
+      try {
+        const latitude = parseFloat(data[1]);
+        const longitude = parseFloat(data[3]);
+        return { latitude, longitude };
+      } catch (error) {
+        throw new Error(`Invalid coordinates: "${coordinates}"`);
+      }
+    }
+    throw new Error(`Invalid coordinates: "${coordinates}"`);
+  }
+
   private calculateDistance(from: number, to: number): number {
     return Math.abs(from - to);
   }
 
-  private getNetworkTime(): Promise<Date> {
-    if (this.config.offline) {
-      return Promise.resolve(new Date());
-    } else {
-      return this.time.getNetworkTime();
+  private async getUTCDate(): Promise<Date> {
+    return this.config.offline ? new Date() : this.ntpClient.getNetworkTime();
+  }
+
+  public async getLocation(location: string): Promise<Coordinates> {
+    try {
+      return this.parseCoordinates(location);
+    } catch (error) {
+      return this.getLocationByName(location);
     }
   }
 
-  public getTimeByLocation(
+  public async getTimeByLocation(
     latitude: number,
     longitude: number
   ): Promise<moment.MomentInput> {
-    return this.getNetworkTime().then(date => {
-      let momentDate = moment(date);
-      let distance = this.calculateDistance(0, longitude);
-      let distanceMinutes = distance * 4;
-      return longitude < 0
-        ? momentDate.subtract(distance, 'm')
-        : momentDate.add(distance, 'm');
-    });
+    const date = await this.getUTCDate();
+    const momentDate = moment(date);
+    const distance = this.calculateDistance(0, longitude);
+    const distanceSeconds = distance / 0.004167;
+
+    return longitude < 0
+      ? momentDate.subtract(distanceSeconds, 's')
+      : momentDate.add(distanceSeconds, 's');
   }
 
-  public getTimeByAddress(address: string): Promise<moment.MomentInput> {
-    return this.getLocationByName(address).then(({ latitude, longitude }) =>
-      this.getTimeByLocation(latitude, longitude)
-    );
+  public async getTimeByAddress(address: string): Promise<moment.MomentInput> {
+    const { latitude, longitude } = await this.getLocationByName(address);
+    return this.getTimeByLocation(latitude, longitude);
   }
 }
