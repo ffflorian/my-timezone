@@ -4,7 +4,7 @@
     "my-timezone": "dist/cli.js"
   },
   "dependencies": {
-    "@types/node": "10.5.6",
+    "@types/node": "10.5.8",
     "commander": "2.17.0",
     "dms-conversion": "3.1.1",
     "moment": "2.22.2",
