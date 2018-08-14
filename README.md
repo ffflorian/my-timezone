@@ -10,7 +10,7 @@ Add the module to your project with `yarn add my-timezone` or install it globall
 ### TypeScript
 
 ```ts
-import MyTimezone from 'my-timezone';
+import {MyTimezone} from 'my-timezone';
 
 new MyTimezone()
   .getTimeByAddress('Berlin, Germany')

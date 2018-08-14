@@ -1,9 +1,8 @@
 import NTPClient from 'ntpclient';
 import * as https from 'https';
-import DmsCoordinates from 'dms-conversion';
 import * as moment from 'moment';
 
-type GoogleMapsResult = {
+interface GoogleMapsResult {
   error_message: string;
   results: Array<{
     geometry: {
@@ -15,24 +14,24 @@ type GoogleMapsResult = {
     formatted_address: string;
   }>;
   status: string;
-};
+}
 
-type MyTimezoneConfig = {
+interface MyTimezoneConfig {
   ntpServer?: string;
   offline?: boolean;
-};
+}
 
-type Coordinates = {
+interface Coordinates {
   latitude: number;
   longitude: number;
-};
+}
 
 const defaultConfig: MyTimezoneConfig = {
   ntpServer: 'pool.ntp.org',
   offline: false
 };
 
-export default class MyTimezone {
+export class MyTimezone {
   private ntpClient: NTPClient;
 
   constructor(private config: MyTimezoneConfig = defaultConfig) {
@@ -44,7 +43,7 @@ export default class MyTimezone {
 
   public getLocationByName(
     address: string,
-    radius: string = ''
+    radius = ''
   ): Promise<
     Coordinates & {
       formatted_address: string;

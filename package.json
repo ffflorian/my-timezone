@@ -6,27 +6,27 @@
   "dependencies": {
     "@types/node": "10.5.8",
     "commander": "2.17.1",
-    "dms-conversion": "3.1.1",
     "moment": "2.22.2",
     "ntpclient": "0.6.2"
   },
+  "description": "Get the exact time based on your location.",
   "devDependencies": {
     "jasmine": "3.2.0",
     "prettier": "1.14.2",
     "rimraf": "2.6.2",
     "typescript": "3.0.1"
   },
-  "description": "Get the exact time based on your location.",
   "files": [
-    "dist/"
+    "dist"
   ],
   "license": "MIT",
   "main": "dist/index.js",
   "name": "my-timezone",
   "scripts": {
+    "build": "tsc",
     "clear": "rimraf dist",
-    "dist": "yarn clear && tsc",
-    "prettier": "prettier --write \"src/**/*.ts\" \"spec/**/*.js\"",
+    "dist": "yarn clear && yarn build",
+    "prettier": "prettier --single-quote --write \"src/**/*.ts\" \"spec/**/*.js\"",
     "test": "yarn dist && jasmine",
     "version": "yarn dist"
   },
