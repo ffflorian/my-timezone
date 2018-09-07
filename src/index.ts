@@ -111,8 +111,8 @@ export class MyTimezone {
     const distanceSeconds = distance / 0.004167;
 
     return longitude < 0
-      ? momentDate.subtract(distanceSeconds, 's')
-      : momentDate.add(distanceSeconds, 's');
+      ? momentDate.subtract(distanceSeconds, 'seconds')
+      : momentDate.add(distanceSeconds, 'seconds');
   }
 
   public async getTimeByAddress(address: string): Promise<moment.Moment> {

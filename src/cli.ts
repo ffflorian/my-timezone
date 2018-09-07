@@ -9,31 +9,30 @@ program
   .name(name)
   .version(version)
   .description(description)
-  .option(
-    '-l, --location [City name or Latitude:Longitude]',
-    'Specify your location as name or in the format "Latitude:Longitude"'
-  )
-  .option('-o, --offline', 'Work offline (default is "false")')
+  .option('-o, --offline', 'Work offline (default is false)')
   .option('-s, --server', 'Specify the NTP server (default is "pool.ntp.org")')
+  .arguments('<location>')
   .parse(process.argv);
 
-const timezone = new MyTimezone({
-  ...(program.offline && { offline: program.offline }),
-  ...(program.server && { ntpServer: program.server })
-});
-
-if (!program.location) {
-  console.error('No location specified.');
-  program.help();
-} else {
-  timezone
-    .getLocation(program.location)
-    .then(({ latitude, longitude }) =>
-      timezone.getTimeByLocation(latitude, longitude)
-    )
-    .then(time => console.log(time.toString()))
-    .catch(error => {
-      console.error(error);
-      process.exit(1);
+  if (!program.args || !program.args.length) {
+    console.error('Error: No location specified.');
+    program.help();
+  } else {
+    const timezone = new MyTimezone({
+      ...(program.offline && { offline: program.offline }),
+      ...(program.server && { ntpServer: program.server })
     });
-}
+
+    const location = program.args[0];
+
+    timezone
+      .getLocation(location)
+      .then(({ latitude, longitude }) =>
+        timezone.getTimeByLocation(latitude, longitude)
+      )
+      .then(time => console.log(time.toString()))
+      .catch(error => {
+        console.error(error.message);
+        process.exit(1);
+      });
+  }
