@@ -26,14 +26,14 @@ interface Coordinates {
   longitude: number;
 }
 
-const defaultConfig: MyTimezoneConfig = {
+const defaultConfig: Required<MyTimezoneConfig> = {
   ntpServer: 'pool.ntp.org',
   offline: false
 };
 
 export class MyTimezone {
   private ntpClient: NTPClient;
-  private config: MyTimezoneConfig;
+  private config: Required<MyTimezoneConfig>;
 
   constructor(config?: MyTimezoneConfig) {
     this.config = {
