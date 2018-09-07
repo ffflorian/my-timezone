@@ -14,25 +14,25 @@ program
   .arguments('<location>')
   .parse(process.argv);
 
-  if (!program.args || !program.args.length) {
-    console.error('Error: No location specified.');
-    program.help();
-  } else {
-    const timezone = new MyTimezone({
-      ...(program.offline && { offline: program.offline }),
-      ...(program.server && { ntpServer: program.server })
+if (!program.args || !program.args.length) {
+  console.error('Error: No location specified.');
+  program.help();
+} else {
+  const timezone = new MyTimezone({
+    ...(program.offline && { offline: program.offline }),
+    ...(program.server && { ntpServer: program.server })
+  });
+
+  const location = program.args[0];
+
+  timezone
+    .getLocation(location)
+    .then(({ latitude, longitude }) =>
+      timezone.getTimeByLocation(latitude, longitude)
+    )
+    .then(time => console.log(time.toString()))
+    .catch(error => {
+      console.error(error.message);
+      process.exit(1);
     });
-
-    const location = program.args[0];
-
-    timezone
-      .getLocation(location)
-      .then(({ latitude, longitude }) =>
-        timezone.getTimeByLocation(latitude, longitude)
-      )
-      .then(time => console.log(time.toString()))
-      .catch(error => {
-        console.error(error.message);
-        process.exit(1);
-      });
-  }
+}
