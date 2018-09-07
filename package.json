@@ -16,6 +16,9 @@
     "nock": "9.6.1",
     "prettier": "1.14.2",
     "rimraf": "2.6.2",
+    "tslint": "5.11.0",
+    "tslint-config-prettier": "1.15.0",
+    "tslint-plugin-prettier": "1.3.0",
     "typescript": "3.0.3"
   },
   "files": [
@@ -28,7 +31,8 @@
     "build": "tsc",
     "clear": "rimraf dist",
     "dist": "yarn clear && yarn build",
-    "prettier": "prettier --single-quote --write \"src/**/*.ts\" \"spec/**/*.js\"",
+    "lint": "tslint -p tsconfig.json --fix",
+    "prettier": "prettier --ignore-path .gitignore --write \"**/*.{js,ts}\"",
     "test": "yarn dist && jasmine",
     "version": "yarn dist"
   },

@@ -1,6 +1,6 @@
-import NTPClient from 'ntpclient';
-import * as moment from 'moment';
 import axios from 'axios';
+import * as moment from 'moment';
+import NTPClient from 'ntpclient';
 import {
   Coordinates,
   GoogleMapsResult,
@@ -14,8 +14,8 @@ const defaultConfig: Required<MyTimezoneConfig> = {
 };
 
 export class MyTimezone {
-  private ntpClient: NTPClient;
-  private config: Required<MyTimezoneConfig>;
+  private readonly ntpClient: NTPClient;
+  private readonly config: Required<MyTimezoneConfig>;
 
   constructor(config?: MyTimezoneConfig) {
     this.config = {
@@ -62,9 +62,9 @@ export class MyTimezone {
     } = results[0];
 
     return {
+      formattedAddress: formatted_address,
       latitude: location.lat,
-      longitude: location.lng,
-      formattedAddress: formatted_address
+      longitude: location.lng
     };
   }
 

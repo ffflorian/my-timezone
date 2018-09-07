@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-import { MyTimezone } from './';
 import program = require('commander');
+import { MyTimezone } from './';
 
 const { description, name, version } = require('../package.json');
 
