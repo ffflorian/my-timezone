@@ -1,4 +1,4 @@
-import { NTPClient } from 'ntpclient';
+import NTPClient from 'ntpclient';
 import * as moment from 'moment';
 import axios from 'axios';
 import {

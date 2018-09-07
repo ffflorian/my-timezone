@@ -164,9 +164,9 @@ nock@9.6.1:
     qs "^6.5.1"
     semver "^5.5.0"
 
-ntpclient@0.7.0:
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/ntpclient/-/ntpclient-0.7.0.tgz#d2c2c29c2f6b806e5b099c9c9aecdf4ec771e96c"
+ntpclient@0.7.1:
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/ntpclient/-/ntpclient-0.7.1.tgz#e9a25659148ad77715f4cf94c2e30608fb21b72e"
   dependencies:
     "@types/node" "10.9.4"
     commander "2.17.1"
