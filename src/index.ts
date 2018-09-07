@@ -33,11 +33,13 @@ const defaultConfig: MyTimezoneConfig = {
 
 export class MyTimezone {
   private ntpClient: NTPClient;
+  private config: MyTimezoneConfig;
 
-  constructor(private config: MyTimezoneConfig = defaultConfig) {
-    if (config) {
-      Object.assign(this.config, config);
-    }
+  constructor(config?: MyTimezoneConfig) {
+    this.config = {
+      ...defaultConfig,
+      ...config
+    };
     this.ntpClient = new NTPClient(this.config.ntpServer);
   }
 
@@ -123,7 +125,7 @@ export class MyTimezone {
   public async getTimeByLocation(
     latitude: number,
     longitude: number
-  ): Promise<moment.MomentInput> {
+  ): Promise<moment.Moment> {
     const date = await this.getUTCDate();
     const momentDate = moment(date);
     const distance = this.calculateDistance(0, longitude);
@@ -134,7 +136,7 @@ export class MyTimezone {
       : momentDate.add(distanceSeconds, 's');
   }
 
-  public async getTimeByAddress(address: string): Promise<moment.MomentInput> {
+  public async getTimeByAddress(address: string): Promise<moment.Moment> {
     const { latitude, longitude } = await this.getLocationByName(address);
     return this.getTimeByLocation(latitude, longitude);
   }
