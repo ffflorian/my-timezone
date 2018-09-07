@@ -1,4 +1,4 @@
-import NTPClient from 'ntpclient';
+import {NTPClient} from 'ntpclient';
 import * as https from 'https';
 import * as moment from 'moment';
 
