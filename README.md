@@ -16,7 +16,6 @@ new MyTimezone()
   .getTimeByAddress('Berlin, Germany')
   .then(date => {
     console.log(date.toString()); // Sun Sep 03 2017 14:29:49 GMT+0200
-    done();
   })
   .catch(error => console.error(error));
 ```
