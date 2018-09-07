@@ -1,19 +1,50 @@
 //@ts-check
+
 const { MyTimezone } = require('../');
+const nock = require('nock');
 
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 10 * 1000; // 10 seconds
 
 describe('MyTimezone', () => {
-  const tz = new MyTimezone({
-    offline: true
+  let tz;
+
+  beforeEach(() => {
+    tz = new MyTimezone({
+      offline: true
+    });
+
+    let formatted_address;
+    nock('https://maps.googleapis.com')
+      .get('/maps/api/geocode/json')
+      .query(obj => {
+        formatted_address = obj.address;
+        return true;
+      })
+      .reply(() => [
+        200,
+        {
+          results: [
+            {
+              geometry: {
+                location: {
+                  lat: 1.2345,
+                  lng: 2.3456
+                }
+              },
+              formatted_address
+            }
+          ],
+          status: 'OK'
+        }
+      ]);
   });
 
-  xit('returns an address from Google', async () => {
+  it('returns an address from Google', async () => {
     const location = 'Berlin, Germany';
 
-    const { formatted_address } = await tz.getLocationByName(location);
+    const { formattedAddress } = await tz.getLocationByName(location);
 
-    expect(formatted_address).toEqual(location);
+    expect(formattedAddress).toBe(location);
   });
 
   it('returns the correct time for a location', async () => {
@@ -26,12 +57,12 @@ describe('MyTimezone', () => {
     expect(frankfurtTime.isBefore(berlinTime)).toBe(true);
   });
 
-  xit('returns the time for an address', async () => {
+  it('returns the time for an address', async () => {
     const dataBerlin = await tz.getTimeByAddress('Berlin, Germany');
-    console.log('Timezone Berlin:', dataBerlin.toString());
+    //console.log('Timezone Berlin:', dataBerlin.toString());
 
     const dataMinsk = await tz.getTimeByAddress('Minsk, Belarus');
-    console.log('Timezone Minsk:', dataMinsk.toString());
+    //console.log('Timezone Minsk:', dataMinsk.toString());
   });
 
   it('calculates the distance between two locations', () => {

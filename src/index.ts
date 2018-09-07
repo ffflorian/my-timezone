@@ -1,30 +1,12 @@
-import {NTPClient} from 'ntpclient';
-import * as https from 'https';
+import { NTPClient } from 'ntpclient';
 import * as moment from 'moment';
-
-interface GoogleMapsResult {
-  error_message: string;
-  results: Array<{
-    geometry: {
-      location: {
-        lat: number;
-        lng: number;
-      };
-    };
-    formatted_address: string;
-  }>;
-  status: string;
-}
-
-interface MyTimezoneConfig {
-  ntpServer?: string;
-  offline?: boolean;
-}
-
-interface Coordinates {
-  latitude: number;
-  longitude: number;
-}
+import axios from 'axios';
+import {
+  Coordinates,
+  GoogleMapsResult,
+  Location,
+  MyTimezoneConfig
+} from './Interfaces';
 
 const defaultConfig: Required<MyTimezoneConfig> = {
   ntpServer: 'pool.ntp.org',
@@ -43,50 +25,47 @@ export class MyTimezone {
     this.ntpClient = new NTPClient(this.config.ntpServer);
   }
 
-  public getLocationByName(
+  public async getLocationByName(
     address: string,
     radius = ''
-  ): Promise<
-    Coordinates & {
-      formatted_address: string;
+  ): Promise<Location> {
+    const baseURL = 'https://maps.googleapis.com/maps/api/geocode/json';
+    address = encodeURIComponent(address);
+    const completeURL = `${baseURL}?address=${address}${radius &&
+      `&radius=${radius}`}`;
+
+    let data: GoogleMapsResult | undefined;
+
+    try {
+      const response = await axios.get<GoogleMapsResult>(completeURL);
+      data = response.data;
+    } catch (error) {
+      throw new Error(`Google Maps API Error: ${error.message}`);
     }
-  > {
-    return new Promise((resolve, reject) => {
-      const baseURL = 'https://maps.googleapis.com/maps/api/geocode/json';
 
-      address = encodeURIComponent(address);
+    if (data.status !== 'OK') {
+      if (data.error_message) {
+        throw new Error(`Google Maps API Error: ${data.error_message}`);
+      }
+      throw new Error('Unknown Google Maps API Error.');
+    }
 
-      https.get(`${baseURL}?address=${address}&radius=${radius}`, response => {
-        let body = '';
+    const { results = [] } = data;
 
-        response.on('data', chunk => (body += chunk));
+    if (!results.length) {
+      throw new Error('No place found.');
+    }
 
-        response.on('end', () => {
-          const data: GoogleMapsResult = JSON.parse(body);
-          if (data.status === 'OK') {
-            const { results = [] } = data;
-            if (results.length > 0) {
-              const {
-                geometry: { location },
-                formatted_address
-              } = results[0];
+    const {
+      geometry: { location },
+      formatted_address
+    } = results[0];
 
-              resolve({
-                latitude: location.lat,
-                longitude: location.lng,
-                formatted_address
-              });
-            } else {
-              reject('No place found');
-            }
-          } else {
-            reject(`Google Maps API Error: ${data.error_message}`);
-          }
-        });
-
-        response.on('error', err => reject(err));
-      });
-    });
+    return {
+      latitude: location.lat,
+      longitude: location.lng,
+      formattedAddress: formatted_address
+    };
   }
 
   public parseCoordinates(coordinates: string): Coordinates {
@@ -114,9 +93,9 @@ export class MyTimezone {
     return this.config.offline ? new Date() : this.ntpClient.getNetworkTime();
   }
 
-  public async getLocation(location: string): Promise<Coordinates> {
+  public getLocation(location: string): Promise<Location> {
     try {
-      return this.parseCoordinates(location);
+      return Promise.resolve(this.parseCoordinates(location));
     } catch (error) {
       return this.getLocationByName(location);
     }
