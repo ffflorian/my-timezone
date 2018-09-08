@@ -63,21 +63,19 @@ export class MyTimezone {
 
     return {
       formattedAddress: formatted_address,
-      latitude: location.lat,
       longitude: location.lng
     };
   }
 
   public parseCoordinates(coordinates: string): Coordinates {
     const re = new RegExp(
-      `(-?[0-9]{1,2}(?:.|,)[0-9]{1,})(.)(-?[0-9]{1,2}(?:.|,)[0-9]{1,})`
+      `(-?[0-9]{1,2}(?:.|,)[0-9]{1,})`
     );
     const data = re.exec(coordinates);
     if (data && data.length > 0) {
       try {
-        const latitude = parseFloat(data[1]);
-        const longitude = parseFloat(data[3]);
-        return { latitude, longitude };
+        const longitude = parseFloat(data[1]);
+        return { longitude };
       } catch (error) {
         throw new Error(`Invalid coordinates: "${coordinates}"`);
       }
@@ -102,7 +100,6 @@ export class MyTimezone {
   }
 
   public async getTimeByLocation(
-    latitude: number,
     longitude: number
   ): Promise<moment.Moment> {
     const date = await this.getUTCDate();
@@ -116,7 +113,7 @@ export class MyTimezone {
   }
 
   public async getTimeByAddress(address: string): Promise<moment.Moment> {
-    const { latitude, longitude } = await this.getLocationByName(address);
-    return this.getTimeByLocation(latitude, longitude);
+    const { longitude } = await this.getLocationByName(address);
+    return this.getTimeByLocation(longitude);
   }
 }

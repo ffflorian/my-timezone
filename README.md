@@ -18,6 +18,15 @@ new MyTimezone()
     console.log(date.toString()); // Sun Sep 03 2017 14:29:49 GMT+0200
   })
   .catch(error => console.error(error));
+
+// or
+
+new MyTimezone()
+  .getTimeByLocation('13.394')
+  .then(date => {
+    console.log(date.toString()); // Sun Sep 03 2017 14:29:49 GMT+0200
+  })
+  .catch(error => console.error(error));
 ```
 
 ### CLI
@@ -26,6 +35,7 @@ new MyTimezone()
 Usage: my-timezone [options] <location>
 
 Get the exact time based on your location.
+Use a city name or longitude value as location.
 
 Options:
 
