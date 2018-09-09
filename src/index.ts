@@ -68,9 +68,7 @@ export class MyTimezone {
   }
 
   public parseCoordinates(coordinates: string): Coordinates {
-    const re = new RegExp(
-      `(-?[0-9]{1,2}(?:.|,)[0-9]{1,})`
-    );
+    const re = new RegExp(`(-?[0-9]{1,2}(?:.|,)[0-9]{1,})`);
     const data = re.exec(coordinates);
     if (data && data.length > 0) {
       try {
@@ -99,9 +97,7 @@ export class MyTimezone {
     }
   }
 
-  public async getTimeByLocation(
-    longitude: number
-  ): Promise<moment.Moment> {
+  public async getTimeByLocation(longitude: number): Promise<moment.Moment> {
     const date = await this.getUTCDate();
     const momentDate = moment(date);
     const distance = this.calculateDistance(0, longitude);

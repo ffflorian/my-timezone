@@ -8,7 +8,9 @@ const { description, name, version } = require('../package.json');
 program
   .name(name)
   .version(version)
-  .description(`${description}\n  Use a city name or longitude value as location.`)
+  .description(
+    `${description}\n  Use a city name or longitude value as location.`
+  )
   .option('-o, --offline', 'Work offline (default is false)')
   .option('-s, --server', 'Specify the NTP server (default is "pool.ntp.org")')
   .arguments('<location>')
@@ -27,9 +29,7 @@ if (!program.args || !program.args.length) {
 
   timezone
     .getLocation(location)
-    .then(({ longitude }) =>
-      timezone.getTimeByLocation(longitude)
-    )
+    .then(({ longitude }) => timezone.getTimeByLocation(longitude))
     .then(time => console.log(time.toString()))
     .catch(error => {
       console.error(error.message);
