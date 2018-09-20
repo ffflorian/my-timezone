@@ -1,4 +1,4 @@
-import {MyTimezone} from '../src';
+import { MyTimezone } from '../src';
 import * as nock from 'nock';
 
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 10 * 1000; // 10 seconds
@@ -14,7 +14,7 @@ describe('MyTimezone', () => {
     let formatted_address: string;
     nock('https://maps.googleapis.com')
       .get('/maps/api/geocode/json')
-      .query((obj: {address: string}) => {
+      .query((obj: { address: string }) => {
         formatted_address = obj.address;
         return true;
       })
