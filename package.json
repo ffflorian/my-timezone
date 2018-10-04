@@ -10,7 +10,7 @@
   },
   "description": "Get the exact time based on your location.",
   "devDependencies": {
-    "@types/jasmine": "2.8.8",
+    "@types/jasmine": "2.8.9",
     "@types/nock": "9.3.0",
     "@types/node": "10.11.2",
     "axios": "0.18.0",
