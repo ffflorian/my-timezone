@@ -35,7 +35,9 @@
     "build": "tsc",
     "clear": "rimraf dist",
     "dist": "yarn clear && yarn build",
-    "lint": "tslint -p tsconfig.json --fix",
+    "lint": "yarn lint:ts && yarn lint:other",
+    "lint:other": "yarn prettier --list-different",
+    "lint:ts": "tslint --config tslint.json --project tsconfig.json \"**/*.ts\"",
     "prettier": "prettier --ignore-path .gitignore --write \"**/*.ts\"",
     "test": "ts-node -P tsconfig.jasmine.json node_modules/.bin/jasmine"
   },

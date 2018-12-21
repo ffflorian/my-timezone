@@ -1,4 +1,4 @@
-# MyTimezone [![Build Status](https://api.travis-ci.org/ffflorian/my-timezone.svg?branch=master)](https://travis-ci.org/ffflorian/my-timezone/)  [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=ffflorian/my-timezone)](https://dependabot.com)
+# MyTimezone [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=ffflorian/my-timezone)](https://dependabot.com)
 
 Get the exact time based on your location by calculating the time difference in seconds from UTC (good explanation on [CS4FN](http://www.cs4fn.org/mobile/owntimezone.php)).
 
