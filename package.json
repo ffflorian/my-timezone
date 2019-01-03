@@ -15,7 +15,7 @@
     "@types/node": "10.12.7",
     "axios": "0.18.0",
     "jasmine": "3.3.1",
-    "nock": "10.0.5",
+    "nock": "10.0.6",
     "prettier": "1.15.3",
     "rimraf": "2.6.3",
     "ts-node": "7.0.1",
