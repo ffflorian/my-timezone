@@ -375,10 +375,10 @@ nock@10.0.6:
     qs "^6.5.1"
     semver "^5.5.0"
 
-ntpclient@0.7.2:
-  version "0.7.2"
-  resolved "https://registry.yarnpkg.com/ntpclient/-/ntpclient-0.7.2.tgz#0b3aa65d9d0577b99c602d3bf753de1b42feabc6"
-  integrity sha512-UZcWf35pNnyn8UzHCcfXeKZn+jKML27sFme6F8SI6rTHRYIz6xMnYrynVNtC3FBC/ZC6My9eIE2pzds8H+Xk7A==
+ntpclient@0.7.3:
+  version "0.7.3"
+  resolved "https://registry.yarnpkg.com/ntpclient/-/ntpclient-0.7.3.tgz#46fed4f897733180d01b38b9cc28c4709a512be2"
+  integrity sha512-++kY+LPJi+qziYj2oZVx0LjkQhrQPOEtTxKWSuk5k6PF91eE5ef+pRGv/Cwca1zg25EkIKXoqGN8KnTQgiNVCQ==
   dependencies:
     "@types/node" "10.12.7"
     commander "2.19.0"
