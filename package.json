@@ -12,7 +12,7 @@
   "devDependencies": {
     "@semantic-release/changelog": "3.0.2",
     "@semantic-release/git": "7.0.8",
-    "@types/jasmine": "3.3.9",
+    "@types/jasmine": "3.3.10",
     "@types/nock": "9.3.1",
     "@types/node": "11.11.3",
     "axios": "0.18.0",
