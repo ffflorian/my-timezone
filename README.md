@@ -3,6 +3,7 @@
 Get the exact time based on your location by calculating the time difference in seconds from UTC (good explanation on [CS4FN](http://www.cs4fn.org/mobile/owntimezone.php)).
 
 ## Getting Started
+
 Add the module to your project with `yarn add my-timezone` or install it globally with `yarn global add my-timezone`.
 
 ## Usage
