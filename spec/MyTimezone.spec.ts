@@ -1,5 +1,5 @@
-import {MyTimezone} from '../src';
 import * as nock from 'nock';
+import {MyTimezone} from '../src';
 
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 10 * 1000; // 10 seconds
 
@@ -23,13 +23,13 @@ describe('MyTimezone', () => {
         {
           results: [
             {
+              formatted_address,
               geometry: {
                 location: {
                   lat: 1.2345,
                   lng: 2.3456,
                 },
               },
-              formatted_address,
             },
           ],
           status: 'OK',
