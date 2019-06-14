@@ -3663,10 +3663,10 @@ npm@6.5.0:
     gauge "~2.7.3"
     set-blocking "~2.0.0"
 
-ntpclient@0.8.0:
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/ntpclient/-/ntpclient-0.8.0.tgz#02ee36d4c60fe23fcd6b05b5093c7063e34c0dcb"
-  integrity sha512-unpn9l7/xgZRE/JmssP5QVg1nI2tJuPCDdhGxhBlR7ZD23u9GqJuAl6NXY52xNv7hZ3PIa7rWhgXBQByUeZkAQ==
+ntpclient@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/ntpclient/-/ntpclient-1.0.0.tgz#67ce605c2ceb68e1803b352a5a3b9643c693c918"
+  integrity sha512-WFPjpSNxq3GT8ZAF7NEKPxt/Kr7FR9vSEHJawPsSM8JTQrXWQ+JXvEqT7QDxyKusL3xh3otjlV/sx0eYqFRWXw==
   dependencies:
     commander "2.20.0"
 
