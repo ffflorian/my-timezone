@@ -1,6 +1,6 @@
 import axios from 'axios';
 import * as moment from 'moment';
-import NTPClient from 'ntpclient';
+import {NTPClient} from 'ntpclient';
 import {Coordinates, GoogleMapsResult, Location, MyTimezoneConfig} from './Interfaces';
 
 const defaultConfig: Required<MyTimezoneConfig> = {
