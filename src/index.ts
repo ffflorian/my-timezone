@@ -72,14 +72,6 @@ export class MyTimezone {
     throw new Error(`Invalid coordinates: "${coordinates}"`);
   }
 
-  private calculateDistance(from: number, to: number): number {
-    return Math.abs(from - to);
-  }
-
-  private async getUTCDate(): Promise<Date> {
-    return this.config.offline ? new Date() : this.ntpClient.getNetworkTime();
-  }
-
   public getLocation(location: string): Promise<Location> {
     try {
       return Promise.resolve(this.parseCoordinates(location));
@@ -100,5 +92,13 @@ export class MyTimezone {
   public async getTimeByAddress(address: string): Promise<moment.Moment> {
     const {longitude} = await this.getLocationByName(address);
     return this.getTimeByLocation(longitude);
+  }
+
+  private calculateDistance(from: number, to: number): number {
+    return Math.abs(from - to);
+  }
+
+  private async getUTCDate(): Promise<Date> {
+    return this.config.offline ? new Date() : this.ntpClient.getNetworkTime();
   }
 }
