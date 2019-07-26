@@ -1,11 +1,11 @@
 export interface GoogleMapsLocation {
+  formatted_address: string;
   geometry: {
     location: {
       lat: number;
       lng: number;
     };
   };
-  formatted_address: string;
 }
 
 export interface GoogleMapsResult {
