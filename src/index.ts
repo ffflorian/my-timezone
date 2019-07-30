@@ -20,9 +20,10 @@ export class MyTimezone {
     this.ntpClient = new NTPClient(this.config.ntpServer);
   }
 
-  public getLocation(location: string): Promise<Location> {
+  public async getLocation(location: string): Promise<Location> {
     try {
-      return Promise.resolve(this.parseCoordinates(location));
+      const coordinates = await this.parseCoordinates(location);
+      return coordinates;
     } catch (error) {
       return this.getLocationByName(location);
     }
@@ -33,7 +34,7 @@ export class MyTimezone {
     address = encodeURIComponent(address);
     const completeURL = `${baseURL}?address=${address}${radius && `&radius=${radius}`}`;
 
-    let data: GoogleMapsResult | undefined;
+    let data: GoogleMapsResult;
 
     try {
       const response = await axios.get<GoogleMapsResult>(completeURL);
