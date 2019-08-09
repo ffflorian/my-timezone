@@ -4,7 +4,7 @@
     "my-timezone": "dist/cli.js"
   },
   "dependencies": {
-    "commander": "2.20.0",
+    "commander": "3.0.0",
     "moment": "2.24.0",
     "ntpclient": "1.0.1"
   },
@@ -71,6 +71,7 @@
     "lint:ts:spec": "tslint --project tsconfig.jasmine.json",
     "prettier": "prettier \"*.{json,md}\"",
     "release": "semantic-release",
+    "start": "ts-node src/cli.ts",
     "test": "ts-node -P tsconfig.jasmine.json node_modules/.bin/jasmine"
   },
   "version": "0.5.2"
