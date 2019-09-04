@@ -7,31 +7,35 @@ describe('MyTimezone', () => {
   let tz: MyTimezone;
 
   beforeEach(() => {
+    let formatted_address: string;
+
     tz = new MyTimezone({
       offline: true,
     });
 
-    let formatted_address: string;
     nock('https://maps.googleapis.com')
       .get('/maps/api/geocode/json')
-      .query((obj: {address: string}) => {
-        formatted_address = obj.address;
+      .query(queryObject => {
+        formatted_address = queryObject.address as string;
         return true;
       })
-      .reply(200, {
-        results: [
-          {
-            formatted_address,
-            geometry: {
-              location: {
-                lat: 1.2345,
-                lng: 2.3456,
+      .reply(() => [
+        200,
+        {
+          results: [
+            {
+              formatted_address,
+              geometry: {
+                location: {
+                  lat: 1.2345,
+                  lng: 2.3456,
+                },
               },
             },
-          },
-        ],
-        status: 'OK',
-      });
+          ],
+          status: 'OK',
+        },
+      ]);
   });
 
   it('returns an address from Google', async () => {
