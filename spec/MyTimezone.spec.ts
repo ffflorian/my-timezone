@@ -18,23 +18,20 @@ describe('MyTimezone', () => {
         formatted_address = obj.address;
         return true;
       })
-      .reply(() => [
-        200,
-        {
-          results: [
-            {
-              formatted_address,
-              geometry: {
-                location: {
-                  lat: 1.2345,
-                  lng: 2.3456,
-                },
+      .reply(200, {
+        results: [
+          {
+            formatted_address,
+            geometry: {
+              location: {
+                lat: 1.2345,
+                lng: 2.3456,
               },
             },
-          ],
-          status: 'OK',
-        },
-      ]);
+          },
+        ],
+        status: 'OK',
+      });
   });
 
   it('returns an address from Google', async () => {
