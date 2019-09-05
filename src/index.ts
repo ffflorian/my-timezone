@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, {AxiosRequestConfig} from 'axios';
 import * as moment from 'moment';
 import {NTPClient} from 'ntpclient';
 import {Coordinates, GoogleMapsResult, Location, MyTimezoneConfig} from './Interfaces';
@@ -29,15 +29,23 @@ export class MyTimezone {
     }
   }
 
-  public async getLocationByName(address: string, radius = ''): Promise<Location> {
-    const baseURL = 'https://maps.googleapis.com/maps/api/geocode/json';
-    address = encodeURIComponent(address);
-    const completeURL = `${baseURL}?address=${address}${radius && `&radius=${radius}`}`;
+  public async getLocationByName(address: string, radius?: string): Promise<Location> {
+    const requestConfig: AxiosRequestConfig = {
+      method: 'get',
+      params: {
+        address,
+      },
+      url: 'https://maps.googleapis.com/maps/api/geocode/json',
+    };
+
+    if (radius) {
+      requestConfig.params.radius = radius;
+    }
 
     let data: GoogleMapsResult;
 
     try {
-      const response = await axios.get<GoogleMapsResult>(completeURL);
+      const response = await axios.request<GoogleMapsResult>(requestConfig);
       data = response.data;
     } catch (error) {
       throw new Error(`Google Maps API Error: ${error.message}`);

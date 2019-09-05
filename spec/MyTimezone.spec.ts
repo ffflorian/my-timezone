@@ -7,15 +7,16 @@ describe('MyTimezone', () => {
   let tz: MyTimezone;
 
   beforeEach(() => {
+    let formatted_address: string;
+
     tz = new MyTimezone({
       offline: true,
     });
 
-    let formatted_address: string;
     nock('https://maps.googleapis.com')
       .get('/maps/api/geocode/json')
-      .query((obj: {address: string}) => {
-        formatted_address = obj.address;
+      .query(queryObject => {
+        formatted_address = queryObject.address as string;
         return true;
       })
       .reply(() => [
