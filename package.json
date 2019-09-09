@@ -6,7 +6,7 @@
   "dependencies": {
     "commander": "3.0.1",
     "moment": "2.24.0",
-    "ntpclient": "1.0.1"
+    "ntpclient": "1.0.2"
   },
   "description": "Get the exact time based on your location.",
   "devDependencies": {
