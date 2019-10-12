@@ -3,10 +3,10 @@
 import program = require('commander');
 import {MyTimezone} from './';
 
-const {description, name, version} = require('../package.json');
+const {bin, description, version} = require('../package.json');
 
 program
-  .name(name)
+  .name(Object.keys(bin)[0])
   .version(version)
   .description(`${description}\n  Use a city name or longitude value as location.`)
   .option('-o, --offline', 'Work offline (default is false)')
