@@ -4,7 +4,7 @@
     "my-timezone": "dist/cli.js"
   },
   "dependencies": {
-    "commander": "4.0.0",
+    "commander": "4.0.1",
     "moment": "2.24.0",
     "ntpclient": "1.0.2"
   },
