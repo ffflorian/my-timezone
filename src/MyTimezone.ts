@@ -2,20 +2,19 @@ import axios, {AxiosRequestConfig} from 'axios';
 import * as moment from 'moment';
 import {NTPClient} from 'ntpclient';
 
-export interface GoogleMapsLocation {
-  formatted_address: string;
-  geometry: {
-    location: {
-      lat: number;
-      lng: number;
-    };
-  };
-}
-
-export interface GoogleMapsResult {
-  error_message: string;
-  results: GoogleMapsLocation[];
-  status: string;
+export interface OSMResult {
+  boundingbox?: string[] | null;
+  class: string;
+  display_name: string;
+  icon?: string | null;
+  importance: number;
+  lat: string;
+  licence: string;
+  lon: string;
+  osm_id: number;
+  osm_type: string;
+  place_id: number;
+  type: string;
 }
 
 export interface MyTimezoneConfig {
@@ -35,6 +34,8 @@ const defaultConfig: Required<MyTimezoneConfig> = {
   ntpServer: 'pool.ntp.org',
   offline: false,
 };
+
+const nominatimAPI = 'https://nominatim.openstreetmap.org';
 
 export class MyTimezone {
   private readonly config: Required<MyTimezoneConfig>;
@@ -64,45 +65,36 @@ export class MyTimezone {
     const requestConfig: AxiosRequestConfig = {
       method: 'get',
       params: {
-        address,
+        format: 'json',
+        limit: 9,
+        q: address,
       },
-      url: 'https://maps.googleapis.com/maps/api/geocode/json',
+      url: `${nominatimAPI}/search`,
     };
 
     if (radius) {
       requestConfig.params.radius = radius;
     }
 
-    let data: GoogleMapsResult;
+    let results: OSMResult[];
 
     try {
-      const response = await axios.request<GoogleMapsResult>(requestConfig);
-      data = response.data;
+      const response = await axios.request<OSMResult[]>(requestConfig);
+      results = response.data;
     } catch (error) {
-      throw new Error(`Google Maps API Error: ${error.message}`);
+      throw new Error(`Nominatim API Error: ${error.message}`);
     }
-
-    if (data.status !== 'OK') {
-      if (data.error_message) {
-        throw new Error(`Google Maps API Error: ${data.error_message}`);
-      }
-      throw new Error('Unknown Google Maps API Error.');
-    }
-
-    const {results = []} = data;
 
     if (!results.length) {
       throw new Error('No place found.');
     }
 
-    const {
-      geometry: {location},
-      formatted_address,
-    } = results[0];
+    const {display_name, lon} = results[0];
+    const parsedLongitude = parseFloat(lon);
 
     return {
-      formattedAddress: formatted_address,
-      longitude: location.lng,
+      formattedAddress: display_name,
+      longitude: parsedLongitude,
     };
   }
 
