@@ -1,3 +1,9 @@
+## [0.5.3](https://github.com/ffflorian/my-timezone/compare/v0.5.2...v0.5.3) (2019-11-30)
+
+### Bug Fixes
+
+- Use longitude and better RegEx ([f782aad](https://github.com/ffflorian/my-timezone/commit/f782aad))
+
 ## [0.5.2](https://github.com/ffflorian/my-timezone/compare/v0.5.1...v0.5.2) (2019-07-30)
 
 ### Bug Fixes
