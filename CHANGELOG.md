@@ -1,3 +1,9 @@
+# [0.6.0](https://github.com/ffflorian/my-timezone/compare/v0.5.3...v0.6.0) (2019-11-30)
+
+### Features
+
+- Use Nominatim API instead of Google ([#369](https://github.com/ffflorian/my-timezone/issues/369)) ([3d84485](https://github.com/ffflorian/my-timezone/commit/3d84485))
+
 ## [0.5.3](https://github.com/ffflorian/my-timezone/compare/v0.5.2...v0.5.3) (2019-11-30)
 
 ### Bug Fixes
