@@ -1,5 +1,6 @@
 import * as nock from 'nock';
-import {MyTimezone} from '../src';
+
+import {MyTimezone} from '../src/MyTimezone';
 
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 10 * 1000; // 10 seconds
 

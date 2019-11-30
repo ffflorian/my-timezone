@@ -1,7 +1,35 @@
 import axios, {AxiosRequestConfig} from 'axios';
 import * as moment from 'moment';
 import {NTPClient} from 'ntpclient';
-import {Coordinates, GoogleMapsResult, Location, MyTimezoneConfig} from './Interfaces';
+
+export interface GoogleMapsLocation {
+  formatted_address: string;
+  geometry: {
+    location: {
+      lat: number;
+      lng: number;
+    };
+  };
+}
+
+export interface GoogleMapsResult {
+  error_message: string;
+  results: GoogleMapsLocation[];
+  status: string;
+}
+
+export interface MyTimezoneConfig {
+  ntpServer?: string;
+  offline?: boolean;
+}
+
+export interface Coordinates {
+  longitude: number;
+}
+
+export interface Location extends Coordinates {
+  formattedAddress?: string;
+}
 
 const defaultConfig: Required<MyTimezoneConfig> = {
   ntpServer: 'pool.ntp.org',
@@ -22,10 +50,13 @@ export class MyTimezone {
 
   public async getLocation(location: string): Promise<Location> {
     try {
-      const coordinates = await this.parseCoordinates(location);
+      const coordinates = this.parseCoordinates(location);
       return coordinates;
     } catch (error) {
-      return this.getLocationByName(location);
+      if (error.message.includes('No coordinates parsed')) {
+        return this.getLocationByName(location);
+      }
+      throw error;
     }
   }
 
@@ -82,25 +113,27 @@ export class MyTimezone {
 
   public async getTimeByLocation(longitude: number): Promise<moment.Moment> {
     const date = await this.getUTCDate();
-    const momentDate = moment(date);
+    const momentDate = moment(date).utc();
     const distance = this.calculateDistance(0, longitude);
     const distanceSeconds = distance / 0.004167;
 
-    return longitude < 0 ? momentDate.subtract(distanceSeconds, 'seconds') : momentDate.add(distanceSeconds, 'seconds');
+    const calculatedDate =
+      longitude < 0 ? momentDate.subtract(distanceSeconds, 'seconds') : momentDate.add(distanceSeconds, 'seconds');
+    return calculatedDate.utc();
   }
 
   public parseCoordinates(coordinates: string): Coordinates {
-    const re = new RegExp(`(-?[0-9]{1,2}(?:.|,)[0-9]{1,})`);
-    const data = re.exec(coordinates);
-    if (data && data.length > 0) {
+    const longitudeRegex = new RegExp('[-?\\W\\d\\.]+,(?<longitude>[-?\\W\\d\\.]+)');
+    const parsedRegex = longitudeRegex.exec(coordinates);
+    if (parsedRegex?.groups?.longitude) {
       try {
-        const longitude = parseFloat(data[1]);
+        const longitude = parseFloat(parsedRegex.groups.longitude);
         return {longitude};
       } catch (error) {
         throw new Error(`Invalid coordinates: "${coordinates}"`);
       }
     }
-    throw new Error(`Invalid coordinates: "${coordinates}"`);
+    throw new Error(`No coordinates parsed: "${coordinates}"`);
   }
 
   private calculateDistance(from: number, to: number): number {
