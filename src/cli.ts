@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 
 import program = require('commander');
+import * as moment from 'moment';
+
 import {MyTimezone} from './MyTimezone';
 
 const {bin, description, version} = require('../package.json');
@@ -29,7 +31,7 @@ const myTimezone = new MyTimezone({
 myTimezone
   .getLocation(location)
   .then(({longitude}) => myTimezone.getTimeByLocation(longitude))
-  .then(time => console.log(`Time in "${location}": ${time.toString()}`))
+  .then(time => console.log(`Time in "${location}": ${moment(time).format('HH:mm:ss')}`))
   .catch(error => {
     console.error(error.message);
     process.exit(1);
