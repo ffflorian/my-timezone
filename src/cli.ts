@@ -31,7 +31,10 @@ const myTimezone = new MyTimezone({
 myTimezone
   .getLocation(location)
   .then(({longitude}) => myTimezone.getTimeByLocation(longitude))
-  .then(time => console.log(`Time in "${location}": ${moment(time).format('HH:mm:ss')}`))
+  .then(time => {
+    const formattedTime = moment(time).format('HH:mm:ss');
+    console.log(`Time in "${location}": ${formattedTime}`);
+  })
   .catch(error => {
     console.error(error.message);
     process.exit(1);
