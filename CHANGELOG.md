@@ -1,3 +1,9 @@
+# [0.7.0](https://github.com/ffflorian/my-timezone/compare/v0.6.0...v0.7.0) (2019-12-23)
+
+### Features
+
+- Restrict Node.js to >= 10.9 ([2ecf972](https://github.com/ffflorian/my-timezone/commit/2ecf972))
+
 # [0.6.0](https://github.com/ffflorian/my-timezone/compare/v0.5.3...v0.6.0) (2019-11-30)
 
 ### Features
