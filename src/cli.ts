@@ -1,11 +1,18 @@
 #!/usr/bin/env node
 
 import program = require('commander');
+import * as fs from 'fs';
 import * as moment from 'moment';
+import * as path from 'path';
 
 import {MyTimezone} from './MyTimezone';
 
-const {bin, description, version} = require('../package.json');
+const defaultPackageJsonPath = path.join(__dirname, 'package.json');
+const packageJsonPath = fs.existsSync(defaultPackageJsonPath)
+  ? defaultPackageJsonPath
+  : path.join(__dirname, '../package.json');
+
+const {bin, description, version} = require(packageJsonPath);
 
 program
   .name(Object.keys(bin)[0])
