@@ -1,3 +1,9 @@
+# [0.8.0](https://github.com/ffflorian/my-timezone/compare/v0.7.0...v0.8.0) (2020-01-03)
+
+### Features
+
+- Publish flattened ([05ba7fd](https://github.com/ffflorian/my-timezone/commit/05ba7fd))
+
 # [0.7.0](https://github.com/ffflorian/my-timezone/compare/v0.6.0...v0.7.0) (2019-12-23)
 
 ### Features
