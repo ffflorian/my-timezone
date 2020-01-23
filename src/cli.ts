@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 import program = require('commander');
+import {format as formatDate} from 'date-fns';
 import * as fs from 'fs';
-import * as moment from 'moment';
 import * as path from 'path';
 
 import {MyTimezone} from './MyTimezone';
@@ -39,7 +39,7 @@ myTimezone
   .getLocation(location)
   .then(({longitude}) => myTimezone.getTimeByLocation(longitude))
   .then(time => {
-    const formattedTime = moment(time).format('HH:mm:ss');
+    const formattedTime = formatDate(time, 'HH:mm:ss');
     console.log(`Time in "${location}": ${formattedTime}`);
   })
   .catch(error => {

@@ -5,7 +5,7 @@
   },
   "dependencies": {
     "commander": "4.1.0",
-    "moment": "2.24.0",
+    "date-fns": "2.9.0",
     "ntpclient": "1.0.2"
   },
   "description": "Get the exact time based on your location.",

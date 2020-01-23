@@ -1,5 +1,5 @@
 import axios, {AxiosRequestConfig} from 'axios';
-import * as moment from 'moment';
+import {add as addDate, sub as subtractDate} from 'date-fns';
 import {NTPClient} from 'ntpclient';
 
 export interface OSMResult {
@@ -98,20 +98,19 @@ export class MyTimezone {
     };
   }
 
-  public async getTimeByAddress(address: string): Promise<moment.Moment> {
+  public async getTimeByAddress(address: string): Promise<Date> {
     const {longitude} = await this.getLocationByName(address);
     return this.getTimeByLocation(longitude);
   }
 
-  public async getTimeByLocation(longitude: number): Promise<moment.Moment> {
-    const date = await this.getUTCDate();
-    const momentDate = moment(date).utc();
+  public async getTimeByLocation(longitude: number): Promise<Date> {
+    const utcDate = await this.getUTCDate();
     const distance = this.calculateDistance(0, longitude);
     const distanceSeconds = distance / 0.004167;
 
     const calculatedDate =
-      longitude < 0 ? momentDate.subtract(distanceSeconds, 'seconds') : momentDate.add(distanceSeconds, 'seconds');
-    return calculatedDate.utc();
+      longitude < 0 ? subtractDate(utcDate, {seconds: distanceSeconds}) : addDate(utcDate, {seconds: distanceSeconds});
+    return calculatedDate;
   }
 
   public parseCoordinates(coordinates: string): Coordinates {

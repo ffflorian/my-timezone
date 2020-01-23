@@ -1,3 +1,4 @@
+import {isBefore as isBeforeDate} from 'date-fns';
 import * as nock from 'nock';
 
 import {MyTimezone} from '../src/MyTimezone';
@@ -57,7 +58,7 @@ describe('MyTimezone', () => {
     const frankfurtTime = await tz.getTimeByLocation(8.67931);
     //console.log('Timezone at 50.11796, 8.67931:', frankfurtTime.toString());
 
-    expect(frankfurtTime.isBefore(berlinTime)).toBe(true);
+    expect(isBeforeDate(frankfurtTime, berlinTime)).toBe(true);
   });
 
   it('returns the time for an address', async () => {
