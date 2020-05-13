@@ -1,3 +1,5 @@
+/* eslint-disable no-magic-numbers */
+
 import {isBefore as isBeforeDate} from 'date-fns';
 import * as nock from 'nock';
 

@@ -40,7 +40,7 @@ myTimezone
   .then(({longitude}) => myTimezone.getTimeByLocation(longitude))
   .then(time => {
     const formattedTime = formatDate(time, 'HH:mm:ss');
-    console.log(`Time in "${location}": ${formattedTime}`);
+    console.info(`Time in "${location}": ${formattedTime}`);
   })
   .catch(error => {
     console.error(error.message);

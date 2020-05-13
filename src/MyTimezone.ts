@@ -67,6 +67,7 @@ export class MyTimezone {
       params: {
         format: 'json',
         limit: 9,
+        // eslint-disable-next-line id-length
         q: address,
       },
       url: `${nominatimAPI}/search`,
@@ -106,7 +107,8 @@ export class MyTimezone {
   public async getTimeByLocation(longitude: number): Promise<Date> {
     const utcDate = await this.getUTCDate();
     const distance = this.calculateDistance(0, longitude);
-    const distanceSeconds = distance / 0.004167;
+    const FIFTEEN_SECONDS_IN_HOURS = 0.004167;
+    const distanceSeconds = distance / FIFTEEN_SECONDS_IN_HOURS;
 
     const calculatedDate =
       longitude < 0 ? subtractDate(utcDate, {seconds: distanceSeconds}) : addDate(utcDate, {seconds: distanceSeconds});
