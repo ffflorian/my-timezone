@@ -35,14 +35,16 @@ const myTimezone = new MyTimezone({
   ...(program.server ?? undefined),
 });
 
-myTimezone
-  .getLocation(location)
-  .then(({longitude}) => myTimezone.getTimeByLocation(longitude))
-  .then(time => {
+void (async () => {
+  try {
+    const {longitude} = await myTimezone.getLocation(location);
+    const time = await myTimezone.getTimeByLocation(longitude);
     const formattedTime = formatDate(time, 'HH:mm:ss');
+
     console.info(`Time in "${location}": ${formattedTime}`);
-  })
-  .catch(error => {
+    process.exit();
+  } catch (error) {
     console.error(error.message);
     process.exit(1);
-  });
+  }
+})();
