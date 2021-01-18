@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import program = require('commander');
+import commander = require('commander');
 import {format as formatDate} from 'date-fns';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -14,7 +14,7 @@ const packageJsonPath = fs.existsSync(defaultPackageJsonPath)
 
 const {bin, description, version} = require(packageJsonPath);
 
-program
+commander
   .name(Object.keys(bin)[0])
   .version(version)
   .description(`${description}\nUse a city name or longitude value as location.`)
@@ -23,16 +23,16 @@ program
   .arguments('<location>')
   .parse(process.argv);
 
-if (!program.args || !program.args.length) {
+if (!commander.args || !commander.args.length) {
   console.error('Error: No location specified.');
-  program.help();
+  commander.help();
 }
 
-const location = program.args[0];
+const location = commander.args[0];
 
 const myTimezone = new MyTimezone({
-  ...(program.offline ?? undefined),
-  ...(program.server ?? undefined),
+  ...(commander.opts().offline ?? undefined),
+  ...(commander.opts().server ?? undefined),
 });
 
 void (async () => {
