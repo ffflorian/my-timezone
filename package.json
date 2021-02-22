@@ -6,7 +6,7 @@
   "dependencies": {
     "commander": "7.1.0",
     "date-fns": "2.17.0",
-    "ntpclient": "1.0.2"
+    "ntpclient": "1.1.2"
   },
   "description": "Get the exact time based on your location.",
   "devDependencies": {
