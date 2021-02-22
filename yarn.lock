@@ -1171,11 +1171,6 @@ combined-stream@^1.0.6, combined-stream@~1.0.6:
   dependencies:
     delayed-stream "~1.0.0"
 
-commander@3.0.1:
-  version "3.0.1"
-  resolved "https://registry.npmjs.org/commander/-/commander-3.0.1.tgz#4595aec3530525e671fb6f85fb173df8ff8bf57a"
-  integrity sha512-UNgvDd+csKdc9GD4zjtkHKQbT8Aspt2jCBqNSPp53vAS0L1tS9sXB2TCEOPHJ7kt9bN/niWkYj8T3RQSoMXdSQ==
-
 commander@6.0.0:
   version "6.0.0"
   resolved "https://registry.npmjs.org/commander/-/commander-6.0.0.tgz#2b270da94f8fb9014455312f829a1129dbf8887e"
@@ -4099,12 +4094,12 @@ npmlog@^4.1.2, npmlog@~4.1.2:
     gauge "~2.7.3"
     set-blocking "~2.0.0"
 
-ntpclient@1.0.2:
-  version "1.0.2"
-  resolved "https://registry.npmjs.org/ntpclient/-/ntpclient-1.0.2.tgz#69cf5deba1390128fbb15146d310dc3bc12daffe"
-  integrity sha512-bTrIQEv0x1c/uM5eDNro8eHc27y8Cxq4v0PoJE/QoDiliLL7oTBp1tVHTfwt8CH4/PaQfRYRa6oOTSAIB3+Rmw==
+ntpclient@1.1.1:
+  version "1.1.1"
+  resolved "https://registry.npmjs.org/ntpclient/-/ntpclient-1.1.1.tgz#96d310cc29e080ff5c78aaba6eb945dde619b102"
+  integrity sha512-ilsJW00YcasTAATOAmQ3BWorPKyF+jT9gTnWtcNUS/u24m/F20gagyLz5leg1+Vc1xxZplixOrQINbh/3Grmbw==
   dependencies:
-    commander "3.0.1"
+    commander "7.1.0"
 
 number-is-nan@^1.0.0:
   version "1.0.1"
