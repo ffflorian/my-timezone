@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import commander = require('commander');
+import {program as commander} from 'commander';
 import {format as formatDate} from 'date-fns';
 import * as fs from 'fs';
 import * as path from 'path';
