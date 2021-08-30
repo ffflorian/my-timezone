@@ -1,3 +1,10 @@
+## [0.8.1](https://github.com/ffflorian/my-timezone/compare/v0.8.0...v0.8.1) (2021-08-30)
+
+
+### Bug Fixes
+
+* CLI options ([ba6aa4a](https://github.com/ffflorian/my-timezone/commit/ba6aa4a11536474046d249df29ac40990f361189))
+
 # [0.8.0](https://github.com/ffflorian/my-timezone/compare/v0.7.0...v0.8.0) (2020-01-03)
 
 ### Features
