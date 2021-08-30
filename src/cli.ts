@@ -44,7 +44,7 @@ void (async () => {
     console.info(`Time in "${location}": ${formattedTime}`);
     process.exit();
   } catch (error) {
-    console.error(error.message);
+    console.error((error as Error).message);
     process.exit(1);
   }
 })();
