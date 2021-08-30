@@ -1,4 +1,4 @@
-import axios, {AxiosRequestConfig} from 'axios';
+import axios, {AxiosError, AxiosRequestConfig} from 'axios';
 import {add as addDate, sub as subtractDate} from 'date-fns';
 import {NTPClient} from 'ntpclient';
 
@@ -54,7 +54,7 @@ export class MyTimezone {
       const coordinates = this.parseCoordinates(location);
       return coordinates;
     } catch (error) {
-      if (error.message.includes('No coordinates parsed')) {
+      if ((error as Error).message.includes('No coordinates parsed')) {
         return this.getLocationByName(location);
       }
       throw error;
@@ -83,7 +83,7 @@ export class MyTimezone {
       const response = await axios.request<OSMResult[]>(requestConfig);
       results = response.data;
     } catch (error) {
-      throw new Error(`Nominatim API Error: ${error.message}`);
+      throw new Error(`Nominatim API Error: ${(error as AxiosError).message}`);
     }
 
     if (!results.length) {
