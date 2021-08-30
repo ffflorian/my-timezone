@@ -19,8 +19,8 @@ commander
   .version(version)
   .description(`${description}\nUse a city name or longitude value as location.`)
   .option('-o, --offline', 'Work offline (default is false)')
-  .option('-s, --server', 'Specify the NTP server (default is "pool.ntp.org")')
-  .arguments('<location>')
+  .option('-s, --server <server>', 'Specify the NTP server (default is "pool.ntp.org")')
+  .argument('<location>')
   .parse(process.argv);
 
 if (!commander.args || !commander.args.length) {
@@ -31,8 +31,8 @@ if (!commander.args || !commander.args.length) {
 const location = commander.args[0];
 
 const myTimezone = new MyTimezone({
-  ...(commander.opts().offline ?? undefined),
-  ...(commander.opts().server ?? undefined),
+  ntpServer: commander.opts().server,
+  offline: !!commander.opts().offline,
 });
 
 void (async () => {
