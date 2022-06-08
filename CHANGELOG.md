@@ -1,3 +1,15 @@
+# [1.0.0](https://github.com/ffflorian/my-timezone/compare/v0.8.1...v1.0.0) (2022-06-08)
+
+
+### Features
+
+* Correct time zones, better output ([3d196bc](https://github.com/ffflorian/my-timezone/commit/3d196bcf6107cbc7b4cb5cb28468a539aeb60dc7))
+
+
+### BREAKING CHANGES
+
+* Renamed functions to output date, not time. Removed date-fns since it was not needed. Actually fixed displaying the correct custom time zone.
+
 ## [0.8.1](https://github.com/ffflorian/my-timezone/compare/v0.8.0...v0.8.1) (2021-08-30)
 
 
