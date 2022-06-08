@@ -1,6 +1,19 @@
 import axios, {AxiosError, AxiosRequestConfig} from 'axios';
-import {add as addDate, sub as subtractDate} from 'date-fns';
 import {NTPClient} from 'ntpclient';
+
+export enum DIRECTION {
+  EAST = 'E',
+  WEST = 'W',
+}
+
+export interface CustomDate {
+  day: string;
+  hours: string;
+  minutes: string;
+  month: string;
+  seconds: string;
+  year: string;
+}
 
 export interface OSMResult {
   boundingbox?: string[] | null;
@@ -99,19 +112,20 @@ export class MyTimezone {
     };
   }
 
-  public async getTimeByAddress(address: string): Promise<Date> {
+  public async getDateByAddress(address: string): Promise<Date> {
     const {longitude} = await this.getLocationByName(address);
-    return this.getTimeByLocation(longitude);
+    return this.getDateByLongitude(longitude);
   }
 
-  public async getTimeByLocation(longitude: number): Promise<Date> {
+  public async getDateByLongitude(longitude: number): Promise<Date> {
+    const direction = longitude < 0 ? DIRECTION.WEST : DIRECTION.EAST;
     const utcDate = await this.getUTCDate();
-    const distance = this.calculateDistance(0, longitude);
-    const FIFTEEN_SECONDS_IN_HOURS = 0.004167;
-    const distanceSeconds = distance / FIFTEEN_SECONDS_IN_HOURS;
+    const offsetMillis = this.getOffsetMillis(longitude, direction);
 
     const calculatedDate =
-      longitude < 0 ? subtractDate(utcDate, {seconds: distanceSeconds}) : addDate(utcDate, {seconds: distanceSeconds});
+      direction === DIRECTION.EAST
+        ? new Date(utcDate.getTime() + offsetMillis)
+        : new Date(utcDate.getTime() - offsetMillis);
     return calculatedDate;
   }
 
@@ -129,8 +143,25 @@ export class MyTimezone {
     throw new Error(`No coordinates parsed: "${coordinates}"`);
   }
 
-  private calculateDistance(from: number, to: number): number {
-    return Math.abs(from - to);
+  public parseDate(date: Date): CustomDate {
+    const isoString = date.toISOString();
+    const dateRegex =
+      /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})T(?<hours>\d{2}):(?<minutes>\d{2}):(?<seconds>\d{2})/g;
+    const parsedString = dateRegex.exec(isoString);
+    if (!parsedString?.groups) {
+      throw new Error('Could not parse date');
+    }
+    const {year, month, day, hours, minutes, seconds} = parsedString.groups!;
+    return {day, hours, minutes, month, seconds, year};
+  }
+
+  private getOffsetMillis(longitudeDegrees: number, direction: DIRECTION): number {
+    const oneHourInMillis = 3_600_000;
+    const dayInHours = 24;
+    const degreesOnEarth = 360;
+    const dir = direction === DIRECTION.EAST ? 1 : -1;
+    const offsetHours = (dir * longitudeDegrees * dayInHours) / degreesOnEarth;
+    return offsetHours * oneHourInMillis;
   }
 
   private async getUTCDate(): Promise<Date> {

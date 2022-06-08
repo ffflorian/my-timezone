@@ -1,6 +1,5 @@
 /* eslint-disable no-magic-numbers */
 
-import {isBefore as isBeforeDate} from 'date-fns';
 import * as nock from 'nock';
 
 import {MyTimezone} from '../src/MyTimezone';
@@ -54,29 +53,22 @@ describe('MyTimezone', () => {
   });
 
   it('returns the correct time for a location', async () => {
-    const berlinTime = await tz.getTimeByLocation(13.40803);
+    const berlinTime = await tz.getDateByLongitude(13.40803);
     //console.log('Timezone at 52.51848, 13.40803:', berlinTime.toString());
 
-    const frankfurtTime = await tz.getTimeByLocation(8.67931);
+    const frankfurtTime = await tz.getDateByLongitude(8.67931);
     //console.log('Timezone at 50.11796, 8.67931:', frankfurtTime.toString());
 
-    expect(isBeforeDate(frankfurtTime, berlinTime)).toBe(true);
+    expect(frankfurtTime.getTime() < berlinTime.getTime()).toBe(true);
   });
 
   it('returns the time for an address', async () => {
-    const dataBerlin = await tz.getTimeByAddress('Berlin, Germany');
+    const dataBerlin = await tz.getDateByAddress('Berlin, Germany');
     expect(dataBerlin).toBeDefined();
     //console.log('Timezone Berlin:', dataBerlin.toString());
 
-    const dataMinsk = await tz.getTimeByAddress('Minsk, Belarus');
+    const dataMinsk = await tz.getDateByAddress('Minsk, Belarus');
     expect(dataMinsk).toBeDefined();
     //console.log('Timezone Minsk:', dataMinsk.toString());
-  });
-
-  it('calculates the distance between two locations', () => {
-    const result1 = tz['calculateDistance'](13.3497483, 52.5303654);
-    const result2 = tz['calculateDistance'](52.5303654, 13.3497483);
-    expect(result1).toEqual(39.1806171);
-    expect(result2).toEqual(39.1806171);
   });
 });

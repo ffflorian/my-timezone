@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 import {program as commander} from 'commander';
-import {format as formatDate} from 'date-fns';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -38,10 +37,12 @@ const myTimezone = new MyTimezone({
 void (async () => {
   try {
     const {longitude} = await myTimezone.getLocation(location);
-    const time = await myTimezone.getTimeByLocation(longitude);
-    const formattedTime = formatDate(time, 'HH:mm:ss');
+    const date = await myTimezone.getDateByLongitude(longitude);
+    const parsedDate = myTimezone.parseDate(date);
+    const formattedDate = `${parsedDate.year}-${parsedDate.month}-${parsedDate.day}`;
+    const formattedTime = `${parsedDate.hours}:${parsedDate.minutes}:${parsedDate.seconds}`;
 
-    console.info(`Time in "${location}": ${formattedTime}`);
+    console.info(`Custom time zone in "${location}" (longitude: ${longitude}): ${formattedDate} ${formattedTime}`);
     process.exit();
   } catch (error) {
     console.error((error as Error).message);
