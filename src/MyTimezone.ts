@@ -1,4 +1,4 @@
-import axios, {AxiosError, AxiosRequestConfig} from 'axios';
+import axios, {AxiosError, RawAxiosRequestConfig} from 'axios';
 import {NTPClient} from 'ntpclient';
 
 export enum DIRECTION {
@@ -75,7 +75,7 @@ export class MyTimezone {
   }
 
   public async getLocationByName(address: string, radius?: string): Promise<Location> {
-    const requestConfig: AxiosRequestConfig = {
+    const requestConfig: RawAxiosRequestConfig = {
       method: 'get',
       params: {
         format: 'json',
