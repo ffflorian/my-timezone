@@ -23,6 +23,11 @@ describe('App', () => {
     expect(screen.getByLabelText('Map placeholder')).toBeInTheDocument();
   });
 
+  it('renders intro text', () => {
+    render(<App />);
+    expect(screen.getByText(/find your true solar time/i)).toBeInTheDocument();
+  });
+
   it('renders coordinate inputs', () => {
     render(<App />);
     expect(screen.getByPlaceholderText('e.g. 52.52')).toBeInTheDocument();
