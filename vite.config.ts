@@ -28,5 +28,9 @@ export default defineConfig(({mode}) => {
         overlay: false,
       },
     },
+    test: {
+      environment: 'jsdom',
+      setupFiles: ['./src/setupTests.ts'],
+    },
   };
 });
