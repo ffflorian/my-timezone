@@ -1,0 +1,15 @@
+pre-commit:
+  parallel: false
+  commands:
+    prettier:
+      glob: '*.{js,ts,jsx,tsx,css,json,md,yml}'
+      run: yarn prettier --write {staged_files}
+      stage_fixed: true
+    oxlint:
+      glob: '*.{js,ts,jsx,tsx}'
+      run: yarn oxlint --fix {staged_files}
+      stage_fixed: true
+    eslint:
+      glob: '*.{js,ts,jsx,tsx}'
+      run: yarn eslint --fix {staged_files}
+      stage_fixed: true
