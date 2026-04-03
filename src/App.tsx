@@ -33,7 +33,11 @@ function App() {
   return (
     <main>
       <div className="card">
-        <h1>my-timezone</h1>
+        <h1>My Timezone</h1>
+        <p className="intro">
+          Find your true solar time. Enter your coordinates, and we will calculate the local mean time at your exact
+          longitude - the time the sun actually says it is where you are.
+        </p>
         <div aria-label="Map placeholder" className="map-placeholder" />
         <form onSubmit={handleSubmit}>
           <div className="inputs">

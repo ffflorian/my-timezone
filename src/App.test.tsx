@@ -15,12 +15,17 @@ describe('App', () => {
   afterEach(cleanup);
   it('renders heading', () => {
     render(<App />);
-    expect(screen.getByRole('heading', {name: /my-timezone/i})).toBeInTheDocument();
+    expect(screen.getByRole('heading', {name: /my timezone/i})).toBeInTheDocument();
   });
 
   it('renders map placeholder', () => {
     render(<App />);
     expect(screen.getByLabelText('Map placeholder')).toBeInTheDocument();
+  });
+
+  it('renders intro text', () => {
+    render(<App />);
+    expect(screen.getByText(/find your true solar time/i)).toBeInTheDocument();
   });
 
   it('renders coordinate inputs', () => {
