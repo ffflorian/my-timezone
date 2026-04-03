@@ -110,6 +110,26 @@ button[type='submit']:disabled {
   cursor: not-allowed;
 }
 
+button.detect-location {
+  padding: 0.5rem 1rem;
+  background: transparent;
+  color: #111;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+button.detect-location:hover:not(:disabled) {
+  border-color: #888;
+  background: #f5f5f5;
+}
+
+button.detect-location:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .solar-time {
   margin: 0;
   font-size: 2.5rem;

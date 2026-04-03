@@ -11,15 +11,10 @@ function App() {
   const [solarTime, setSolarTime] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [locating, setLocating] = useState(false);
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const calculateSolarTime = async (longitude: number) => {
     setError(null);
-    const longitude = parseFloat(lon);
-    if (isNaN(longitude)) {
-      setError('Please enter a valid longitude.');
-      return;
-    }
     setLoading(true);
     try {
       const date = await timezone.getDateByLongitude(longitude);
@@ -29,6 +24,38 @@ function App() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const longitude = parseFloat(lon);
+    if (isNaN(longitude)) {
+      setError('Please enter a valid longitude.');
+      return;
+    }
+    await calculateSolarTime(longitude);
+  };
+
+  const handleDetectLocation = () => {
+    if (!navigator.geolocation) {
+      setError('Geolocation is not supported by your browser.');
+      return;
+    }
+    setLocating(true);
+    setError(null);
+    navigator.geolocation.getCurrentPosition(
+      async position => {
+        const {latitude, longitude} = position.coords;
+        setLat(String(latitude));
+        setLon(String(longitude));
+        setLocating(false);
+        await calculateSolarTime(longitude);
+      },
+      () => {
+        setError('Could not detect your location.');
+        setLocating(false);
+      }
+    );
   };
 
   return (
@@ -44,6 +71,14 @@ function App() {
           lon={isNaN(parseFloat(lon)) ? null : parseFloat(lon)}
         />
         <form onSubmit={handleSubmit}>
+          <button
+            className="detect-location"
+            disabled={locating || loading}
+            onClick={handleDetectLocation}
+            type="button"
+          >
+            {locating ? 'Detecting\u2026' : '\uD83D\uDCCD Detect My Location'}
+          </button>
           <div className="inputs">
             <label>
               <span>Latitude</span>
@@ -66,7 +101,7 @@ function App() {
               />
             </label>
           </div>
-          <button disabled={loading} type="submit">
+          <button disabled={loading || locating} type="submit">
             {loading ? 'Calculating\u2026' : 'Get Solar Time'}
           </button>
         </form>
