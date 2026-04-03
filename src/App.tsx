@@ -22,7 +22,9 @@ function App() {
     try {
       const date = await timezone.getDateByLongitude(longitude);
       const parsed = timezone.parseDate(date);
-      setSolarTime(`${parsed.hours}:${parsed.minutes}:${parsed.seconds}`);
+      setSolarTime(
+        `${parsed.hours.padStart(2, '0')}:${parsed.minutes.padStart(2, '0')}:${parsed.seconds.padStart(2, '0')}`
+      );
     } catch {
       setError('Could not calculate solar time.');
     } finally {
