@@ -1,6 +1,7 @@
 import {format} from 'date-fns';
 import {FormEvent, useState} from 'react';
 import {MyTimezone} from 'my-timezone';
+import {Map} from './components/Map.tsx';
 
 const timezone = new MyTimezone({offline: true});
 
@@ -38,7 +39,10 @@ function App() {
           Find your true solar time. Enter your coordinates, and we will calculate the local mean time at your exact
           longitude - the time the sun actually says it is where you are.
         </p>
-        <div aria-label="Map placeholder" className="map-placeholder" />
+        <Map
+          lat={isNaN(parseFloat(lat)) ? null : parseFloat(lat)}
+          lon={isNaN(parseFloat(lon)) ? null : parseFloat(lon)}
+        />
         <form onSubmit={handleSubmit}>
           <div className="inputs">
             <label>

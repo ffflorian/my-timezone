@@ -11,6 +11,10 @@ vi.mock('my-timezone', () => ({
   },
 }));
 
+vi.mock('./components/Map.tsx', () => ({
+  Map: ({lat, lon}: {lat: number | null; lon: number | null}) => <div aria-label="Map" data-lat={lat} data-lon={lon} />,
+}));
+
 describe('App', () => {
   afterEach(cleanup);
   it('renders heading', () => {
@@ -18,9 +22,9 @@ describe('App', () => {
     expect(screen.getByRole('heading', {name: /my timezone/i})).toBeInTheDocument();
   });
 
-  it('renders map placeholder', () => {
+  it('renders map', () => {
     render(<App />);
-    expect(screen.getByLabelText('Map placeholder')).toBeInTheDocument();
+    expect(screen.getByLabelText('Map')).toBeInTheDocument();
   });
 
   it('renders intro text', () => {
