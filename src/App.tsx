@@ -2,10 +2,12 @@ import {format} from 'date-fns';
 import {FormEvent, useState} from 'react';
 import {MyTimezone} from 'my-timezone';
 import {Map} from './components/Map.tsx';
+import {useTheme} from './hooks/useTheme.ts';
 
 const timezone = new MyTimezone({offline: true});
 
 function App() {
+  const {theme, toggleTheme} = useTheme();
   const [lat, setLat] = useState('');
   const [lon, setLon] = useState('');
   const [solarTime, setSolarTime] = useState<string | null>(null);
@@ -61,7 +63,17 @@ function App() {
   return (
     <main>
       <div className="card">
-        <h1>My Timezone</h1>
+        <div className="card-header">
+          <h1>My Timezone</h1>
+          <button
+            aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+            className="theme-toggle"
+            onClick={toggleTheme}
+            type="button"
+          >
+            {theme === 'light' ? '🌙' : '☀️'}
+          </button>
+        </div>
         <p className="intro">
           Find your true solar time. Enter your coordinates, and we will calculate the local mean time at your exact
           longitude - the time the sun actually says it is where you are.
