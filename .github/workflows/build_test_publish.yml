@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  build_test_deploy:
+    name: Build, test and deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+
+      - name: Set up Node.js
+        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f
+        with:
+          node-version: 24.x
+          cache: yarn
+
+      - name: Install packages
+        run: |
+          yarn --immutable
+
+      - name: Lint, test, and build
+        run: |
+          yarn lint
+          yarn test
+          yarn build
+
+      - name: Deploy
+        if: github.event_name != 'pull_request'
+        uses: JamesIves/github-pages-deploy-action@d92aa235d04922e8f08b40ce78cc5442fcfbfa2f
+        with:
+          folder: dist
+          clean: true
+          branch: gh-pages
+          clean-exclude: .nojekyll

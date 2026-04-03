@@ -1,17 +1,4 @@
 {
-  "name": "my-timezone",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "packageManager": "yarn@4.9.1",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "dist": "rm -rf dist && tsc -b && vite build",
-    "lint": "prettier --check . && oxlint && eslint .",
-    "fix": "prettier --write . && oxlint --fix && eslint --fix .",
-    "test": "vitest run"
-  },
   "dependencies": {
     "my-timezone": "1.15.2",
     "react": "19.2.4",
@@ -37,5 +24,18 @@
     "vite": "8.0.3",
     "vitest": "4.1.2"
   },
-  "prettier": "@ffflorian/prettier-config"
+  "name": "my-timezone",
+  "packageManager": "yarn@4.13.0",
+  "prettier": "@ffflorian/prettier-config",
+  "private": true,
+  "scripts": {
+    "build": "tsc -b && vite build",
+    "dev": "vite",
+    "dist": "rm -rf dist && tsc -b && vite build",
+    "fix": "prettier --write . && oxlint --fix && eslint --fix .",
+    "lint": "prettier --check . && oxlint && eslint .",
+    "test": "vitest run"
+  },
+  "type": "module",
+  "version": "1.0.0"
 }

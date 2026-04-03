@@ -1,0 +1,29 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: '/'
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 99
+    assignees:
+      - ffflorian
+    versioning-strategy: increase
+    ignore:
+      # see https://github.com/jsx-eslint/eslint-plugin-react/issues/3977
+      - dependency-name: 'eslint'
+        versions:
+          - '>=10'
+      - dependency-name: '@types/node'
+        versions:
+          - '> 24.x'
+    cooldown:
+      default-days: 5
+      exclude:
+        - '@ffflorian/*'
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 99
+    assignees:
+      - ffflorian

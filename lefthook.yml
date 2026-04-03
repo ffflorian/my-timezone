@@ -2,14 +2,13 @@ pre-commit:
   parallel: false
   commands:
     prettier:
-      glob: '*.{js,ts,jsx,tsx,css,json,md,yml}'
-      run: yarn prettier --write {staged_files}
-      stage_fixed: true
+      glob: '*.{js,ts,jsx,tsx,css,csv,md,json,yml,yaml}'
+      exclude:
+        - CLAUDE.md
+      run: npx --no prettier -- --write {staged_files} && git add {staged_files}
     oxlint:
       glob: '*.{js,ts,jsx,tsx}'
-      run: yarn oxlint --fix {staged_files}
-      stage_fixed: true
+      run: npx --no oxlint -- --ignore-path .gitignore --fix {staged_files} && git add {staged_files}
     eslint:
       glob: '*.{js,ts,jsx,tsx}'
-      run: yarn eslint --fix {staged_files}
-      stage_fixed: true
+      run: npx --no eslint -- --fix {staged_files} && git add {staged_files}
