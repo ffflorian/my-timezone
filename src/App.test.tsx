@@ -15,7 +15,7 @@ describe('App', () => {
   afterEach(cleanup);
   it('renders heading', () => {
     render(<App />);
-    expect(screen.getByRole('heading', {name: /my-timezone/i})).toBeInTheDocument();
+    expect(screen.getByRole('heading', {name: /my timezone/i})).toBeInTheDocument();
   });
 
   it('renders map placeholder', () => {
