@@ -1,3 +1,4 @@
+import {format} from 'date-fns';
 import {FormEvent, useState} from 'react';
 import {MyTimezone} from 'my-timezone';
 
@@ -21,10 +22,7 @@ function App() {
     setLoading(true);
     try {
       const date = await timezone.getDateByLongitude(longitude);
-      const parsed = timezone.parseDate(date);
-      setSolarTime(
-        `${parsed.hours.padStart(2, '0')}:${parsed.minutes.padStart(2, '0')}:${parsed.seconds.padStart(2, '0')}`
-      );
+      setSolarTime(format(date, 'HH:mm:ss'));
     } catch {
       setError('Could not calculate solar time.');
     } finally {

@@ -7,14 +7,6 @@ vi.mock('my-timezone', () => ({
   MyTimezone: function () {
     return {
       getDateByLongitude: vi.fn().mockResolvedValue(new Date('2024-01-01T12:34:56Z')),
-      parseDate: vi.fn().mockReturnValue({
-        day: '01',
-        hours: '12',
-        minutes: '34',
-        month: '01',
-        seconds: '56',
-        year: '2024',
-      }),
     };
   },
 }));
