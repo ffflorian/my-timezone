@@ -13,6 +13,12 @@ vi.mock('my-timezone', () => ({
   },
 }));
 
+vi.mock('./components/LocationInfo.tsx', () => ({
+  LocationInfo: ({lat, lon, placeName}: {lat: number; lon: number; placeName?: string}) => (
+    <div aria-label="LocationInfo" data-lat={lat} data-lon={lon} data-place-name={placeName} />
+  ),
+}));
+
 vi.mock('./components/Map.tsx', () => ({
   Map: ({lat, lon}: {lat: number | null; lon: number | null}) => <div aria-label="Map" data-lat={lat} data-lon={lon} />,
 }));
@@ -46,12 +52,17 @@ describe('App', () => {
     expect(screen.getByRole('button', {name: /detect my location/i})).toBeInTheDocument();
   });
 
-  it('displays solar time after form submission', async () => {
+  it('renders clock after form submission with valid longitude', async () => {
     const user = userEvent.setup();
     render(<App />);
     await user.type(screen.getByPlaceholderText('e.g. 13.40'), '13.40');
     await user.click(screen.getByRole('button', {name: /get solar time/i}));
-    expect(await screen.findByText('12:34:56')).toBeInTheDocument();
+    expect(await screen.findByLabelText('Clock')).toBeInTheDocument();
+  });
+
+  it('does not render clock before coordinates are set', () => {
+    render(<App />);
+    expect(screen.queryByLabelText('Clock')).not.toBeInTheDocument();
   });
 
   it('displays solar time in UTC, not adjusted for local timezone', async () => {
@@ -83,7 +94,7 @@ describe('App', () => {
       vi.stubGlobal(
         'fetch',
         vi.fn().mockResolvedValue({
-          json: vi.fn().mockResolvedValue([{lat: '52.5170365', lon: '13.3888599'}]),
+          json: vi.fn().mockResolvedValue([{display_name: 'Berlin, Germany', lat: '52.5170365', lon: '13.3888599'}]),
         })
       );
     });
@@ -92,14 +103,24 @@ describe('App', () => {
       vi.unstubAllGlobals();
     });
 
-    it('fills coordinates and shows solar time on city search success', async () => {
+    it('fills coordinates and shows Clock on city search success', async () => {
       const user = userEvent.setup();
       render(<App />);
       await user.type(screen.getByPlaceholderText('e.g. Berlin'), 'Berlin');
       await user.click(screen.getByRole('button', {name: /search/i}));
-      expect(await screen.findByText('12:34:56')).toBeInTheDocument();
+      expect(await screen.findByLabelText('Clock')).toBeInTheDocument();
       expect(screen.getByPlaceholderText('e.g. 52.52')).toHaveValue(52.5170365);
       expect(screen.getByPlaceholderText('e.g. 13.40')).toHaveValue(13.3888599);
+    });
+
+    it('shows LocationInfo with place name on city search success', async () => {
+      const user = userEvent.setup();
+      render(<App />);
+      await user.type(screen.getByPlaceholderText('e.g. Berlin'), 'Berlin');
+      await user.click(screen.getByRole('button', {name: /search/i}));
+      const info = await screen.findByLabelText('LocationInfo');
+      expect(info).toBeInTheDocument();
+      expect(info).toHaveAttribute('data-place-name', 'Berlin, Germany');
     });
 
     it('shows error when city is not found', async () => {
@@ -135,16 +156,26 @@ describe('App', () => {
         configurable: true,
         value: {getCurrentPosition: mockGetCurrentPosition},
       });
+      vi.stubGlobal(
+        'fetch',
+        vi.fn().mockResolvedValue({
+          json: vi.fn().mockResolvedValue({display_name: 'Berlin, Germany'}),
+        })
+      );
     });
 
-    it('fills coordinates and shows solar time on success', async () => {
+    afterEach(() => {
+      vi.unstubAllGlobals();
+    });
+
+    it('fills coordinates and shows Clock on success', async () => {
       mockGetCurrentPosition.mockImplementation((success: PositionCallback) => {
         success({coords: {latitude: 52.52, longitude: 13.4}} as GeolocationPosition);
       });
       const user = userEvent.setup();
       render(<App />);
       await user.click(screen.getByRole('button', {name: /detect my location/i}));
-      expect(await screen.findByText('12:34:56')).toBeInTheDocument();
+      expect(await screen.findByLabelText('Clock')).toBeInTheDocument();
       expect(screen.getByPlaceholderText('e.g. 52.52')).toHaveValue(52.52);
       expect(screen.getByPlaceholderText('e.g. 13.40')).toHaveValue(13.4);
     });

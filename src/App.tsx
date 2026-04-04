@@ -1,42 +1,45 @@
 import {SubmitEvent, useState} from 'react';
-import {MyTimezone} from 'my-timezone';
+import {Clock} from './components/Clock.tsx';
+import {LocationInfo} from './components/LocationInfo.tsx';
 import {Map} from './components/Map.tsx';
 import {useTheme} from './hooks/useTheme.ts';
 
-const timezone = new MyTimezone({offline: true});
+async function reverseGeocode(latitude: number, longitude: number): Promise<string | null> {
+  try {
+    const response = await fetch(
+      `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`,
+      {headers: {'User-Agent': 'my-timezone (https://github.com/ffflorian/my-timezone)'}}
+    );
+    const data = (await response.json()) as {display_name?: string};
+    return data.display_name ?? null;
+  } catch {
+    return null;
+  }
+}
 
 function App() {
   const {theme, toggleTheme} = useTheme();
   const [lat, setLat] = useState('');
   const [lon, setLon] = useState('');
   const [city, setCity] = useState('');
-  const [solarTime, setSolarTime] = useState<string | null>(null);
+  const [placeName, setPlaceName] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
   const [locating, setLocating] = useState(false);
   const [geocoding, setGeocoding] = useState(false);
 
-  const calculateSolarTime = async (longitude: number) => {
-    setError(null);
-    setLoading(true);
-    try {
-      const date = await timezone.getDateByLongitude(longitude);
-      setSolarTime(date.toISOString().slice(11, 19));
-    } catch {
-      setError('Could not calculate solar time.');
-    } finally {
-      setLoading(false);
-    }
-  };
+  const parsedLat = parseFloat(lat);
+  const parsedLon = parseFloat(lon);
+  const hasLon = !isNaN(parsedLon);
+  const hasCoords = hasLon && !isNaN(parsedLat);
 
-  const handleSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const longitude = parseFloat(lon);
-    if (isNaN(longitude)) {
+    if (isNaN(parseFloat(lon))) {
       setError('Please enter a valid longitude.');
       return;
     }
-    await calculateSolarTime(longitude);
+    setError(null);
+    setPlaceName(null);
   };
 
   const handleCitySearch = async () => {
@@ -50,15 +53,15 @@ function App() {
         `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(city)}&format=json&limit=1`,
         {headers: {'User-Agent': 'my-timezone (https://github.com/ffflorian/my-timezone)'}}
       );
-      const data = (await response.json()) as Array<{lat: string; lon: string}>;
+      const data = (await response.json()) as Array<{display_name: string; lat: string; lon: string}>;
       if (data.length === 0) {
         setError('Location not found. Please try a different name.');
         return;
       }
-      const {lat: newLat, lon: newLon} = data[0];
+      const {display_name, lat: newLat, lon: newLon} = data[0];
       setLat(newLat);
       setLon(newLon);
-      await calculateSolarTime(parseFloat(newLon));
+      setPlaceName(display_name);
     } catch {
       setError('Could not search for location.');
     } finally {
@@ -79,7 +82,8 @@ function App() {
         setLat(String(latitude));
         setLon(String(longitude));
         setLocating(false);
-        await calculateSolarTime(longitude);
+        const name = await reverseGeocode(latitude, longitude);
+        setPlaceName(name);
       },
       () => {
         setError('Could not detect your location.');
@@ -107,18 +111,19 @@ function App() {
           longitude - the time the sun actually says it is where you are.
         </p>
         <Map
-          lat={isNaN(parseFloat(lat)) ? null : parseFloat(lat)}
-          lon={isNaN(parseFloat(lon)) ? null : parseFloat(lon)}
+          lat={isNaN(parsedLat) ? null : parsedLat}
+          lon={isNaN(parsedLon) ? null : parsedLon}
           onLocationChange={async (newLat, newLon) => {
             setLat(String(newLat));
             setLon(String(newLon));
-            await calculateSolarTime(newLon);
+            const name = await reverseGeocode(newLat, newLon);
+            setPlaceName(name);
           }}
         />
         <form onSubmit={handleSubmit}>
           <button
             className="detect-location"
-            disabled={locating || loading || geocoding}
+            disabled={locating || geocoding}
             onClick={handleDetectLocation}
             type="button"
           >
@@ -142,7 +147,7 @@ function App() {
             </label>
             <button
               className="city-search-btn"
-              disabled={geocoding || loading || locating}
+              disabled={geocoding || locating}
               onClick={() => void handleCitySearch()}
               type="button"
             >
@@ -171,11 +176,12 @@ function App() {
               />
             </label>
           </div>
-          <button disabled={loading || locating || geocoding} type="submit">
-            {loading ? 'Calculating\u2026' : 'Get Solar Time'}
+          <button disabled={locating || geocoding} type="submit">
+            Get Solar Time
           </button>
         </form>
-        {solarTime && <p className="solar-time">{solarTime}</p>}
+        {hasLon && <Clock longitude={parsedLon} />}
+        {hasCoords && <LocationInfo lat={parsedLat} lon={parsedLon} placeName={placeName} />}
         {error && <p className="error">{error}</p>}
       </div>
     </main>

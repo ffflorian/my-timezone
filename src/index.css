@@ -264,6 +264,36 @@ button.city-search-btn:disabled {
   letter-spacing: 0.05em;
 }
 
+.location-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.location-name {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-text);
+  text-align: center;
+}
+
+.location-coords {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.location-offset {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
 .error {
   margin: 0;
   font-size: 0.875rem;
