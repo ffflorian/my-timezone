@@ -11,5 +11,9 @@ export function Clock({longitude}: ClockProps) {
     return null;
   }
 
-  return <p className="solar-time">{solarTime.toISOString().slice(11, 19)}</p>;
+  return (
+    <p aria-label="Clock" className="solar-time">
+      {solarTime.toISOString().slice(11, 19)}
+    </p>
+  );
 }
