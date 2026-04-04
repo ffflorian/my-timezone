@@ -36,8 +36,8 @@
     "build": "tsc -b && vite build",
     "dev": "vite",
     "dist": "rm -rf dist && tsc -b && vite build",
-    "fix": "prettier --write . && oxlint --fix && eslint --fix src/*.ts",
-    "lint": "prettier --check . && oxlint && eslint src/*.ts",
+    "fix": "prettier --write . && oxlint --fix && eslint --fix src/**/*.tsx",
+    "lint": "prettier --check . && oxlint && eslint src/**/*.tsx",
     "test": "vitest run"
   },
   "type": "module",
