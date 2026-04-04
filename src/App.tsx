@@ -81,6 +81,11 @@ function App() {
         <Map
           lat={isNaN(parseFloat(lat)) ? null : parseFloat(lat)}
           lon={isNaN(parseFloat(lon)) ? null : parseFloat(lon)}
+          onLocationChange={async (newLat, newLon) => {
+            setLat(String(newLat));
+            setLon(String(newLon));
+            await calculateSolarTime(newLon);
+          }}
         />
         <form onSubmit={handleSubmit}>
           <button

@@ -3,7 +3,7 @@ import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
 import {useEffect} from 'react';
-import {MapContainer, Marker, TileLayer, useMap} from 'react-leaflet';
+import {MapContainer, Marker, TileLayer, useMap, useMapEvents} from 'react-leaflet';
 
 // Fix Leaflet default icon path issue with Vite/bundlers
 delete (L.Icon.Default.prototype as unknown as Record<string, unknown>)['_getIconUrl'];
@@ -26,12 +26,26 @@ function MapUpdater({lat, lon}: MapUpdaterProps) {
   return null;
 }
 
+interface MapClickHandlerProps {
+  onLocationChange: (lat: number, lon: number) => void;
+}
+
+function MapClickHandler({onLocationChange}: MapClickHandlerProps) {
+  useMapEvents({
+    click(e) {
+      onLocationChange(e.latlng.lat, e.latlng.lng);
+    },
+  });
+  return null;
+}
+
 export interface MapProps {
   lat: number | null;
   lon: number | null;
+  onLocationChange?: (lat: number, lon: number) => void;
 }
 
-export function Map({lat, lon}: MapProps) {
+export function Map({lat, lon, onLocationChange}: MapProps) {
   const hasCoords = lat !== null && lon !== null;
   const center: [number, number] = hasCoords ? [lat, lon] : [0, 0];
   const zoom = hasCoords ? 13 : 2;
@@ -42,6 +56,7 @@ export function Map({lat, lon}: MapProps) {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
+      {onLocationChange && <MapClickHandler onLocationChange={onLocationChange} />}
       {hasCoords && (
         <>
           <Marker position={[lat, lon]} />
