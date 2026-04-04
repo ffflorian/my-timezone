@@ -1,5 +1,7 @@
 # my-timezone
 
+<img src="./public/img/icon-512x512.png" width="150" alt="my-timezone logo" />
+
 A React website that shows your **true solar time** - the astronomically correct local mean time at your exact geographic location - together with a live map pin.
 
 True solar time is not political clock time (UTC offsets, DST). Every degree of longitude equals exactly 4 minutes of offset from UTC. See [this article on CS4FN](https://web.archive.org/web/20250914163157/http://www.cs4fn.org/mobile/owntimezone.php) for background.
