@@ -10,6 +10,13 @@ vi.mock('./components/Map.tsx', () => ({
 describe('App', () => {
   afterEach(cleanup);
 
+  it('renders GitHub link', () => {
+    render(<App />);
+    const link = screen.getByRole('link', {name: /view on github/i});
+    expect(link).toBeInTheDocument();
+    expect(link).toHaveAttribute('href', 'https://github.com/ffflorian/my-timezone');
+  });
+
   it('renders heading', () => {
     render(<App />);
     expect(screen.getByRole('heading', {name: /my timezone/i})).toBeInTheDocument();
