@@ -21,7 +21,7 @@ interface MapUpdaterProps {
 function MapUpdater({lat, lon}: MapUpdaterProps) {
   const map = useMap();
   useEffect(() => {
-    map.setView([lat, lon]);
+    map.setView([lat, lon], 13);
   }, [lat, lon, map]);
   return null;
 }
