@@ -1,4 +1,4 @@
-import {FormEvent, useState} from 'react';
+import {SubmitEvent, useState} from 'react';
 import {MyTimezone} from 'my-timezone';
 import {Map} from './components/Map.tsx';
 import {useTheme} from './hooks/useTheme.ts';
@@ -29,7 +29,7 @@ function App() {
     }
   };
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
     const longitude = parseFloat(lon);
     if (isNaN(longitude)) {
@@ -40,7 +40,9 @@ function App() {
   };
 
   const handleCitySearch = async () => {
-    if (!city.trim()) return;
+    if (!city.trim()) {
+      return;
+    }
     setGeocoding(true);
     setError(null);
     try {
