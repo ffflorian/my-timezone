@@ -3,10 +3,12 @@ import userEvent from '@testing-library/user-event';
 import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
 import App from './App';
 
+const mockGetDateByLongitude = vi.hoisted(() => vi.fn().mockResolvedValue(new Date('2024-01-01T12:34:56Z')));
+
 vi.mock('my-timezone', () => ({
   MyTimezone: function () {
     return {
-      getDateByLongitude: vi.fn().mockResolvedValue(new Date('2024-01-01T12:34:56Z')),
+      getDateByLongitude: mockGetDateByLongitude,
     };
   },
 }));
@@ -50,6 +52,17 @@ describe('App', () => {
     await user.type(screen.getByPlaceholderText('e.g. 13.40'), '13.40');
     await user.click(screen.getByRole('button', {name: /get solar time/i}));
     expect(await screen.findByText('12:34:56')).toBeInTheDocument();
+  });
+
+  it('displays solar time in UTC, not adjusted for local timezone', async () => {
+    // getDateByLongitude returns a UTC Date representing solar time.
+    // Midnight UTC would display as a different hour in any non-UTC local timezone.
+    mockGetDateByLongitude.mockResolvedValueOnce(new Date('2024-01-01T00:00:00Z'));
+    const user = userEvent.setup();
+    render(<App />);
+    await user.type(screen.getByPlaceholderText('e.g. 13.40'), '0');
+    await user.click(screen.getByRole('button', {name: /get solar time/i}));
+    expect(await screen.findByText('00:00:00')).toBeInTheDocument();
   });
 
   it('displays error for invalid longitude', async () => {

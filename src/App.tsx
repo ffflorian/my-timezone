@@ -1,4 +1,3 @@
-import {format} from 'date-fns';
 import {FormEvent, useState} from 'react';
 import {MyTimezone} from 'my-timezone';
 import {Map} from './components/Map.tsx';
@@ -22,7 +21,7 @@ function App() {
     setLoading(true);
     try {
       const date = await timezone.getDateByLongitude(longitude);
-      setSolarTime(format(date, 'HH:mm:ss'));
+      setSolarTime(date.toISOString().slice(11, 19));
     } catch {
       setError('Could not calculate solar time.');
     } finally {
