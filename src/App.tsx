@@ -46,7 +46,8 @@ function App() {
     setError(null);
     try {
       const response = await fetch(
-        `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(city)}&format=json&limit=1`
+        `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(city)}&format=json&limit=1`,
+        {headers: {'User-Agent': 'my-timezone (https://github.com/ffflorian/my-timezone)'}}
       );
       const data = (await response.json()) as Array<{lat: string; lon: string}>;
       if (data.length === 0) {
