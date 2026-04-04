@@ -1,4 +1,4 @@
-import {FormEvent, useState} from 'react';
+import {SubmitEvent, useState} from 'react';
 import {Clock} from './components/Clock.tsx';
 import {LocationInfo} from './components/LocationInfo.tsx';
 import {Map} from './components/Map.tsx';
@@ -32,7 +32,7 @@ function App() {
   const hasLon = !isNaN(parsedLon);
   const hasCoords = hasLon && !isNaN(parsedLat);
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (isNaN(parseFloat(lon))) {
       setError('Please enter a valid longitude.');
@@ -43,7 +43,9 @@ function App() {
   };
 
   const handleCitySearch = async () => {
-    if (!city.trim()) return;
+    if (!city.trim()) {
+      return;
+    }
     setGeocoding(true);
     setError(null);
     try {
