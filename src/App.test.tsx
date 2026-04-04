@@ -3,22 +3,6 @@ import userEvent from '@testing-library/user-event';
 import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
 import App from './App';
 
-const mockGetDateByLongitude = vi.hoisted(() => vi.fn().mockResolvedValue(new Date('2024-01-01T12:34:56Z')));
-
-vi.mock('my-timezone', () => ({
-  MyTimezone: function () {
-    return {
-      getDateByLongitude: mockGetDateByLongitude,
-    };
-  },
-}));
-
-vi.mock('./components/LocationInfo.tsx', () => ({
-  LocationInfo: ({lat, lon, placeName}: {lat: number; lon: number; placeName?: string}) => (
-    <div aria-label="LocationInfo" data-lat={lat} data-lon={lon} data-place-name={placeName} />
-  ),
-}));
-
 vi.mock('./components/Map.tsx', () => ({
   Map: ({lat, lon}: {lat: number | null; lon: number | null}) => <div aria-label="Map" data-lat={lat} data-lon={lon} />,
 }));
@@ -66,14 +50,14 @@ describe('App', () => {
   });
 
   it('displays solar time in UTC, not adjusted for local timezone', async () => {
-    // getDateByLongitude returns a UTC Date representing solar time.
-    // Midnight UTC would display as a different hour in any non-UTC local timezone.
-    mockGetDateByLongitude.mockResolvedValueOnce(new Date('2024-01-01T00:00:00Z'));
+    // Solar time for longitude 0 equals UTC. Midnight UTC must display as 00:00:00.
+    const dateSpy = vi.spyOn(Date, 'now').mockReturnValue(new Date('2024-01-01T00:00:00Z').getTime());
     const user = userEvent.setup();
     render(<App />);
     await user.type(screen.getByPlaceholderText('e.g. 13.40'), '0');
     await user.click(screen.getByRole('button', {name: /get solar time/i}));
     expect(await screen.findByText('00:00:00')).toBeInTheDocument();
+    dateSpy.mockRestore();
   });
 
   it('displays error for invalid longitude', async () => {
@@ -113,16 +97,6 @@ describe('App', () => {
       expect(screen.getByPlaceholderText('e.g. 13.40')).toHaveValue(13.3888599);
     });
 
-    it('shows LocationInfo with place name on city search success', async () => {
-      const user = userEvent.setup();
-      render(<App />);
-      await user.type(screen.getByPlaceholderText('e.g. Berlin'), 'Berlin');
-      await user.click(screen.getByRole('button', {name: /search/i}));
-      const info = await screen.findByLabelText('LocationInfo');
-      expect(info).toBeInTheDocument();
-      expect(info).toHaveAttribute('data-place-name', 'Berlin, Germany');
-    });
-
     it('shows error when city is not found', async () => {
       vi.stubGlobal(
         'fetch',
@@ -156,16 +130,6 @@ describe('App', () => {
         configurable: true,
         value: {getCurrentPosition: mockGetCurrentPosition},
       });
-      vi.stubGlobal(
-        'fetch',
-        vi.fn().mockResolvedValue({
-          json: vi.fn().mockResolvedValue({display_name: 'Berlin, Germany'}),
-        })
-      );
-    });
-
-    afterEach(() => {
-      vi.unstubAllGlobals();
     });
 
     it('fills coordinates and shows Clock on success', async () => {
