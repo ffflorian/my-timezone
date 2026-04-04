@@ -10,10 +10,12 @@ function App() {
   const {theme, toggleTheme} = useTheme();
   const [lat, setLat] = useState('');
   const [lon, setLon] = useState('');
+  const [city, setCity] = useState('');
   const [solarTime, setSolarTime] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [locating, setLocating] = useState(false);
+  const [geocoding, setGeocoding] = useState(false);
 
   const calculateSolarTime = async (longitude: number) => {
     setError(null);
@@ -36,6 +38,31 @@ function App() {
       return;
     }
     await calculateSolarTime(longitude);
+  };
+
+  const handleCitySearch = async () => {
+    if (!city.trim()) return;
+    setGeocoding(true);
+    setError(null);
+    try {
+      const response = await fetch(
+        `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(city)}&format=json&limit=1`,
+        {headers: {'User-Agent': 'my-timezone (https://github.com/ffflorian/my-timezone)'}}
+      );
+      const data = (await response.json()) as Array<{lat: string; lon: string}>;
+      if (data.length === 0) {
+        setError('Location not found. Please try a different name.');
+        return;
+      }
+      const {lat: newLat, lon: newLon} = data[0];
+      setLat(newLat);
+      setLon(newLon);
+      await calculateSolarTime(parseFloat(newLon));
+    } catch {
+      setError('Could not search for location.');
+    } finally {
+      setGeocoding(false);
+    }
   };
 
   const handleDetectLocation = () => {
@@ -90,12 +117,37 @@ function App() {
         <form onSubmit={handleSubmit}>
           <button
             className="detect-location"
-            disabled={locating || loading}
+            disabled={locating || loading || geocoding}
             onClick={handleDetectLocation}
             type="button"
           >
             {locating ? 'Detecting\u2026' : '\uD83D\uDCCD Detect My Location'}
           </button>
+          <div className="city-search">
+            <label>
+              <span>City</span>
+              <input
+                onChange={e => setCity(e.target.value)}
+                onKeyDown={e => {
+                  if (e.key === 'Enter') {
+                    e.preventDefault();
+                    void handleCitySearch();
+                  }
+                }}
+                placeholder="e.g. Berlin"
+                type="text"
+                value={city}
+              />
+            </label>
+            <button
+              className="city-search-btn"
+              disabled={geocoding || loading || locating}
+              onClick={() => void handleCitySearch()}
+              type="button"
+            >
+              {geocoding ? 'Searching\u2026' : 'Search'}
+            </button>
+          </div>
           <div className="inputs">
             <label>
               <span>Latitude</span>
@@ -118,7 +170,7 @@ function App() {
               />
             </label>
           </div>
-          <button disabled={loading || locating} type="submit">
+          <button disabled={loading || locating || geocoding} type="submit">
             {loading ? 'Calculating\u2026' : 'Get Solar Time'}
           </button>
         </form>

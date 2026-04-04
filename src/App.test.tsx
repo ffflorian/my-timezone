@@ -59,6 +59,60 @@ describe('App', () => {
     expect(await screen.findByText('Please enter a valid longitude.')).toBeInTheDocument();
   });
 
+  it('renders city search input', () => {
+    render(<App />);
+    expect(screen.getByPlaceholderText('e.g. Berlin')).toBeInTheDocument();
+    expect(screen.getByRole('button', {name: /search/i})).toBeInTheDocument();
+  });
+
+  describe('city search', () => {
+    beforeEach(() => {
+      vi.stubGlobal(
+        'fetch',
+        vi.fn().mockResolvedValue({
+          json: vi.fn().mockResolvedValue([{lat: '52.5170365', lon: '13.3888599'}]),
+        })
+      );
+    });
+
+    afterEach(() => {
+      vi.unstubAllGlobals();
+    });
+
+    it('fills coordinates and shows solar time on city search success', async () => {
+      const user = userEvent.setup();
+      render(<App />);
+      await user.type(screen.getByPlaceholderText('e.g. Berlin'), 'Berlin');
+      await user.click(screen.getByRole('button', {name: /search/i}));
+      expect(await screen.findByText('12:34:56')).toBeInTheDocument();
+      expect(screen.getByPlaceholderText('e.g. 52.52')).toHaveValue(52.5170365);
+      expect(screen.getByPlaceholderText('e.g. 13.40')).toHaveValue(13.3888599);
+    });
+
+    it('shows error when city is not found', async () => {
+      vi.stubGlobal(
+        'fetch',
+        vi.fn().mockResolvedValue({
+          json: vi.fn().mockResolvedValue([]),
+        })
+      );
+      const user = userEvent.setup();
+      render(<App />);
+      await user.type(screen.getByPlaceholderText('e.g. Berlin'), 'UnknownCity12345');
+      await user.click(screen.getByRole('button', {name: /search/i}));
+      expect(await screen.findByText('Location not found. Please try a different name.')).toBeInTheDocument();
+    });
+
+    it('shows error when city search fetch fails', async () => {
+      vi.stubGlobal('fetch', vi.fn().mockRejectedValue(new Error('network error')));
+      const user = userEvent.setup();
+      render(<App />);
+      await user.type(screen.getByPlaceholderText('e.g. Berlin'), 'Berlin');
+      await user.click(screen.getByRole('button', {name: /search/i}));
+      expect(await screen.findByText('Could not search for location.')).toBeInTheDocument();
+    });
+  });
+
   describe('detect location', () => {
     let mockGetCurrentPosition: ReturnType<typeof vi.fn>;
 
