@@ -2,14 +2,11 @@ import {cleanup, render, screen} from '@testing-library/react';
 import {afterEach, describe, expect, it, vi} from 'vitest';
 import {Clock} from './Clock';
 
+// 2024-06-15T14:30:45Z - toISOString().slice(11,19) = '14:30:45'
 const MOCK_DATE = new Date('2024-06-15T14:30:45.000Z');
 
 vi.mock('../hooks/useSolarTime.ts', () => ({
   useSolarTime: vi.fn(),
-}));
-
-vi.mock('date-fns', () => ({
-  format: vi.fn(() => '14:30:45'),
 }));
 
 describe('Clock', () => {

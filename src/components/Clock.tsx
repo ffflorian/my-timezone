@@ -1,4 +1,3 @@
-import {format} from 'date-fns';
 import {useSolarTime} from '../hooks/useSolarTime.ts';
 
 export interface ClockProps {
@@ -12,5 +11,5 @@ export function Clock({longitude}: ClockProps) {
     return null;
   }
 
-  return <p className="solar-time">{format(solarTime, 'HH:mm:ss')}</p>;
+  return <p className="solar-time">{solarTime.toISOString().slice(11, 19)}</p>;
 }
