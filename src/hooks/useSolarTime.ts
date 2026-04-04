@@ -1,8 +1,9 @@
-import {MyTimezone} from 'my-timezone';
 import {useEffect, useState} from 'react';
 
 const MS_PER_SECOND = 1000;
 const TICK_INTERVAL_MS = MS_PER_SECOND;
+const MINUTES_PER_DEGREE = 4;
+const SECONDS_PER_MINUTE = 60;
 
 export function useSolarTime(longitude: null | number): Date | null {
   const [solarTime, setSolarTime] = useState<Date | null>(null);
@@ -13,30 +14,20 @@ export function useSolarTime(longitude: null | number): Date | null {
       return;
     }
 
-    let cancelled = false;
-    let intervalId: ReturnType<typeof setInterval> | undefined;
-
-    new MyTimezone()
-      .getDateByLongitude(longitude)
-      .then(initialDate => {
-        if (cancelled) {
-          return;
-        }
-        const fetchedAt = Date.now();
-        setSolarTime(initialDate);
-        intervalId = setInterval(() => {
-          setSolarTime(new Date(initialDate.getTime() + (Date.now() - fetchedAt)));
-        }, TICK_INTERVAL_MS);
-      })
-      .catch(() => {
-        // NTP fetch failure - leave solarTime as null
-      });
+    setSolarTime(solarTimeFromLongitude(longitude));
+    const intervalId = setInterval(() => {
+      setSolarTime(solarTimeFromLongitude(longitude));
+    }, TICK_INTERVAL_MS);
 
     return () => {
-      cancelled = true;
       clearInterval(intervalId);
     };
   }, [longitude]);
 
   return solarTime;
+}
+
+function solarTimeFromLongitude(longitude: number): Date {
+  const offsetMs = longitude * MINUTES_PER_DEGREE * SECONDS_PER_MINUTE * MS_PER_SECOND;
+  return new Date(Date.now() + offsetMs);
 }

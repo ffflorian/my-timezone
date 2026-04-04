@@ -1,28 +1,13 @@
 import {SubmitEvent, useState} from 'react';
 import {Clock} from './components/Clock.tsx';
-import {LocationInfo} from './components/LocationInfo.tsx';
 import {Map} from './components/Map.tsx';
 import {useTheme} from './hooks/useTheme.ts';
-
-async function reverseGeocode(latitude: number, longitude: number): Promise<string | null> {
-  try {
-    const response = await fetch(
-      `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`,
-      {headers: {'User-Agent': 'my-timezone (https://github.com/ffflorian/my-timezone)'}}
-    );
-    const data = (await response.json()) as {display_name?: string};
-    return data.display_name ?? null;
-  } catch {
-    return null;
-  }
-}
 
 function App() {
   const {theme, toggleTheme} = useTheme();
   const [lat, setLat] = useState('');
   const [lon, setLon] = useState('');
   const [city, setCity] = useState('');
-  const [placeName, setPlaceName] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [locating, setLocating] = useState(false);
   const [geocoding, setGeocoding] = useState(false);
@@ -30,7 +15,6 @@ function App() {
   const parsedLat = parseFloat(lat);
   const parsedLon = parseFloat(lon);
   const hasLon = !isNaN(parsedLon);
-  const hasCoords = hasLon && !isNaN(parsedLat);
 
   const handleSubmit = (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -39,7 +23,6 @@ function App() {
       return;
     }
     setError(null);
-    setPlaceName(null);
   };
 
   const handleCitySearch = async () => {
@@ -53,15 +36,14 @@ function App() {
         `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(city)}&format=json&limit=1`,
         {headers: {'User-Agent': 'my-timezone (https://github.com/ffflorian/my-timezone)'}}
       );
-      const data = (await response.json()) as Array<{display_name: string; lat: string; lon: string}>;
+      const data = (await response.json()) as Array<{lat: string; lon: string}>;
       if (data.length === 0) {
         setError('Location not found. Please try a different name.');
         return;
       }
-      const {display_name, lat: newLat, lon: newLon} = data[0];
+      const {lat: newLat, lon: newLon} = data[0];
       setLat(newLat);
       setLon(newLon);
-      setPlaceName(display_name);
     } catch {
       setError('Could not search for location.');
     } finally {
@@ -77,13 +59,11 @@ function App() {
     setLocating(true);
     setError(null);
     navigator.geolocation.getCurrentPosition(
-      async position => {
+      position => {
         const {latitude, longitude} = position.coords;
         setLat(String(latitude));
         setLon(String(longitude));
         setLocating(false);
-        const name = await reverseGeocode(latitude, longitude);
-        setPlaceName(name);
       },
       () => {
         setError('Could not detect your location.');
@@ -113,11 +93,9 @@ function App() {
         <Map
           lat={isNaN(parsedLat) ? null : parsedLat}
           lon={isNaN(parsedLon) ? null : parsedLon}
-          onLocationChange={async (newLat, newLon) => {
+          onLocationChange={(newLat, newLon) => {
             setLat(String(newLat));
             setLon(String(newLon));
-            const name = await reverseGeocode(newLat, newLon);
-            setPlaceName(name);
           }}
         />
         <form onSubmit={handleSubmit}>
@@ -181,7 +159,6 @@ function App() {
           </button>
         </form>
         {hasLon && <Clock longitude={parsedLon} />}
-        {hasCoords && <LocationInfo lat={parsedLat} lon={parsedLon} placeName={placeName} />}
         {error && <p className="error">{error}</p>}
       </div>
     </main>
