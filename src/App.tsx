@@ -179,7 +179,7 @@ function App() {
           </button>
         </form>
         {hasLon && <Clock longitude={parsedLon} />}
-        {hasCoords && <LocationInfo lat={parsedLat} lon={parsedLon} placeName={placeName ?? undefined} />}
+        {hasCoords && <LocationInfo lat={parsedLat} lon={parsedLon} placeName={placeName} />}
         {error && <p className="error">{error}</p>}
       </div>
     </main>

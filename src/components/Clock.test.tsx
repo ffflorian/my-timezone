@@ -9,7 +9,7 @@ vi.mock('../hooks/useSolarTime.ts', () => ({
 }));
 
 vi.mock('date-fns', () => ({
-  format: vi.fn((_date: Date, _fmt: string) => '14:30:45'),
+  format: vi.fn(() => '14:30:45'),
 }));
 
 describe('Clock', () => {

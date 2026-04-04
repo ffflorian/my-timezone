@@ -16,7 +16,7 @@ function formatOffset(longitude: number): string {
 export interface LocationInfoProps {
   lat: number;
   lon: number;
-  placeName?: string;
+  placeName?: null | string;
 }
 
 export function LocationInfo({lat, lon, placeName}: LocationInfoProps) {
