@@ -218,6 +218,7 @@ a.github-link {
   color: var(--color-text-muted);
   border: 1px solid var(--color-border-subtle);
   border-radius: 6px;
+  font-size: 1.25rem;
   line-height: 1;
   text-decoration: none;
   transition:
