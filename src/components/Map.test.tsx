@@ -44,8 +44,8 @@ describe('Map', () => {
   it('renders with default center when no coordinates', () => {
     render(<Map lat={null} lon={null} />);
     const container = screen.getByLabelText('map-container');
-    expect(container).toHaveAttribute('data-center', '0,0');
-    expect(container).toHaveAttribute('data-zoom', '2');
+    expect(container).toHaveAttribute('data-center', '54.526,15.255');
+    expect(container).toHaveAttribute('data-zoom', '4');
   });
 
   it('renders with coordinates centered on location', () => {
