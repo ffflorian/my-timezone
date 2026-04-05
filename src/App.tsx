@@ -139,6 +139,7 @@ function App() {
               </>
             )}
           </button>
+          <div className="or-divider">or</div>
           <div className="city-search">
             <label>
               <span>City</span>
@@ -164,6 +165,7 @@ function App() {
               {geocoding ? 'Searching\u2026' : 'Search'}
             </button>
           </div>
+          <div className="or-divider">or</div>
           <div className="inputs">
             <label>
               <span>Latitude</span>
