@@ -100,8 +100,19 @@ function App() {
           </div>
         </div>
         <p className="intro">
-          Find your true solar time. Enter your coordinates, and we will calculate the local mean time at your exact
-          longitude - the time the sun actually says it is where you are.
+          Find your your <strong>true solar time</strong> &ndash; the astronomically correct local mean time at your
+          exact geographic location.
+          <br />
+          True solar time is not political clock time (UTC offsets, DST). Every degree of longitude equals exactly 4
+          minutes of offset from UTC. See{' '}
+          <a
+            href="https://web.archive.org/web/20250914163157/http://www.cs4fn.org/mobile/owntimezone.php"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            this article on CS4FN
+          </a>{' '}
+          for background.
         </p>
         <Map
           lat={isNaN(parsedLat) ? null : parsedLat}
