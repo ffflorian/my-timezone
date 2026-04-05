@@ -21,7 +21,7 @@ interface MapUpdaterProps {
 function MapUpdater({lat, lon}: MapUpdaterProps) {
   const map = useMap();
   useEffect(() => {
-    map.setView([lat, lon], 13);
+    map.setView([lat, lon], LOCATION_ZOOM);
   }, [lat, lon, map]);
   return null;
 }
@@ -39,6 +39,10 @@ function MapClickHandler({onLocationChange}: MapClickHandlerProps) {
   return null;
 }
 
+export const EUROPE_CENTER: [number, number] = [54.526, 15.255];
+const EUROPE_ZOOM = 4;
+const LOCATION_ZOOM = 13;
+
 export interface MapProps {
   lat: number | null;
   lon: number | null;
@@ -47,8 +51,8 @@ export interface MapProps {
 
 export function Map({lat, lon, onLocationChange}: MapProps) {
   const hasCoords = lat !== null && lon !== null;
-  const center: [number, number] = hasCoords ? [lat, lon] : [0, 0];
-  const zoom = hasCoords ? 13 : 2;
+  const center: [number, number] = hasCoords ? [lat, lon] : EUROPE_CENTER;
+  const zoom = hasCoords ? LOCATION_ZOOM : EUROPE_ZOOM;
 
   return (
     <MapContainer center={center} className="map-container" zoom={zoom}>

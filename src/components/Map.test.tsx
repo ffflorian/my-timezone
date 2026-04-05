@@ -1,6 +1,6 @@
 import {cleanup, render, screen} from '@testing-library/react';
 import {afterEach, describe, expect, it, vi} from 'vitest';
-import {Map} from './Map';
+import {EUROPE_CENTER, Map} from './Map';
 
 let capturedClickHandler: ((e: {latlng: {lat: number; lng: number}}) => void) | undefined;
 
@@ -44,8 +44,8 @@ describe('Map', () => {
   it('renders with default center when no coordinates', () => {
     render(<Map lat={null} lon={null} />);
     const container = screen.getByLabelText('map-container');
-    expect(container).toHaveAttribute('data-center', '0,0');
-    expect(container).toHaveAttribute('data-zoom', '2');
+    expect(container).toHaveAttribute('data-center', EUROPE_CENTER.join(','));
+    expect(container).toHaveAttribute('data-zoom', '4');
   });
 
   it('renders with coordinates centered on location', () => {
