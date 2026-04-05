@@ -29,7 +29,11 @@ describe('App', () => {
 
   it('renders intro text', () => {
     render(<App />);
-    expect(screen.getByText(/find your true solar time/i)).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        (_, element) => element?.tagName === 'P' && /find your true solar time/i.test(element.textContent ?? '')
+      )
+    ).toBeInTheDocument();
   });
 
   it('renders coordinate inputs', () => {
