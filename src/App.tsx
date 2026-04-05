@@ -95,7 +95,11 @@ function App() {
               onClick={toggleTheme}
               type="button"
             >
-              {theme === 'light' ? '🌙' : '☀️'}
+              {theme === 'light' ? (
+                <i aria-hidden="true" className="bi bi-moon-fill" />
+              ) : (
+                <i aria-hidden="true" className="bi bi-sun-fill" />
+              )}
             </button>
           </div>
         </div>
@@ -129,7 +133,13 @@ function App() {
             onClick={handleDetectLocation}
             type="button"
           >
-            {locating ? 'Detecting\u2026' : '\uD83D\uDCCD Detect My Location'}
+            {locating ? (
+              'Detecting\u2026'
+            ) : (
+              <>
+                <i aria-hidden="true" className="bi bi-geo-alt-fill" /> Detect My Location
+              </>
+            )}
           </button>
           <div className="city-search">
             <label>
