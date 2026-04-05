@@ -78,6 +78,12 @@ describe('App', () => {
     expect(await screen.findByText('Please enter a valid longitude.')).toBeInTheDocument();
   });
 
+  it('renders or dividers between input sections', () => {
+    render(<App />);
+    const dividers = screen.getAllByText('or');
+    expect(dividers).toHaveLength(2);
+  });
+
   it('renders city search input', () => {
     render(<App />);
     expect(screen.getByPlaceholderText('e.g. Berlin')).toBeInTheDocument();
