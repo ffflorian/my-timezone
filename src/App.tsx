@@ -102,8 +102,8 @@ function App() {
           </div>
         </div>
         <p className="intro">
-          Find your your <strong>true solar time</strong> &ndash; the astronomically correct local mean time at your
-          exact geographic location.
+          Find your <strong>true solar time</strong> &ndash; the astronomically correct local mean time at your exact
+          geographic location.
           <br />
           True solar time is not political clock time (UTC offsets, DST). Every degree of longitude equals exactly 4
           minutes of offset from UTC. See{' '}
