@@ -39,7 +39,7 @@ function MapClickHandler({onLocationChange}: MapClickHandlerProps) {
   return null;
 }
 
-const EUROPE_CENTER: [number, number] = [54.526, 15.255];
+export const EUROPE_CENTER: [number, number] = [54.526, 15.255];
 const EUROPE_ZOOM = 4;
 const LOCATION_ZOOM = 13;
 
