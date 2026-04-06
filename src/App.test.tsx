@@ -71,11 +71,28 @@ describe('App', () => {
     dateSpy.mockRestore();
   });
 
-  it('displays error for invalid longitude', async () => {
+  it('disables submit button when no longitude is entered', () => {
+    render(<App />);
+    expect(screen.getByRole('button', {name: /get solar time/i})).toBeDisabled();
+  });
+
+  it('enables submit button when a valid longitude is entered', async () => {
     const user = userEvent.setup();
     render(<App />);
-    await user.click(screen.getByRole('button', {name: /get solar time/i}));
-    expect(await screen.findByText('Please enter a valid longitude.')).toBeInTheDocument();
+    await user.type(screen.getByPlaceholderText('e.g. 13.40'), '13.40');
+    expect(screen.getByRole('button', {name: /get solar time/i})).toBeEnabled();
+  });
+
+  it('disables search button when city input is empty', () => {
+    render(<App />);
+    expect(screen.getByRole('button', {name: /^search$/i})).toBeDisabled();
+  });
+
+  it('enables search button when city input has text', async () => {
+    const user = userEvent.setup();
+    render(<App />);
+    await user.type(screen.getByPlaceholderText('e.g. Berlin'), 'Berlin');
+    expect(screen.getByRole('button', {name: /^search$/i})).toBeEnabled();
   });
 
   it('renders or dividers between input sections', () => {

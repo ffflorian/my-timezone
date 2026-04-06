@@ -158,7 +158,7 @@ function App() {
             </label>
             <button
               className="city-search-btn"
-              disabled={geocoding || locating}
+              disabled={geocoding || locating || !city.trim()}
               onClick={() => void handleCitySearch()}
               type="button"
             >
@@ -188,7 +188,7 @@ function App() {
               />
             </label>
           </div>
-          <button disabled={locating || geocoding} type="submit">
+          <button disabled={locating || geocoding || !hasLon} type="submit">
             Get Solar Time
           </button>
         </form>
