@@ -1,16 +1,16 @@
-name: CI
+name: Build and test
+
+permissions: {}
 
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
-
-permissions:
-  contents: write
-
 jobs:
   build_test_deploy:
+    permissions:
+      contents: write
     name: Build, test and deploy
     runs-on: ubuntu-latest
     steps:
