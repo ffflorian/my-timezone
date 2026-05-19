@@ -5,7 +5,7 @@ import {useTheme} from './useTheme';
 
 describe('useTheme', () => {
   beforeEach(() => {
-    localStorage.clear();
+    window.localStorage.clear();
     document.documentElement.removeAttribute('data-theme');
     vi.spyOn(window, 'matchMedia').mockImplementation(query => ({
       addEventListener: vi.fn(),
@@ -31,14 +31,14 @@ describe('useTheme', () => {
   });
 
   it('uses stored light theme over system preference', () => {
-    localStorage.setItem('theme', 'light');
+    window.localStorage.setItem('theme', 'light');
     const {result} = renderHook(() => useTheme());
     expect(result.current.theme).toBe('light');
     expect(document.documentElement.getAttribute('data-theme')).toBe('light');
   });
 
   it('uses stored dark theme', () => {
-    localStorage.setItem('theme', 'dark');
+    window.localStorage.setItem('theme', 'dark');
     const {result} = renderHook(() => useTheme());
     expect(result.current.theme).toBe('dark');
   });
@@ -51,18 +51,18 @@ describe('useTheme', () => {
     });
     expect(result.current.theme).toBe('light');
     expect(document.documentElement.getAttribute('data-theme')).toBe('light');
-    expect(localStorage.getItem('theme')).toBe('light');
+    expect(window.localStorage.getItem('theme')).toBe('light');
   });
 
   it('toggleTheme switches from light to dark', () => {
-    localStorage.setItem('theme', 'light');
+    window.localStorage.setItem('theme', 'light');
     const {result} = renderHook(() => useTheme());
     act(() => {
       result.current.toggleTheme();
     });
     expect(result.current.theme).toBe('dark');
     expect(document.documentElement.getAttribute('data-theme')).toBe('dark');
-    expect(localStorage.getItem('theme')).toBe('dark');
+    expect(window.localStorage.getItem('theme')).toBe('dark');
   });
 
   it('persists theme to localStorage on change', () => {
@@ -70,6 +70,6 @@ describe('useTheme', () => {
     act(() => {
       result.current.toggleTheme();
     });
-    expect(localStorage.getItem('theme')).toBe('light');
+    expect(window.localStorage.getItem('theme')).toBe('light');
   });
 });
