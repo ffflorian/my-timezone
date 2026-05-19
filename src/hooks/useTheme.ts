@@ -9,7 +9,7 @@ export function useTheme() {
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem(STORAGE_KEY, theme);
+    getStorage()?.setItem(STORAGE_KEY, theme);
   }, [theme]);
 
   const toggleTheme = () => setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
@@ -18,11 +18,19 @@ export function useTheme() {
 }
 
 function getInitialTheme(): Theme {
-  const stored = localStorage.getItem(STORAGE_KEY);
+  const stored = getStorage()?.getItem(STORAGE_KEY);
   if (stored === 'light' || stored === 'dark') {
     return stored;
   }
   return getSystemTheme();
+}
+
+function getStorage(): null | Storage {
+  try {
+    return window.localStorage;
+  } catch {
+    return null;
+  }
 }
 
 function getSystemTheme(): Theme {
