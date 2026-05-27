@@ -11,7 +11,9 @@ COPY public/ public/
 COPY .yarn/ .yarn/
 
 RUN npm install --global yarn@1.22.22
+# hadolint ignore=DL3059
 RUN yarn install --immutable
+# hadolint ignore=DL3059
 RUN yarn build
 
 # Serve
