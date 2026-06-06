@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/ffflorian/my-timezone/compare/v1.0.0...v1.1.0) (2026-06-06)
+
+
+### Features
+
+* add VERSION/COMMIT build args and update @ffflorian/actions to v1.26.0 ([#111](https://github.com/ffflorian/my-timezone/issues/111)) ([bbe5cdc](https://github.com/ffflorian/my-timezone/commit/bbe5cdcb7989c9e1b6780aaa2e3b70d339ec8d5b))
+
 # 1.0.0 (2026-05-27)
 
 
