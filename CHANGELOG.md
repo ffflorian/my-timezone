@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/ffflorian/my-timezone/compare/v1.1.0...v1.1.1) (2026-06-11)
+
+
+### Bug Fixes
+
+* **deps:** Bump the react group across 1 directory with 2 updates ([#116](https://github.com/ffflorian/my-timezone/issues/116)) ([21f02d9](https://github.com/ffflorian/my-timezone/commit/21f02d9800286112bf33aedc15169cb5dd9fe978))
+
 # [1.1.0](https://github.com/ffflorian/my-timezone/compare/v1.0.0...v1.1.0) (2026-06-06)
 
 
