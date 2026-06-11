@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/ffflorian/my-timezone/compare/v1.1.1...v1.1.2) (2026-06-11)
+
+
+### Bug Fixes
+
+* Install yarn with apk ([#121](https://github.com/ffflorian/my-timezone/issues/121)) ([d1ec949](https://github.com/ffflorian/my-timezone/commit/d1ec949401ed49cfb1f8c60cb9b4ca1de6a561ee))
+
 ## [1.1.1](https://github.com/ffflorian/my-timezone/compare/v1.1.0...v1.1.1) (2026-06-11)
 
 
