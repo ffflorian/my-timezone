@@ -1,3 +1,12 @@
+## [1.1.3](https://github.com/ffflorian/my-timezone/compare/v1.1.2...v1.1.3) (2026-06-17)
+
+
+### Bug Fixes
+
+* **deps:** Bump js-yaml from 4.1.1 to 4.2.0 [ci skip] ([ebe41c9](https://github.com/ffflorian/my-timezone/commit/ebe41c9b8e0302edea53e4e863c417752ce562b4))
+* **deps:** Bump tar from 7.5.13 to 7.5.16 ([#125](https://github.com/ffflorian/my-timezone/issues/125)) ([d7e1b3c](https://github.com/ffflorian/my-timezone/commit/d7e1b3ccd944a007f7776951609f812ee54c5cba))
+* **deps:** Bump vite from 8.0.14 to 8.0.16 ([0659207](https://github.com/ffflorian/my-timezone/commit/065920712dfb59b6aa1a75c8db2354bbac2b9ca7))
+
 ## [1.1.2](https://github.com/ffflorian/my-timezone/compare/v1.1.1...v1.1.2) (2026-06-11)
 
 
