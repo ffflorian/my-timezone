@@ -18,7 +18,7 @@
     "@types/react": "19.2.17",
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "6.0.2",
-    "@vitest/coverage-v8": "4.1.8",
+    "@vitest/coverage-v8": "4.1.9",
     "eslint": "9.39.4",
     "jsdom": "29.1.1",
     "lefthook": "2.1.9",
@@ -27,7 +27,7 @@
     "typescript": "6.0.3",
     "vite": "8.0.16",
     "vite-plugin-eslint": "1.8.1",
-    "vitest": "4.1.8"
+    "vitest": "4.1.9"
   },
   "name": "my-timezone",
   "packageManager": "yarn@4.16.0",
