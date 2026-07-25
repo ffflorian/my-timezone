@@ -1,3 +1,13 @@
+## [1.1.8](https://github.com/[secure]/my-timezone/compare/v1.1.7...v1.1.8) (2026-07-25)
+
+
+### Bug Fixes
+
+* **deps:** Bump brace-expansion from 1.1.13 to 1.1.16 ([#176](https://github.com/[secure]/my-timezone/issues/176)) [ci skip] ([9c510e5](https://github.com/[secure]/my-timezone/commit/9c510e50d937eb673039d9d5bdf681a3064e8f97))
+* **deps:** Bump nginx from `2776cd5` to `4a73073` ([#169](https://github.com/[secure]/my-timezone/issues/169)) ([b7c9364](https://github.com/[secure]/my-timezone/commit/b7c936439df018987c4e2b478e0262b9fe226f89))
+* **deps:** Bump postcss from 8.5.15 to 8.5.23 ([#177](https://github.com/[secure]/my-timezone/issues/177)) [ci skip] ([73e125b](https://github.com/[secure]/my-timezone/commit/73e125b71b22c4cf973d2b7b91ed7300787e93dd))
+* **deps:** Bump tar from 7.5.16 to 7.5.22 ([#178](https://github.com/[secure]/my-timezone/issues/178)) [ci skip] ([29d1faa](https://github.com/[secure]/my-timezone/commit/29d1faa59b770637c846ddcd450fdfa994e08b34))
+
 ## [1.1.7](https://github.com/[secure]/my-timezone/compare/v1.1.6...v1.1.7) (2026-07-18)
 
 
