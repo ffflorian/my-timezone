@@ -1,3 +1,11 @@
+## [1.1.9](https://github.com/[secure]/my-timezone/compare/v1.1.8...v1.1.9) (2026-07-31)
+
+
+### Bug Fixes
+
+* **deps:** Bump node from 26.5.0-alpine to 26.5.1-alpine ([#180](https://github.com/[secure]/my-timezone/issues/180)) ([5117b4e](https://github.com/[secure]/my-timezone/commit/5117b4e6978c38e9cec0a7492780eb38fd2c5352))
+* **deps:** Bump the react group across 1 directory with 2 updates ([#182](https://github.com/[secure]/my-timezone/issues/182)) [ci skip] ([b8f587e](https://github.com/[secure]/my-timezone/commit/b8f587e07a6b9fe6919a028687be1d9e97c5895e))
+
 ## [1.1.8](https://github.com/[secure]/my-timezone/compare/v1.1.7...v1.1.8) (2026-07-25)
 
 
