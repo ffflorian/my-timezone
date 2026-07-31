@@ -8,7 +8,7 @@
     "react-leaflet": "5.0.0"
   },
   "devDependencies": {
-    "@ffflorian/eslint-config": "1.0.5",
+    "@ffflorian/eslint-config": "1.0.6",
     "@ffflorian/prettier-config": "1.0.0",
     "@testing-library/dom": "10.4.1",
     "@testing-library/jest-dom": "6.9.1",
