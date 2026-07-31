@@ -30,7 +30,7 @@
     "vitest": "4.1.10"
   },
   "name": "my-timezone",
-  "packageManager": "yarn@4.17.0",
+  "packageManager": "yarn@4.17.1",
   "prettier": "@ffflorian/prettier-config",
   "private": true,
   "scripts": {
