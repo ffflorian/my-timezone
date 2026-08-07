@@ -1,3 +1,11 @@
+## [1.1.11](https://github.com/[secure]/my-timezone/compare/v1.1.10...v1.1.11) (2026-08-07)
+
+
+### Bug Fixes
+
+* **deps:** Bump js-yaml from 4.3.0 to 4.3.1 ([#205](https://github.com/[secure]/my-timezone/issues/205)) [ci skip] ([6e52db2](https://github.com/[secure]/my-timezone/commit/6e52db2bfeba99139f74e1eadc72d44d5e4b2fde))
+* **deps:** Bump node from 26.5.1-alpine to 26.7.0-alpine ([#193](https://github.com/[secure]/my-timezone/issues/193)) ([ea58f95](https://github.com/[secure]/my-timezone/commit/ea58f958331dc035c2e4d4c745733a7c572fd945))
+
 ## [1.1.10](https://github.com/[secure]/my-timezone/compare/v1.1.9...v1.1.10) (2026-08-05)
 
 
