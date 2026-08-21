@@ -1,3 +1,10 @@
+## [1.1.12](https://github.com/[secure]/my-timezone/compare/v1.1.11...v1.1.12) (2026-08-21)
+
+
+### Bug Fixes
+
+* **deps:** Bump nginx from 1.31.3-alpine to 1.31.4-alpine ([#210](https://github.com/[secure]/my-timezone/issues/210)) ([d4ee4e8](https://github.com/[secure]/my-timezone/commit/d4ee4e8c7d41efc2946eae18b4b9bce364195ef6))
+
 ## [1.1.11](https://github.com/[secure]/my-timezone/compare/v1.1.10...v1.1.11) (2026-08-07)
 
 
