@@ -1,3 +1,10 @@
+## [1.1.13](https://github.com/[secure]/my-timezone/compare/v1.1.12...v1.1.13) (2026-08-28)
+
+
+### Bug Fixes
+
+* **deps:** Bump node from 26.7.0-alpine to 26.8.1-alpine ([#215](https://github.com/[secure]/my-timezone/issues/215)) ([a99602c](https://github.com/[secure]/my-timezone/commit/a99602c4048b562c136e8cdeb3ae41c912ac5552))
+
 ## [1.1.12](https://github.com/[secure]/my-timezone/compare/v1.1.11...v1.1.12) (2026-08-21)
 
 
