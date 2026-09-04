@@ -1,3 +1,11 @@
+## [1.1.14](https://github.com/[secure]/my-timezone/compare/v1.1.13...v1.1.14) (2026-09-04)
+
+
+### Bug Fixes
+
+* **deps:** Bump @humanfs/node from 0.16.7 to 0.16.8 ([#232](https://github.com/[secure]/my-timezone/issues/232)) [ci skip] ([584d16c](https://github.com/[secure]/my-timezone/commit/584d16ceb17bff3e983dded36bf7f7f101c70cf4))
+* **deps:** Bump nginx from 1.31.4-alpine to 1.31.5-alpine ([#224](https://github.com/[secure]/my-timezone/issues/224)) ([6cc00a1](https://github.com/[secure]/my-timezone/commit/6cc00a19c1447f8af599070984e6fff89030a593))
+
 ## [1.1.13](https://github.com/[secure]/my-timezone/compare/v1.1.12...v1.1.13) (2026-08-28)
 
 
