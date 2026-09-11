@@ -1,3 +1,10 @@
+## [1.1.16](https://github.com/[secure]/my-timezone/compare/v1.1.15...v1.1.16) (2026-09-11)
+
+
+### Bug Fixes
+
+* **deps:** Bump js-yaml from 4.3.1 to 4.3.2 ([#240](https://github.com/[secure]/my-timezone/issues/240)) ([2d11fab](https://github.com/[secure]/my-timezone/commit/2d11fab21a3a5d2beb1160d315ddd8248759c7c9))
+
 ## [1.1.15](https://github.com/[secure]/my-timezone/compare/v1.1.14...v1.1.15) (2026-09-11)
 
 
