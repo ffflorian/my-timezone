@@ -8,7 +8,7 @@
     "react-leaflet": "5.0.0"
   },
   "devDependencies": {
-    "@ffflorian/eslint-config": "1.1.8",
+    "@ffflorian/oxlint-config": "1.0.5",
     "@ffflorian/prettier-config": "1.0.2",
     "@testing-library/dom": "10.4.1",
     "@testing-library/jest-dom": "7.0.1",
@@ -20,6 +20,7 @@
     "@vitejs/plugin-react": "6.1.1",
     "@vitest/coverage-v8": "5.0.0",
     "eslint": "9.39.5",
+    "eslint-plugin-perfectionist": "5.11.0",
     "jsdom": "30.0.1",
     "lefthook": "2.1.12",
     "oxlint": "1.81.0",
@@ -37,8 +38,12 @@
     "build": "tsc -b && vite build",
     "dev": "vite",
     "dist": "rm -rf dist && tsc -b && vite build",
-    "fix": "prettier --write . && oxlint --fix && eslint --fix .",
-    "lint": "prettier --check . && oxlint && eslint .",
+    "fix": "yarn fix:ts && yarn fix:other",
+    "fix:other": "yarn prettier --write",
+    "fix:ts": "yarn lint:ts --fix",
+    "lint": "yarn lint:other && yarn lint:ts",
+    "lint:other": "yarn prettier --list-different .",
+    "lint:ts": "oxlint --ignore-path .gitignore .",
     "test": "vitest run"
   },
   "type": "module",

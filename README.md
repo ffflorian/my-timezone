@@ -21,11 +21,11 @@ True solar time is not political clock time (UTC offsets, DST). Every degree of 
 | ------------------------- | --------------------------- |
 | React 19 + TypeScript     | UI                          |
 | Vite                      | Bundler / dev server        |
-| Yarn 4 (Berry)            | Package manager             |
+| Yarn Berry                | Package manager             |
 | my-timezone               | True solar time calculation |
 | Leaflet + react-leaflet   | Interactive map             |
 | Nominatim (OpenStreetMap) | Reverse geocoding           |
-| oxlint + ESLint           | Linting                     |
+| oxlint                    | Linting                     |
 | Prettier                  | Formatting                  |
 | Vitest + Testing Library  | Unit / component tests      |
 

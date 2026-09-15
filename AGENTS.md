@@ -120,6 +120,5 @@ Runs sequentially on staged files:
 
 1. Prettier - formats `.js/.ts/.jsx/.tsx/.css/.json/.md/.yml`
 2. oxlint - fast lint + autofix for TypeScript/JavaScript
-3. ESLint - full lint + autofix for TypeScript/JavaScript
 
 Always run `yarn fix` before committing if hooks fail.
