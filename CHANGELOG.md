@@ -1,3 +1,12 @@
+## [1.1.17](https://github.com/[secure]/my-timezone/compare/v1.1.16...v1.1.17) (2026-09-18)
+
+
+### Bug Fixes
+
+* **deps:** Bump nginx from 1.31.5-alpine to 1.31.6-alpine ([#242](https://github.com/[secure]/my-timezone/issues/242)) [ci skip] ([cb8c0f9](https://github.com/[secure]/my-timezone/commit/cb8c0f9f501f675323b6984dc4f454f403abcdcd))
+* **deps:** Bump node from 26.8.2-alpine to 26.9.0-alpine ([#243](https://github.com/[secure]/my-timezone/issues/243)) ([db6846f](https://github.com/[secure]/my-timezone/commit/db6846f8c038fdc1925cb6aa81b550899c89e35f))
+* **deps:** Bump the react group with 2 updates ([#244](https://github.com/[secure]/my-timezone/issues/244)) [ci skip] ([62cd5c0](https://github.com/[secure]/my-timezone/commit/62cd5c0df5d0ee113eca7d7de563a297dc0d7277))
+
 ## [1.1.16](https://github.com/[secure]/my-timezone/compare/v1.1.15...v1.1.16) (2026-09-11)
 
 
