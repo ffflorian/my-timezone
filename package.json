@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "@ffflorian/oxlint-config": "1.0.5",
-    "@ffflorian/prettier-config": "1.0.2",
+    "@ffflorian/prettier-config": "1.0.3",
     "@testing-library/dom": "10.4.1",
     "@testing-library/jest-dom": "7.0.1",
     "@testing-library/react": "16.3.3",
