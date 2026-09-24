@@ -25,8 +25,8 @@ True solar time is not political clock time (UTC offsets, DST). Every degree of 
 | my-timezone               | True solar time calculation |
 | Leaflet + react-leaflet   | Interactive map             |
 | Nominatim (OpenStreetMap) | Reverse geocoding           |
+| oxfmt                     | Formatting                  |
 | oxlint                    | Linting                     |
-| Prettier                  | Formatting                  |
 | Vitest + Testing Library  | Unit / component tests      |
 
 ## Run locally

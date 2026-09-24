@@ -56,7 +56,7 @@ This file explains how coding agents should work in this repository.
 - **Vite 8** as build tool and dev server
 - **my-timezone** for true solar time calculation
 - **Leaflet** + **react-leaflet** for the interactive map
-- **ESLint** + **oxlint** for linting, **Prettier** for formatting
+- **ESLint** + **oxlint** for linting, **oxfmt** for formatting
 - **lefthook** for pre-commit hooks
 - **Vitest** + **Testing Library** for tests
 - **Semantic Release** for automated versioning and changelogs
@@ -68,7 +68,7 @@ yarn install        # install dependencies
 yarn dev            # start dev server (http://localhost:5173)
 yarn build          # type-check + Vite build
 yarn dist           # clear dist/ then build
-yarn lint           # run all linters (Prettier, oxlint, ESLint)
+yarn lint           # run all linters (oxfmt, oxlint, ESLint)
 yarn fix            # auto-fix all linting issues
 yarn test           # run tests
 ```
@@ -105,7 +105,7 @@ index.html           # HTML entry point
 - **Branches**: use the format `<fix/feat/chore>/<branch-name>` (e.g. `feat/map-component`, `fix/clock-offset`). Do not prefix branch names with `claude/`.
 - **Commits**: follow Conventional Commits (Angular preset) - `feat:`, `fix:`, `chore:`, etc. Breaking changes use `BREAKING CHANGE:` in the footer. Do not add Claude session URLs to commit messages or PR texts.
 - **Versioning**: automated via Semantic Release on push to `main`.
-- **Code style**: 2-space indent, LF line endings, UTF-8 (enforced by `.editorconfig` and Prettier).
+- **Code style**: 2-space indent, LF line endings, UTF-8 (enforced by `.editorconfig` and oxfmt).
 - **TypeScript**: strict mode enabled; no `any` without justification.
 
 ## CI/CD
@@ -118,7 +118,7 @@ index.html           # HTML entry point
 
 Runs sequentially on staged files:
 
-1. Prettier - formats `.js/.ts/.jsx/.tsx/.css/.json/.md/.yml`
+1. oxfmt - formats `.js/.ts/.jsx/.tsx/.css/.json/.md/.yml`
 2. oxlint - fast lint + autofix for TypeScript/JavaScript
 
 Always run `yarn fix` before committing if hooks fail.
