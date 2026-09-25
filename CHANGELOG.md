@@ -1,3 +1,11 @@
+## [1.1.18](https://github.com/[secure]/my-timezone/compare/v1.1.17...v1.1.18) (2026-09-25)
+
+
+### Bug Fixes
+
+* **deps:** Bump nginx from `adad2ae` to `d10753d` ([#250](https://github.com/[secure]/my-timezone/issues/250)) [ci skip] ([bdcb662](https://github.com/[secure]/my-timezone/commit/bdcb66299e4d778ff94ba7b6bcd41fd8de9752e7))
+* **deps:** Bump node from 26.9.0-alpine to 26.10.0-alpine ([#251](https://github.com/[secure]/my-timezone/issues/251)) ([1ac8652](https://github.com/[secure]/my-timezone/commit/1ac8652d0c078c7f13a7a1c9f59ad70c0f5c7f89))
+
 ## [1.1.17](https://github.com/[secure]/my-timezone/compare/v1.1.16...v1.1.17) (2026-09-18)
 
 
