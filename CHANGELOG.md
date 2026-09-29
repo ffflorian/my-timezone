@@ -1,3 +1,11 @@
+## [1.1.19](https://github.com/[secure]/my-timezone/compare/v1.1.18...v1.1.19) (2026-09-29)
+
+
+### Bug Fixes
+
+* **deps:** Bump brace-expansion from 1.1.18 to 1.1.21 ([#263](https://github.com/[secure]/my-timezone/issues/263)) [ci skip] ([64ada11](https://github.com/[secure]/my-timezone/commit/64ada11ff8361c95379bc0f3f02814bd19634c73))
+* **deps:** Bump ip-address from 10.4.0 to 10.7.2 ([#262](https://github.com/[secure]/my-timezone/issues/262)) ([f6245bc](https://github.com/[secure]/my-timezone/commit/f6245bc5cfb4ceb35aa6adc11f55d175683246db))
+
 ## [1.1.18](https://github.com/[secure]/my-timezone/compare/v1.1.17...v1.1.18) (2026-09-25)
 
 
