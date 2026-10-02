@@ -1,3 +1,10 @@
+## [1.1.20](https://github.com/[secure]/my-timezone/compare/v1.1.19...v1.1.20) (2026-10-02)
+
+
+### Bug Fixes
+
+* **deps:** Bump nginx from `d10753d` to `df221db` ([#265](https://github.com/[secure]/my-timezone/issues/265)) ([ca2f628](https://github.com/[secure]/my-timezone/commit/ca2f62864a18d2a5544d360553f66004b5b520dc))
+
 ## [1.1.19](https://github.com/[secure]/my-timezone/compare/v1.1.18...v1.1.19) (2026-09-29)
 
 
