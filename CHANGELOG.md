@@ -1,3 +1,12 @@
+## [1.1.21](https://github.com/[secure]/my-timezone/compare/v1.1.20...v1.1.21) (2026-10-10)
+
+
+### Bug Fixes
+
+* **deps:** Bump http-cache-semantics from 4.2.0 to 4.3.0 ([#281](https://github.com/[secure]/my-timezone/issues/281)) [ci skip] ([17fa6b6](https://github.com/[secure]/my-timezone/commit/17fa6b62594acb8b30c735bcba94445354880a24))
+* **deps:** Bump node from 26.10.0-alpine to 26.11.1-alpine ([#273](https://github.com/[secure]/my-timezone/issues/273)) ([1ca175f](https://github.com/[secure]/my-timezone/commit/1ca175f13bc784deb028dd91e428869fb7e6a074))
+* **deps:** Bump source-map-js from 1.2.1 to 1.2.2 ([#282](https://github.com/[secure]/my-timezone/issues/282)) [ci skip] ([4d52b0a](https://github.com/[secure]/my-timezone/commit/4d52b0aeef1213247929236ec37fca666dc4964a))
+
 ## [1.1.20](https://github.com/[secure]/my-timezone/compare/v1.1.19...v1.1.20) (2026-10-02)
 
 
