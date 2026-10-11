@@ -1,121 +1,121 @@
-## [1.1.21](https://github.com/[secure]/my-timezone/compare/v1.1.20...v1.1.21) (2026-10-10)
+## [1.1.21](https://github.com/ffflorian/my-timezone/compare/v1.1.20...v1.1.21) (2026-10-10)
 
 
 ### Bug Fixes
 
-* **deps:** Bump http-cache-semantics from 4.2.0 to 4.3.0 ([#281](https://github.com/[secure]/my-timezone/issues/281)) [ci skip] ([17fa6b6](https://github.com/[secure]/my-timezone/commit/17fa6b62594acb8b30c735bcba94445354880a24))
-* **deps:** Bump node from 26.10.0-alpine to 26.11.1-alpine ([#273](https://github.com/[secure]/my-timezone/issues/273)) ([1ca175f](https://github.com/[secure]/my-timezone/commit/1ca175f13bc784deb028dd91e428869fb7e6a074))
-* **deps:** Bump source-map-js from 1.2.1 to 1.2.2 ([#282](https://github.com/[secure]/my-timezone/issues/282)) [ci skip] ([4d52b0a](https://github.com/[secure]/my-timezone/commit/4d52b0aeef1213247929236ec37fca666dc4964a))
+* **deps:** Bump http-cache-semantics from 4.2.0 to 4.3.0 ([#281](https://github.com/ffflorian/my-timezone/issues/281)) [ci skip] ([17fa6b6](https://github.com/ffflorian/my-timezone/commit/17fa6b62594acb8b30c735bcba94445354880a24))
+* **deps:** Bump node from 26.10.0-alpine to 26.11.1-alpine ([#273](https://github.com/ffflorian/my-timezone/issues/273)) ([1ca175f](https://github.com/ffflorian/my-timezone/commit/1ca175f13bc784deb028dd91e428869fb7e6a074))
+* **deps:** Bump source-map-js from 1.2.1 to 1.2.2 ([#282](https://github.com/ffflorian/my-timezone/issues/282)) [ci skip] ([4d52b0a](https://github.com/ffflorian/my-timezone/commit/4d52b0aeef1213247929236ec37fca666dc4964a))
 
-## [1.1.20](https://github.com/[secure]/my-timezone/compare/v1.1.19...v1.1.20) (2026-10-02)
-
-
-### Bug Fixes
-
-* **deps:** Bump nginx from `d10753d` to `df221db` ([#265](https://github.com/[secure]/my-timezone/issues/265)) ([ca2f628](https://github.com/[secure]/my-timezone/commit/ca2f62864a18d2a5544d360553f66004b5b520dc))
-
-## [1.1.19](https://github.com/[secure]/my-timezone/compare/v1.1.18...v1.1.19) (2026-09-29)
+## [1.1.20](https://github.com/ffflorian/my-timezone/compare/v1.1.19...v1.1.20) (2026-10-02)
 
 
 ### Bug Fixes
 
-* **deps:** Bump brace-expansion from 1.1.18 to 1.1.21 ([#263](https://github.com/[secure]/my-timezone/issues/263)) [ci skip] ([64ada11](https://github.com/[secure]/my-timezone/commit/64ada11ff8361c95379bc0f3f02814bd19634c73))
-* **deps:** Bump ip-address from 10.4.0 to 10.7.2 ([#262](https://github.com/[secure]/my-timezone/issues/262)) ([f6245bc](https://github.com/[secure]/my-timezone/commit/f6245bc5cfb4ceb35aa6adc11f55d175683246db))
+* **deps:** Bump nginx from `d10753d` to `df221db` ([#265](https://github.com/ffflorian/my-timezone/issues/265)) ([ca2f628](https://github.com/ffflorian/my-timezone/commit/ca2f62864a18d2a5544d360553f66004b5b520dc))
 
-## [1.1.18](https://github.com/[secure]/my-timezone/compare/v1.1.17...v1.1.18) (2026-09-25)
-
-
-### Bug Fixes
-
-* **deps:** Bump nginx from `adad2ae` to `d10753d` ([#250](https://github.com/[secure]/my-timezone/issues/250)) [ci skip] ([bdcb662](https://github.com/[secure]/my-timezone/commit/bdcb66299e4d778ff94ba7b6bcd41fd8de9752e7))
-* **deps:** Bump node from 26.9.0-alpine to 26.10.0-alpine ([#251](https://github.com/[secure]/my-timezone/issues/251)) ([1ac8652](https://github.com/[secure]/my-timezone/commit/1ac8652d0c078c7f13a7a1c9f59ad70c0f5c7f89))
-
-## [1.1.17](https://github.com/[secure]/my-timezone/compare/v1.1.16...v1.1.17) (2026-09-18)
+## [1.1.19](https://github.com/ffflorian/my-timezone/compare/v1.1.18...v1.1.19) (2026-09-29)
 
 
 ### Bug Fixes
 
-* **deps:** Bump nginx from 1.31.5-alpine to 1.31.6-alpine ([#242](https://github.com/[secure]/my-timezone/issues/242)) [ci skip] ([cb8c0f9](https://github.com/[secure]/my-timezone/commit/cb8c0f9f501f675323b6984dc4f454f403abcdcd))
-* **deps:** Bump node from 26.8.2-alpine to 26.9.0-alpine ([#243](https://github.com/[secure]/my-timezone/issues/243)) ([db6846f](https://github.com/[secure]/my-timezone/commit/db6846f8c038fdc1925cb6aa81b550899c89e35f))
-* **deps:** Bump the react group with 2 updates ([#244](https://github.com/[secure]/my-timezone/issues/244)) [ci skip] ([62cd5c0](https://github.com/[secure]/my-timezone/commit/62cd5c0df5d0ee113eca7d7de563a297dc0d7277))
+* **deps:** Bump brace-expansion from 1.1.18 to 1.1.21 ([#263](https://github.com/ffflorian/my-timezone/issues/263)) [ci skip] ([64ada11](https://github.com/ffflorian/my-timezone/commit/64ada11ff8361c95379bc0f3f02814bd19634c73))
+* **deps:** Bump ip-address from 10.4.0 to 10.7.2 ([#262](https://github.com/ffflorian/my-timezone/issues/262)) ([f6245bc](https://github.com/ffflorian/my-timezone/commit/f6245bc5cfb4ceb35aa6adc11f55d175683246db))
 
-## [1.1.16](https://github.com/[secure]/my-timezone/compare/v1.1.15...v1.1.16) (2026-09-11)
-
-
-### Bug Fixes
-
-* **deps:** Bump js-yaml from 4.3.1 to 4.3.2 ([#240](https://github.com/[secure]/my-timezone/issues/240)) ([2d11fab](https://github.com/[secure]/my-timezone/commit/2d11fab21a3a5d2beb1160d315ddd8248759c7c9))
-
-## [1.1.15](https://github.com/[secure]/my-timezone/compare/v1.1.14...v1.1.15) (2026-09-11)
+## [1.1.18](https://github.com/ffflorian/my-timezone/compare/v1.1.17...v1.1.18) (2026-09-25)
 
 
 ### Bug Fixes
 
-* **deps:** Bump node from 26.8.1-alpine to 26.8.2-alpine ([#233](https://github.com/[secure]/my-timezone/issues/233)) ([ea8cb12](https://github.com/[secure]/my-timezone/commit/ea8cb12d2acc5d35955105633f9fad291add2194))
+* **deps:** Bump nginx from `adad2ae` to `d10753d` ([#250](https://github.com/ffflorian/my-timezone/issues/250)) [ci skip] ([bdcb662](https://github.com/ffflorian/my-timezone/commit/bdcb66299e4d778ff94ba7b6bcd41fd8de9752e7))
+* **deps:** Bump node from 26.9.0-alpine to 26.10.0-alpine ([#251](https://github.com/ffflorian/my-timezone/issues/251)) ([1ac8652](https://github.com/ffflorian/my-timezone/commit/1ac8652d0c078c7f13a7a1c9f59ad70c0f5c7f89))
 
-## [1.1.14](https://github.com/[secure]/my-timezone/compare/v1.1.13...v1.1.14) (2026-09-04)
-
-
-### Bug Fixes
-
-* **deps:** Bump @humanfs/node from 0.16.7 to 0.16.8 ([#232](https://github.com/[secure]/my-timezone/issues/232)) [ci skip] ([584d16c](https://github.com/[secure]/my-timezone/commit/584d16ceb17bff3e983dded36bf7f7f101c70cf4))
-* **deps:** Bump nginx from 1.31.4-alpine to 1.31.5-alpine ([#224](https://github.com/[secure]/my-timezone/issues/224)) ([6cc00a1](https://github.com/[secure]/my-timezone/commit/6cc00a19c1447f8af599070984e6fff89030a593))
-
-## [1.1.13](https://github.com/[secure]/my-timezone/compare/v1.1.12...v1.1.13) (2026-08-28)
+## [1.1.17](https://github.com/ffflorian/my-timezone/compare/v1.1.16...v1.1.17) (2026-09-18)
 
 
 ### Bug Fixes
 
-* **deps:** Bump node from 26.7.0-alpine to 26.8.1-alpine ([#215](https://github.com/[secure]/my-timezone/issues/215)) ([a99602c](https://github.com/[secure]/my-timezone/commit/a99602c4048b562c136e8cdeb3ae41c912ac5552))
+* **deps:** Bump nginx from 1.31.5-alpine to 1.31.6-alpine ([#242](https://github.com/ffflorian/my-timezone/issues/242)) [ci skip] ([cb8c0f9](https://github.com/ffflorian/my-timezone/commit/cb8c0f9f501f675323b6984dc4f454f403abcdcd))
+* **deps:** Bump node from 26.8.2-alpine to 26.9.0-alpine ([#243](https://github.com/ffflorian/my-timezone/issues/243)) ([db6846f](https://github.com/ffflorian/my-timezone/commit/db6846f8c038fdc1925cb6aa81b550899c89e35f))
+* **deps:** Bump the react group with 2 updates ([#244](https://github.com/ffflorian/my-timezone/issues/244)) [ci skip] ([62cd5c0](https://github.com/ffflorian/my-timezone/commit/62cd5c0df5d0ee113eca7d7de563a297dc0d7277))
 
-## [1.1.12](https://github.com/[secure]/my-timezone/compare/v1.1.11...v1.1.12) (2026-08-21)
-
-
-### Bug Fixes
-
-* **deps:** Bump nginx from 1.31.3-alpine to 1.31.4-alpine ([#210](https://github.com/[secure]/my-timezone/issues/210)) ([d4ee4e8](https://github.com/[secure]/my-timezone/commit/d4ee4e8c7d41efc2946eae18b4b9bce364195ef6))
-
-## [1.1.11](https://github.com/[secure]/my-timezone/compare/v1.1.10...v1.1.11) (2026-08-07)
+## [1.1.16](https://github.com/ffflorian/my-timezone/compare/v1.1.15...v1.1.16) (2026-09-11)
 
 
 ### Bug Fixes
 
-* **deps:** Bump js-yaml from 4.3.0 to 4.3.1 ([#205](https://github.com/[secure]/my-timezone/issues/205)) [ci skip] ([6e52db2](https://github.com/[secure]/my-timezone/commit/6e52db2bfeba99139f74e1eadc72d44d5e4b2fde))
-* **deps:** Bump node from 26.5.1-alpine to 26.7.0-alpine ([#193](https://github.com/[secure]/my-timezone/issues/193)) ([ea58f95](https://github.com/[secure]/my-timezone/commit/ea58f958331dc035c2e4d4c745733a7c572fd945))
+* **deps:** Bump js-yaml from 4.3.1 to 4.3.2 ([#240](https://github.com/ffflorian/my-timezone/issues/240)) ([2d11fab](https://github.com/ffflorian/my-timezone/commit/2d11fab21a3a5d2beb1160d315ddd8248759c7c9))
 
-## [1.1.10](https://github.com/[secure]/my-timezone/compare/v1.1.9...v1.1.10) (2026-08-05)
-
-
-### Bug Fixes
-
-* **deps:** Bump brace-expansion from 1.1.16 to 1.1.18 ([#189](https://github.com/[secure]/my-timezone/issues/189)) ([d4a974c](https://github.com/[secure]/my-timezone/commit/d4a974ca46e19002d10ee848f7ffe73876b741c5))
-* **deps:** Bump ip-address from 10.2.0 to 10.4.0 ([#190](https://github.com/[secure]/my-timezone/issues/190)) [ci skip] ([c8d3666](https://github.com/[secure]/my-timezone/commit/c8d3666abf06d0ad555ddc930553f7b1b901ac99))
-* **deps:** Bump undici from 7.28.0 to 7.29.0 ([#191](https://github.com/[secure]/my-timezone/issues/191)) [ci skip] ([299a1c7](https://github.com/[secure]/my-timezone/commit/299a1c76a7ca99e72427a80c972623334bdd46bf))
-
-## [1.1.9](https://github.com/[secure]/my-timezone/compare/v1.1.8...v1.1.9) (2026-07-31)
+## [1.1.15](https://github.com/ffflorian/my-timezone/compare/v1.1.14...v1.1.15) (2026-09-11)
 
 
 ### Bug Fixes
 
-* **deps:** Bump node from 26.5.0-alpine to 26.5.1-alpine ([#180](https://github.com/[secure]/my-timezone/issues/180)) ([5117b4e](https://github.com/[secure]/my-timezone/commit/5117b4e6978c38e9cec0a7492780eb38fd2c5352))
-* **deps:** Bump the react group across 1 directory with 2 updates ([#182](https://github.com/[secure]/my-timezone/issues/182)) [ci skip] ([b8f587e](https://github.com/[secure]/my-timezone/commit/b8f587e07a6b9fe6919a028687be1d9e97c5895e))
+* **deps:** Bump node from 26.8.1-alpine to 26.8.2-alpine ([#233](https://github.com/ffflorian/my-timezone/issues/233)) ([ea8cb12](https://github.com/ffflorian/my-timezone/commit/ea8cb12d2acc5d35955105633f9fad291add2194))
 
-## [1.1.8](https://github.com/[secure]/my-timezone/compare/v1.1.7...v1.1.8) (2026-07-25)
-
-
-### Bug Fixes
-
-* **deps:** Bump brace-expansion from 1.1.13 to 1.1.16 ([#176](https://github.com/[secure]/my-timezone/issues/176)) [ci skip] ([9c510e5](https://github.com/[secure]/my-timezone/commit/9c510e50d937eb673039d9d5bdf681a3064e8f97))
-* **deps:** Bump nginx from `2776cd5` to `4a73073` ([#169](https://github.com/[secure]/my-timezone/issues/169)) ([b7c9364](https://github.com/[secure]/my-timezone/commit/b7c936439df018987c4e2b478e0262b9fe226f89))
-* **deps:** Bump postcss from 8.5.15 to 8.5.23 ([#177](https://github.com/[secure]/my-timezone/issues/177)) [ci skip] ([73e125b](https://github.com/[secure]/my-timezone/commit/73e125b71b22c4cf973d2b7b91ed7300787e93dd))
-* **deps:** Bump tar from 7.5.16 to 7.5.22 ([#178](https://github.com/[secure]/my-timezone/issues/178)) [ci skip] ([29d1faa](https://github.com/[secure]/my-timezone/commit/29d1faa59b770637c846ddcd450fdfa994e08b34))
-
-## [1.1.7](https://github.com/[secure]/my-timezone/compare/v1.1.6...v1.1.7) (2026-07-18)
+## [1.1.14](https://github.com/ffflorian/my-timezone/compare/v1.1.13...v1.1.14) (2026-09-04)
 
 
 ### Bug Fixes
 
-* **deps:** Bump nginx from 1.31.2-alpine to 1.31.3-alpine ([#161](https://github.com/[secure]/my-timezone/issues/161)) ([374bb7a](https://github.com/[secure]/my-timezone/commit/374bb7ad5d139347a2415c0a676c2489e999fedf))
+* **deps:** Bump @humanfs/node from 0.16.7 to 0.16.8 ([#232](https://github.com/ffflorian/my-timezone/issues/232)) [ci skip] ([584d16c](https://github.com/ffflorian/my-timezone/commit/584d16ceb17bff3e983dded36bf7f7f101c70cf4))
+* **deps:** Bump nginx from 1.31.4-alpine to 1.31.5-alpine ([#224](https://github.com/ffflorian/my-timezone/issues/224)) ([6cc00a1](https://github.com/ffflorian/my-timezone/commit/6cc00a19c1447f8af599070984e6fff89030a593))
+
+## [1.1.13](https://github.com/ffflorian/my-timezone/compare/v1.1.12...v1.1.13) (2026-08-28)
+
+
+### Bug Fixes
+
+* **deps:** Bump node from 26.7.0-alpine to 26.8.1-alpine ([#215](https://github.com/ffflorian/my-timezone/issues/215)) ([a99602c](https://github.com/ffflorian/my-timezone/commit/a99602c4048b562c136e8cdeb3ae41c912ac5552))
+
+## [1.1.12](https://github.com/ffflorian/my-timezone/compare/v1.1.11...v1.1.12) (2026-08-21)
+
+
+### Bug Fixes
+
+* **deps:** Bump nginx from 1.31.3-alpine to 1.31.4-alpine ([#210](https://github.com/ffflorian/my-timezone/issues/210)) ([d4ee4e8](https://github.com/ffflorian/my-timezone/commit/d4ee4e8c7d41efc2946eae18b4b9bce364195ef6))
+
+## [1.1.11](https://github.com/ffflorian/my-timezone/compare/v1.1.10...v1.1.11) (2026-08-07)
+
+
+### Bug Fixes
+
+* **deps:** Bump js-yaml from 4.3.0 to 4.3.1 ([#205](https://github.com/ffflorian/my-timezone/issues/205)) [ci skip] ([6e52db2](https://github.com/ffflorian/my-timezone/commit/6e52db2bfeba99139f74e1eadc72d44d5e4b2fde))
+* **deps:** Bump node from 26.5.1-alpine to 26.7.0-alpine ([#193](https://github.com/ffflorian/my-timezone/issues/193)) ([ea58f95](https://github.com/ffflorian/my-timezone/commit/ea58f958331dc035c2e4d4c745733a7c572fd945))
+
+## [1.1.10](https://github.com/ffflorian/my-timezone/compare/v1.1.9...v1.1.10) (2026-08-05)
+
+
+### Bug Fixes
+
+* **deps:** Bump brace-expansion from 1.1.16 to 1.1.18 ([#189](https://github.com/ffflorian/my-timezone/issues/189)) ([d4a974c](https://github.com/ffflorian/my-timezone/commit/d4a974ca46e19002d10ee848f7ffe73876b741c5))
+* **deps:** Bump ip-address from 10.2.0 to 10.4.0 ([#190](https://github.com/ffflorian/my-timezone/issues/190)) [ci skip] ([c8d3666](https://github.com/ffflorian/my-timezone/commit/c8d3666abf06d0ad555ddc930553f7b1b901ac99))
+* **deps:** Bump undici from 7.28.0 to 7.29.0 ([#191](https://github.com/ffflorian/my-timezone/issues/191)) [ci skip] ([299a1c7](https://github.com/ffflorian/my-timezone/commit/299a1c76a7ca99e72427a80c972623334bdd46bf))
+
+## [1.1.9](https://github.com/ffflorian/my-timezone/compare/v1.1.8...v1.1.9) (2026-07-31)
+
+
+### Bug Fixes
+
+* **deps:** Bump node from 26.5.0-alpine to 26.5.1-alpine ([#180](https://github.com/ffflorian/my-timezone/issues/180)) ([5117b4e](https://github.com/ffflorian/my-timezone/commit/5117b4e6978c38e9cec0a7492780eb38fd2c5352))
+* **deps:** Bump the react group across 1 directory with 2 updates ([#182](https://github.com/ffflorian/my-timezone/issues/182)) [ci skip] ([b8f587e](https://github.com/ffflorian/my-timezone/commit/b8f587e07a6b9fe6919a028687be1d9e97c5895e))
+
+## [1.1.8](https://github.com/ffflorian/my-timezone/compare/v1.1.7...v1.1.8) (2026-07-25)
+
+
+### Bug Fixes
+
+* **deps:** Bump brace-expansion from 1.1.13 to 1.1.16 ([#176](https://github.com/ffflorian/my-timezone/issues/176)) [ci skip] ([9c510e5](https://github.com/ffflorian/my-timezone/commit/9c510e50d937eb673039d9d5bdf681a3064e8f97))
+* **deps:** Bump nginx from `2776cd5` to `4a73073` ([#169](https://github.com/ffflorian/my-timezone/issues/169)) ([b7c9364](https://github.com/ffflorian/my-timezone/commit/b7c936439df018987c4e2b478e0262b9fe226f89))
+* **deps:** Bump postcss from 8.5.15 to 8.5.23 ([#177](https://github.com/ffflorian/my-timezone/issues/177)) [ci skip] ([73e125b](https://github.com/ffflorian/my-timezone/commit/73e125b71b22c4cf973d2b7b91ed7300787e93dd))
+* **deps:** Bump tar from 7.5.16 to 7.5.22 ([#178](https://github.com/ffflorian/my-timezone/issues/178)) [ci skip] ([29d1faa](https://github.com/ffflorian/my-timezone/commit/29d1faa59b770637c846ddcd450fdfa994e08b34))
+
+## [1.1.7](https://github.com/ffflorian/my-timezone/compare/v1.1.6...v1.1.7) (2026-07-18)
+
+
+### Bug Fixes
+
+* **deps:** Bump nginx from 1.31.2-alpine to 1.31.3-alpine ([#161](https://github.com/ffflorian/my-timezone/issues/161)) ([374bb7a](https://github.com/ffflorian/my-timezone/commit/374bb7ad5d139347a2415c0a676c2489e999fedf))
 
 ## [1.1.6](https://github.com/ffflorian/my-timezone/compare/v1.1.5...v1.1.6) (2026-07-10)
 
