@@ -1,3 +1,10 @@
+## [1.1.22](https://github.com/ffflorian/my-timezone/compare/v1.1.21...v1.1.22) (2026-10-13)
+
+
+### Bug Fixes
+
+* Disable absolute redirects in nginx config ([3a4ebaf](https://github.com/ffflorian/my-timezone/commit/3a4ebaf7e4e625e918448a4d74c59de55f400dbf))
+
 ## [1.1.21](https://github.com/ffflorian/my-timezone/compare/v1.1.20...v1.1.21) (2026-10-10)
 
 
