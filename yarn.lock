@@ -1279,10 +1279,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bootstrap-icons@npm:1.13.1":
-  version: 1.13.1
-  resolution: "bootstrap-icons@npm:1.13.1"
-  checksum: 10c0/2c1adeb1796502e67b476ce049c86bc3a7ff7984c61777e056820389a8db5ec6535c12a33f76f3ed52674bca4c01472065a7fbcde6cc384ebb86c2eae51390bd
+"bootstrap-icons@npm:1.13.2":
+  version: 1.13.2
+  resolution: "bootstrap-icons@npm:1.13.2"
+  checksum: 10c0/865f6e036836432cbbf7587406a2822674bcb79d4e5f454c081d6c664ee3b429ec9e5807851be6245a2059be32055790a6e23cceacc1badd38d2d271aff9c77b
   languageName: node
   linkType: hard
 
@@ -2495,7 +2495,7 @@ __metadata:
     "@types/react-dom": "npm:19.3.0"
     "@vitejs/plugin-react": "npm:6.1.2"
     "@vitest/coverage-v8": "npm:5.0.3"
-    bootstrap-icons: "npm:1.13.1"
+    bootstrap-icons: "npm:1.13.2"
     eslint: "npm:9.39.5"
     eslint-plugin-perfectionist: "npm:5.12.1"
     jsdom: "npm:30.1.2"
