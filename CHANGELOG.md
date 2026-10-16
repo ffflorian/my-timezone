@@ -1,3 +1,12 @@
+## [1.1.23](https://github.com/ffflorian/my-timezone/compare/v1.1.22...v1.1.23) (2026-10-16)
+
+
+### Bug Fixes
+
+* **deps:** Bump bootstrap-icons from 1.13.1 to 1.13.2 ([#297](https://github.com/ffflorian/my-timezone/issues/297)) [ci skip] ([a9abef8](https://github.com/ffflorian/my-timezone/commit/a9abef8fb1f4b48e2fabede9a4897d635e93ee01))
+* **deps:** Bump nginx from 1.31.6-alpine to 1.31.7-alpine ([#291](https://github.com/ffflorian/my-timezone/issues/291)) ([f2f3d9f](https://github.com/ffflorian/my-timezone/commit/f2f3d9fedbc17d05b6e0bd4e1fc7e20e518abeeb))
+* **deps:** Bump node from 26.11.1-alpine to 26.12.0-alpine ([#290](https://github.com/ffflorian/my-timezone/issues/290)) [ci skip] ([4ca2fb6](https://github.com/ffflorian/my-timezone/commit/4ca2fb6655c40cfcdf534ad0832bf2403708e154))
+
 ## [1.1.22](https://github.com/ffflorian/my-timezone/compare/v1.1.21...v1.1.22) (2026-10-13)
 
 
