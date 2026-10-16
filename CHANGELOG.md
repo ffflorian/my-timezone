@@ -1,3 +1,10 @@
+## [1.1.24](https://github.com/ffflorian/my-timezone/compare/v1.1.23...v1.1.24) (2026-10-16)
+
+
+### Bug Fixes
+
+* **deps:** Bump brace-expansion from 5.0.5 to 5.0.12 ([32a0e92](https://github.com/ffflorian/my-timezone/commit/32a0e9245aee5a9a2a1217c2799547cfd199abd6))
+
 ## [1.1.23](https://github.com/ffflorian/my-timezone/compare/v1.1.22...v1.1.23) (2026-10-16)
 
 
