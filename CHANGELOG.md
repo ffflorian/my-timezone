@@ -1,3 +1,11 @@
+## [1.1.25](https://github.com/ffflorian/my-timezone/compare/v1.1.24...v1.1.25) (2026-10-22)
+
+
+### Bug Fixes
+
+* **deps:** Bump nginx from 1.31.7-alpine to 1.31.8-alpine ([#300](https://github.com/ffflorian/my-timezone/issues/300)) ([c7090ac](https://github.com/ffflorian/my-timezone/commit/c7090ac4c1731d59b61ab935de670f625f7ee987))
+* **deps:** Bump node from 26.12.0-alpine to 26.12.1-alpine ([#299](https://github.com/ffflorian/my-timezone/issues/299)) [ci skip] ([7912874](https://github.com/ffflorian/my-timezone/commit/7912874a10cb3c8c97cb52deab2b407c9921307f))
+
 ## [1.1.24](https://github.com/ffflorian/my-timezone/compare/v1.1.23...v1.1.24) (2026-10-16)
 
 
