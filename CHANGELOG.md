@@ -1,3 +1,11 @@
+## [1.1.26](https://github.com/ffflorian/my-timezone/compare/v1.1.25...v1.1.26) (2026-10-23)
+
+
+### Bug Fixes
+
+* **deps:** Bump nginx from `e2d97c2` to `1ef7ca9` ([#301](https://github.com/ffflorian/my-timezone/issues/301)) ([6c93b43](https://github.com/ffflorian/my-timezone/commit/6c93b43d8271db3e98a7726a4d5879ada0180102))
+* **deps:** Bump the react group across 1 directory with 2 updates ([#304](https://github.com/ffflorian/my-timezone/issues/304)) [ci skip] ([f20a7ba](https://github.com/ffflorian/my-timezone/commit/f20a7ba5212ea5b5d5de7c72a46859ecd6e8479a))
+
 ## [1.1.25](https://github.com/ffflorian/my-timezone/compare/v1.1.24...v1.1.25) (2026-10-22)
 
 
