@@ -1,3 +1,10 @@
+## [1.1.27](https://github.com/ffflorian/my-timezone/compare/v1.1.26...v1.1.27) (2026-10-24)
+
+
+### Bug Fixes
+
+* **deps:** Bump ip-address from 10.7.2 to 10.7.4 ([#310](https://github.com/ffflorian/my-timezone/issues/310)) ([5a6c4cb](https://github.com/ffflorian/my-timezone/commit/5a6c4cbaec4f67409a90494e1546928287ce19b2))
+
 ## [1.1.26](https://github.com/ffflorian/my-timezone/compare/v1.1.25...v1.1.26) (2026-10-23)
 
 
