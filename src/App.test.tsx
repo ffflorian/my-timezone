@@ -83,6 +83,23 @@ describe('App', () => {
     expect(screen.getByRole('button', {name: /get solar time/i})).toBeEnabled();
   });
 
+  it('rejects out-of-range longitude', async () => {
+    const user = userEvent.setup();
+    render(<App />);
+    await user.type(screen.getByPlaceholderText('e.g. 13.40'), '200');
+    expect(screen.getByText('Longitude must be between -180 and 180.')).toBeInTheDocument();
+    expect(screen.getByRole('button', {name: /get solar time/i})).toBeDisabled();
+    expect(screen.queryByLabelText('Clock')).not.toBeInTheDocument();
+    expect(screen.getByLabelText('Map')).not.toHaveAttribute('data-lon');
+  });
+
+  it('does not pass out-of-range latitude to the map', async () => {
+    const user = userEvent.setup();
+    render(<App />);
+    await user.type(screen.getByPlaceholderText('e.g. 52.52'), '95');
+    expect(screen.getByLabelText('Map')).not.toHaveAttribute('data-lat');
+  });
+
   it('disables search button when city input is empty', () => {
     render(<App />);
     expect(screen.getByRole('button', {name: /^search$/i})).toBeDisabled();
