@@ -14,11 +14,13 @@ function App() {
 
   const parsedLat = parseFloat(lat);
   const parsedLon = parseFloat(lon);
-  const hasLon = !isNaN(parsedLon);
+  const validLat = Math.abs(parsedLat) <= 90 ? parsedLat : null;
+  const lonOutOfRange = Math.abs(parsedLon) > 180;
+  const hasLon = !isNaN(parsedLon) && !lonOutOfRange;
 
   const handleSubmit = (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (isNaN(parseFloat(lon))) {
+    if (!hasLon) {
       setError('Please enter a valid longitude.');
       return;
     }
@@ -117,8 +119,8 @@ function App() {
           for background.
         </p>
         <Map
-          lat={isNaN(parsedLat) ? null : parsedLat}
-          lon={isNaN(parsedLon) ? null : parsedLon}
+          lat={validLat}
+          lon={hasLon ? parsedLon : null}
           onLocationChange={(newLat, newLon) => {
             setLat(String(newLat));
             setLon(String(newLon));
@@ -193,6 +195,7 @@ function App() {
           </button>
         </form>
         {hasLon && <Clock longitude={parsedLon} />}
+        {lonOutOfRange && <p className="error">Longitude must be between -180 and 180.</p>}
         {error && <p className="error">{error}</p>}
       </div>
     </main>
