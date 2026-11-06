@@ -1,3 +1,17 @@
+## [1.1.30](https://github.com/ffflorian/my-timezone/compare/v1.1.29...v1.1.30) (2026-11-06)
+
+### Bug Fixes
+
+* reject out-of-range coordinates ([fd918fd](https://github.com/ffflorian/my-timezone/commit/fd918fd29386122592e9df82fa2c8cae58d8c0a2))
+
+### Continuous Integration
+
+* **deps:** Bump ffflorian/actions from 1.30.12 to 1.30.13 ([#321](https://github.com/ffflorian/my-timezone/issues/321)) ([fe82e92](https://github.com/ffflorian/my-timezone/commit/fe82e92cfc8f2222e2840d72328ac675bf08b072))
+
+### Tests
+
+* cover out-of-range coordinates ([9f27a9b](https://github.com/ffflorian/my-timezone/commit/9f27a9beb106f16c4a43d6cbe121081b3e612df5))
+
 ## [1.1.29](https://github.com/ffflorian/my-timezone/compare/v1.1.28...v1.1.29) (2026-11-06)
 
 
