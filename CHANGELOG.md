@@ -1,3 +1,11 @@
+## [1.1.29](https://github.com/ffflorian/my-timezone/compare/v1.1.28...v1.1.29) (2026-11-06)
+
+
+### Bug Fixes
+
+* **deps:** Bump nginx from `785835e` to `b2f80f8` ([#317](https://github.com/ffflorian/my-timezone/issues/317)) ([9669701](https://github.com/ffflorian/my-timezone/commit/96697013ad31e00adec69ca97d9e33db981b0208))
+* **deps:** Bump node from `c6ad9e9` to `8996bb5` ([#318](https://github.com/ffflorian/my-timezone/issues/318)) [ci skip] ([9d706b6](https://github.com/ffflorian/my-timezone/commit/9d706b6bc8e51ea6392828e59441967114c50fc6))
+
 ## [1.1.28](https://github.com/ffflorian/my-timezone/compare/v1.1.27...v1.1.28) (2026-10-30)
 
 
