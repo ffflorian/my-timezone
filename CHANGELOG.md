@@ -1,3 +1,23 @@
+## [1.1.31](https://github.com/ffflorian/my-timezone/compare/v1.1.30...v1.1.31) (2026-11-11)
+
+### Bug Fixes
+
+* **deps:** Bump nginx from `b2f80f8` to `713fc2e` ([#323](https://github.com/ffflorian/my-timezone/issues/323)) ([110f1cb](https://github.com/ffflorian/my-timezone/commit/110f1cb6128489a8b51ccdf782fa7801e68a7b94))
+
+### Continuous Integration
+
+* **deps:** Bump ffflorian/actions from 1.30.13 to 1.30.14 ([#324](https://github.com/ffflorian/my-timezone/issues/324)) [ci skip] ([5d82b41](https://github.com/ffflorian/my-timezone/commit/5d82b41c12170d80d1340c25be014c4791343ca9))
+
+### Miscellaneous Chores
+
+* **deps-dev:** Bump @ffflorian/oxlint-config from 1.0.15 to 1.0.16 ([#329](https://github.com/ffflorian/my-timezone/issues/329)) [ci skip] ([801ea07](https://github.com/ffflorian/my-timezone/commit/801ea07ae1e937afe81b27e7a9c507a1e31894f5))
+* **deps-dev:** Bump @vitejs/plugin-react from 6.1.2 to 6.2.1 ([#330](https://github.com/ffflorian/my-timezone/issues/330)) [ci skip] ([9b7e0a1](https://github.com/ffflorian/my-timezone/commit/9b7e0a176400bc343b0baf040a57b1e19118330e))
+* **deps-dev:** Bump jsdom from 30.1.3 to 31.0.0 ([#328](https://github.com/ffflorian/my-timezone/issues/328)) [ci skip] ([6c24e30](https://github.com/ffflorian/my-timezone/commit/6c24e30ff8267533c07f39fc53767d4072835b0d))
+* **deps-dev:** Bump the oxc group with 2 updates ([#325](https://github.com/ffflorian/my-timezone/issues/325)) [ci skip] ([b11af17](https://github.com/ffflorian/my-timezone/commit/b11af17cdca56debc488b17199f81d73d153ea4a))
+* **deps-dev:** Bump the vitest group across 1 directory with 2 updates ([#326](https://github.com/ffflorian/my-timezone/issues/326)) [ci skip] ([8750568](https://github.com/ffflorian/my-timezone/commit/875056804f5bb9b59399fd736679f4c49b30f408))
+* **deps-dev:** Bump vite from 8.3.5 to 8.3.6 ([#327](https://github.com/ffflorian/my-timezone/issues/327)) [ci skip] ([7bafd82](https://github.com/ffflorian/my-timezone/commit/7bafd82a31e0d3b8edcd7f0e5c063445d0decf37))
+* Update Docker dependencies daily [ci skip] ([6f8d9a9](https://github.com/ffflorian/my-timezone/commit/6f8d9a910454585b4613ac779cf380d63b8ace8d))
+
 ## [1.1.30](https://github.com/ffflorian/my-timezone/compare/v1.1.29...v1.1.30) (2026-11-06)
 
 ### Bug Fixes
