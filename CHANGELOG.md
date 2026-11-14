@@ -1,3 +1,14 @@
+## [1.1.32](https://github.com/ffflorian/my-timezone/compare/v1.1.31...v1.1.32) (2026-11-14)
+
+### Bug Fixes
+
+* **docker:** use nginx alpine-slim base image ([#332](https://github.com/ffflorian/my-timezone/issues/332)) ([0b4c2e9](https://github.com/ffflorian/my-timezone/commit/0b4c2e968cc5ab3b34c0da2e100b9465a61e89c8))
+
+### Miscellaneous Chores
+
+* **deps-dev:** Bump the oxc group with 2 updates ([#331](https://github.com/ffflorian/my-timezone/issues/331)) ([bbd1415](https://github.com/ffflorian/my-timezone/commit/bbd14151820a8f4f100a04ba03640b91c4dcaf30))
+* Switch around ci skipping words in publish config ([cc50a94](https://github.com/ffflorian/my-timezone/commit/cc50a9463a406b6f68943af8f7edbb20324169cd))
+
 ## [1.1.31](https://github.com/ffflorian/my-timezone/compare/v1.1.30...v1.1.31) (2026-11-11)
 
 ### Bug Fixes
