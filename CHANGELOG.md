@@ -1,3 +1,9 @@
+## [1.1.33](https://github.com/ffflorian/my-timezone/compare/v1.1.32...v1.1.33) (2026-11-15)
+
+### Bug Fixes
+
+* **deps:** Bump node from 26.13.0-alpine to 26.13.1-alpine ([#334](https://github.com/ffflorian/my-timezone/issues/334)) ([ae6483c](https://github.com/ffflorian/my-timezone/commit/ae6483c0186aa34ba7b75d73057a17a26037ff84))
+
 ## [1.1.32](https://github.com/ffflorian/my-timezone/compare/v1.1.31...v1.1.32) (2026-11-14)
 
 ### Bug Fixes
