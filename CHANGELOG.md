@@ -1,3 +1,9 @@
+## [1.1.34](https://github.com/ffflorian/my-timezone/compare/v1.1.33...v1.1.34) (2026-11-18)
+
+### Bug Fixes
+
+* **deps:** bump nginx to 1.31.9 ([3a1ec9d](https://github.com/ffflorian/my-timezone/commit/3a1ec9d9646613f3c763644fdfed34196a1bc7db))
+
 ## [1.1.33](https://github.com/ffflorian/my-timezone/compare/v1.1.32...v1.1.33) (2026-11-15)
 
 ### Bug Fixes
