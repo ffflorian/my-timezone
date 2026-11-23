@@ -1,3 +1,19 @@
+## [1.1.35](https://github.com/ffflorian/my-timezone/compare/v1.1.34...v1.1.35) (2026-11-23)
+
+### Bug Fixes
+
+* **deps:** Bump nginx from `0b98e1d` to `5bfced7` ([#342](https://github.com/ffflorian/my-timezone/issues/342)) ([128ba9d](https://github.com/ffflorian/my-timezone/commit/128ba9da5196cda57fbb265f8f17823521622ecb))
+
+### Miscellaneous Chores
+
+* **deps-dev:** Bump @ffflorian/oxfmt-config from 1.3.0 to 1.5.0 ([#339](https://github.com/ffflorian/my-timezone/issues/339)) ([16bc182](https://github.com/ffflorian/my-timezone/commit/16bc1826af8a53a3fb59f9aa49aa53045ff918c4))
+* **deps-dev:** Bump @ffflorian/oxlint-config from 1.0.16 to 1.2.0 ([#337](https://github.com/ffflorian/my-timezone/issues/337)) ([0fcf1c9](https://github.com/ffflorian/my-timezone/commit/0fcf1c96abe2d5b1104deda864f16471546153c9))
+* **deps-dev:** Bump @testing-library/user-event from 14.6.8 to 14.6.10 ([#341](https://github.com/ffflorian/my-timezone/issues/341)) ([d078e51](https://github.com/ffflorian/my-timezone/commit/d078e51f5dd688bce50190b08336639e11df271b))
+* **deps-dev:** Bump @vitejs/plugin-react from 6.2.1 to 6.3.0 ([#336](https://github.com/ffflorian/my-timezone/issues/336)) ([303243c](https://github.com/ffflorian/my-timezone/commit/303243c40c8106fc2f55aac86b52bd6b2faf7c37))
+* **deps-dev:** Bump jsdom from 31.0.0 to 31.0.1 ([#340](https://github.com/ffflorian/my-timezone/issues/340)) ([5295aa6](https://github.com/ffflorian/my-timezone/commit/5295aa6b04d9cb4ad350b7eac6e21471064558b9))
+* **deps-dev:** Bump the oxc group with 2 updates ([#335](https://github.com/ffflorian/my-timezone/issues/335)) ([18ddc23](https://github.com/ffflorian/my-timezone/commit/18ddc2338b0f00508547c6e7aaba324914c220e5))
+* **deps-dev:** Bump vite from 8.3.6 to 8.3.8 ([#338](https://github.com/ffflorian/my-timezone/issues/338)) ([7869e28](https://github.com/ffflorian/my-timezone/commit/7869e2883001fbfa719a226c335ae2ce09d1a2c5))
+
 ## [1.1.34](https://github.com/ffflorian/my-timezone/compare/v1.1.33...v1.1.34) (2026-11-18)
 
 ### Bug Fixes
