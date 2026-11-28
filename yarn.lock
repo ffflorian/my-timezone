@@ -239,14 +239,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ffflorian/oxlint-config@npm:1.2.0":
-  version: 1.2.0
-  resolution: "@ffflorian/oxlint-config@npm:1.2.0"
+"@ffflorian/oxlint-config@npm:1.2.2":
+  version: 1.2.2
+  resolution: "@ffflorian/oxlint-config@npm:1.2.2"
   peerDependencies:
     eslint: ">=10.8.0"
     eslint-plugin-perfectionist: ">=5.10.0"
     oxlint: ">=1.76.0"
-  checksum: 10c0/66c43147e1836d7561a18ea11022000370b765a9d5b16e52b620995e6d30d2d419d7378d6cc8c252a58a5837803ba33f1b377f26c96f4ef37bd16c69b26b4f9b
+  checksum: 10c0/483e80ce6b05b5676d24b3333b2e9ec1423fd04bae56bbaeabc71a8ef352e1c5a17b638ccf8021b32486a1ea0c4a5169427b8f7dc80e207328460f95376db25e
   languageName: node
   linkType: hard
 
@@ -2512,7 +2512,7 @@ __metadata:
   resolution: "my-timezone@workspace:."
   dependencies:
     "@ffflorian/oxfmt-config": "npm:1.5.1"
-    "@ffflorian/oxlint-config": "npm:1.2.0"
+    "@ffflorian/oxlint-config": "npm:1.2.2"
     "@testing-library/dom": "npm:10.4.2"
     "@testing-library/jest-dom": "npm:8.0.0"
     "@testing-library/react": "npm:16.3.3"
